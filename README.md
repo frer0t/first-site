@@ -1,2 +1,2 @@
 # My-Brand
-Personal Project And Blog
+Personal Project And Blog for Front-end
