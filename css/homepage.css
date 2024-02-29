@@ -1,0 +1,381 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", san-serif;
+}
+
+body {
+  background-color: white;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.526);
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%;
+  z-index: 2;
+}
+.header .navigation {
+  display: flex;
+  justify-content: space-evenly;
+  width: 40%;
+}
+.header .navigation a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .navigation a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .navigation a:hover {
+  font-weight: 600;
+}
+.header .navigation a:hover::before {
+  width: 100%;
+}
+.header .navigation .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .navigation .clicked {
+  font-weight: 600;
+}
+
+.btn-login {
+  text-decoration: none;
+  background-color: black;
+  border: solid black 1px;
+  color: #eef1ef;
+  padding: 8px 38px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.7s ease;
+}
+
+.btn-login:hover {
+  color: black;
+  background-color: white;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: fit-content;
+  padding-top: 60px;
+}
+.content .profile {
+  height: 90vh;
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  transform: translateY(102px);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  align-items: center;
+}
+.content .profile .intro {
+  display: flex;
+  width: fit-content;
+  column-gap: 30px;
+  align-items: center;
+}
+.content .profile .image {
+  width: fit-content;
+  height: 378px;
+  position: relative;
+}
+.content .profile .image img {
+  border-radius: 50%;
+  width: 400px;
+}
+.content .profile .image::before {
+  content: "";
+  display: flex;
+  width: 383px;
+  top: -9px;
+  left: -12px;
+  height: 360px;
+  border: solid rgb(0, 0, 0) 20px;
+  border-radius: 50%;
+  position: absolute;
+}
+.content .profile .intro .social {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.content .profile .intro .social img {
+  width: 40px;
+}
+.content .profile .intro .social img:hover {
+  animation: shake-top 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 2 both;
+}
+.content .profile .intro .myname {
+  display: flex;
+  flex-direction: column;
+}
+.content .profile .intro .myname h1 {
+  font-size: 50px;
+}
+.content .profile .intro .myname h6 {
+  font-size: 18px;
+}
+.content .profile .intro .myname p {
+  max-width: 453px;
+  font-size: 21px;
+  margin-top: 20px;
+}
+.content .profile .intro .myname p span {
+  font-weight: bold;
+}
+.content .profile .intro .myname .btn-login {
+  margin-top: 40px;
+  max-width: 220px;
+  padding: 14px 40px;
+  text-align: center;
+}
+.content .about {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  justify-content: space-evenly;
+  padding: 0 200px;
+}
+.content .about h1 {
+  font-size: 35px;
+  align-self: center;
+}
+.content .about p {
+  width: 90%;
+  font-size: 21px;
+}
+.content .about .btn-login {
+  text-align: center;
+  max-width: 172px;
+}
+.content .skills {
+  width: 100%;
+  height: 66vh;
+  display: flex;
+  padding-top: 15px;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 100px;
+}
+.content .skills h1 {
+  font-size: 30px;
+}
+.content .skills .logs {
+  position: relative;
+  display: flex;
+  column-gap: 56px;
+}
+.content .skills .logs img:hover {
+  animation: jello-horizontal 1.2s 2 both;
+}
+.content .skills .logs .logo-names {
+  position: absolute;
+  display: flex;
+  bottom: -30px;
+  width: 100%;
+}
+.content .skills .logs .logo-names p {
+  font-weight: 600;
+}
+.content .skills .logs .logo-names #figma {
+  margin-right: 57px;
+}
+.content .skills .logs .logo-names #js {
+  margin-right: 69px;
+}
+.content .skills .logs .logo-names #git {
+  margin-right: 89px;
+}
+.content .skills .logs .logo-names #github {
+  margin-right: 82px;
+}
+.content .skills .logs .logo-names #html5 {
+  margin-right: 70px;
+}
+.content .contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.content .contact form {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  padding: 8px 30px;
+  width: 330px;
+  height: 500px;
+}
+.content .contact form h1 {
+  position: absolute;
+  top: -50px;
+  left: 0;
+}
+.content .contact form input {
+  min-height: 50px;
+  width: 100%;
+  border-color: rgba(0, 0, 0, 0.445);
+  outline: none;
+  border-radius: 10px;
+  padding-left: 12px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.content .contact form input:focus {
+  border: solid rgb(0, 0, 0);
+}
+.content .contact form input::placeholder {
+  font-weight: 600;
+  font-size: 15px;
+}
+.content .contact form label {
+  font-weight: bold;
+  font-size: 20px;
+}
+.content .contact form textarea {
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+  border-radius: 15px;
+  height: 200px;
+  resize: none;
+}
+.content .contact form textarea:focus {
+  border: solid rgba(0, 0, 0, 0.48);
+}
+.content .contact form textarea::placeholder {
+  font-weight: 600;
+  font-size: 15px;
+}
+.content .contact form .btn-login {
+  text-align: center;
+  max-width: 205px;
+  padding: 10px 40px;
+  align-self: flex-end;
+}
+.content .contact .map {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
+  background-color: gray;
+}
+.content .contact .map p {
+  position: absolute;
+  font-weight: bold;
+  top: -32px;
+  font-size: 25px;
+}
+.content .btn-login:hover svg {
+  fill: black;
+}
+.content .btn-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 150px;
+  padding: 8px 16px;
+  margin: 20px 0;
+}
+.content .btn-login svg {
+  fill: white;
+  width: 12px;
+}
+
+footer {
+  background-color: black;
+  width: 100%;
+  padding: 20px 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 510px;
+}
+footer a {
+  text-decoration: none;
+}
+footer p {
+  font-weight: 600;
+}
+footer svg {
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+footer svg a {
+  text-decoration: none;
+}
+
+@keyframes shake-top {
+  0%, 100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 0;
+  }
+  10% {
+    transform: rotate(2deg);
+  }
+  20%, 40%, 60% {
+    transform: rotate(-4deg);
+  }
+  30%, 50%, 70% {
+    transform: rotate(4deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+}
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}/*# sourceMappingURL=homepage.css.map */
