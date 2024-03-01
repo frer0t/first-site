@@ -1,0 +1,260 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", san-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.526);
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%;
+  z-index: 2;
+}
+.header .navigation {
+  display: flex;
+  justify-content: space-evenly;
+  width: 40%;
+}
+.header .navigation a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .navigation a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .navigation a:hover {
+  font-weight: 600;
+}
+.header .navigation a:hover::before {
+  width: 100%;
+}
+.header .navigation .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .navigation .clicked {
+  font-weight: 600;
+}
+
+.blogs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  padding-top: 62px;
+  padding-bottom: 40px;
+  height: 100vh;
+  align-items: center;
+  width: 95%;
+  margin-top: 50px;
+  transform: translateY(120px);
+  opacity: 0;
+  transition: all 0.9s ease;
+}
+.blogs .blogcard {
+  display: flex;
+  width: 70%;
+  min-height: 502px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.blogs .blogcard img {
+  width: 50%;
+  object-fit: cover;
+}
+.blogs .blogcard .alldes {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+.blogs .blogcard .alldes .author {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: whitesmoke;
+  border-bottom: solid rgb(163, 162, 162) 1px;
+}
+.blogs .blogcard .alldes .author p {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.blogs .blogcard .alldes .author p img {
+  width: 40px;
+  border-radius: 50%;
+  border: solid rgb(82, 80, 80) 1px;
+}
+.blogs .blogcard .alldes .author .options {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  column-gap: 5px;
+}
+.blogs .blogcard .alldes .author .options .dot {
+  width: 5px;
+  height: 5px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+}
+.blogs .blogcard .alldes .commentsect {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 5px 10px;
+}
+.blogs .blogcard .alldes .commentsect .blogmean {
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #adadad;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+.blogs .blogcard .alldes .commentsect .comment {
+  text-align: right;
+  align-self: flex-end;
+  max-width: 80%;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  background-color: rgb(240, 240, 240);
+  margin-top: 20px;
+}
+.blogs .blogcard .alldes .rections {
+  display: flex;
+  flex-direction: column;
+}
+.blogs .blogcard .alldes .rections .like {
+  display: flex;
+  column-gap: 4px;
+  width: 100%;
+  padding: 12px;
+}
+.blogs .blogcard .alldes .rections .like a {
+  margin-left: 300px;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 7px 3px;
+  font-size: 9px;
+  text-align: center;
+}
+.blogs .blogcard .alldes .rections .like svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+.blogs .blogcard .alldes .rections .like svg:hover {
+  cursor: pointer;
+}
+.blogs .blogcard .alldes .rections textarea {
+  height: 50px;
+  background-color: whitesmoke;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 8px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  resize: none;
+}
+
+.btn-login {
+  text-decoration: none;
+  background-color: black;
+  border: solid black 1px;
+  color: #eef1ef;
+  padding: 8px 38px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.7s ease;
+}
+
+.btn-login:hover {
+  color: black;
+  background-color: white;
+}
+
+.backtop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 150px;
+  max-width: 200px;
+  padding: 8px 16px;
+  margin: 20px 0;
+  align-self: center;
+}
+.backtop:hover svg {
+  fill: black;
+}
+.backtop svg {
+  fill: white;
+  width: 12px;
+}
+
+footer {
+  background-color: black;
+  width: 100%;
+  padding: 20px 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 510px;
+}
+footer a {
+  text-decoration: none;
+}
+footer p {
+  font-weight: 600;
+}
+footer svg {
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+footer svg a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 5px;
+}/*# sourceMappingURL=blogspage.css.map */
