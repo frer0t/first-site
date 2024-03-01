@@ -229,7 +229,7 @@ footer {
   color: white;
   display: flex;
   align-items: center;
-  column-gap: 510px;
+  column-gap: 450px;
 }
 footer a {
   text-decoration: none;
