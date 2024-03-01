@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", san-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.526);
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%;
+  z-index: 2;
+}
+.header .navigation {
+  display: flex;
+  justify-content: space-evenly;
+  width: 40%;
+}
+.header .navigation a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .navigation a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .navigation a:hover {
+  font-weight: 600;
+}
+.header .navigation a:hover::before {
+  width: 100%;
+}
+.header .navigation .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .navigation .clicked {
+  font-weight: 600;
+}
+
+.btn-login {
+  text-decoration: none;
+  background-color: black;
+  border: solid black 1px;
+  color: #eef1ef;
+  padding: 8px 38px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.7s ease;
+}
+
+.btn-login:hover {
+  color: black;
+  background-color: white;
+}
+
+.projectsCards {
+  display: flex;
+  width: 100%;
+  transform: translateY(200px);
+  opacity: 0;
+  justify-content: center;
+  padding-top: 90px;
+  transition: all 0.9s ease-in-out;
+}
+.projectsCards .cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 80px;
+  row-gap: 50px;
+  width: 50%;
+}
+.projectsCards .cards .card {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  row-gap: 18px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 20px;
+  padding: 12px;
+}
+.projectsCards .cards .card p {
+  font-size: 13px;
+  font-weight: 600;
+}
+.projectsCards .cards .card .gitrep {
+  font-size: 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+.projectsCards .cards .card .gitrep:hover img {
+  animation: shake-top 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 2 both;
+}
+.projectsCards .cards .card .gitrep:hover {
+  text-decoration: underline;
+}
+.projectsCards .cards .card .gitrep:visited {
+  color: unset;
+}
+.projectsCards .cards .card .gitrep img {
+  width: 30px;
+}
+.projectsCards .cards .card img {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  align-self: center;
+}
+.projectsCards .cards .card .site {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  height: fit-content;
+  width: fit-content;
+}
+.projectsCards .cards .card .site p {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  border-radius: 20px;
+  color: white;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 98%;
+  background-color: rgba(0, 0, 0, 0.638);
+  transition: all 0.7s ease-in;
+}
+.projectsCards .cards .card .site:hover p {
+  opacity: 1;
+}
+.projectsCards .cards .card .stacks {
+  display: flex;
+  column-gap: 12px;
+}
+.projectsCards .cards .card .stacks .stack {
+  padding: 9px 17px;
+  background-color: #eaeaea;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.577);
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: backgroud-color ease-in 0.8s;
+}
+.projectsCards .cards .card .stacks .stack:hover {
+  background-color: #b9b8b8;
+}
+
+.backtop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 150px;
+  max-width: 200px;
+  padding: 8px 16px;
+  margin: 20px 0;
+  align-self: center;
+}
+.backtop:hover svg {
+  fill: black;
+}
+.backtop svg {
+  fill: white;
+  width: 12px;
+}
+
+footer {
+  background-color: black;
+  width: 100%;
+  padding: 20px 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 510px;
+}
+footer a {
+  text-decoration: none;
+}
+footer p {
+  font-weight: 600;
+}
+footer svg {
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+footer svg a {
+  text-decoration: none;
+}
+
+@keyframes shake-top {
+  0%, 100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 0;
+  }
+  10% {
+    transform: rotate(2deg);
+  }
+  20%, 40%, 60% {
+    transform: rotate(-4deg);
+  }
+  30%, 50%, 70% {
+    transform: rotate(4deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+}/*# sourceMappingURL=projects.css.map */
