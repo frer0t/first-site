@@ -231,9 +231,9 @@ body {
   justify-content: space-evenly;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  padding: 8px 30px;
+  padding: 20px 30px;
   width: 330px;
-  height: 500px;
+  height: 580px;
 }
 .content .contact form h1 {
   position: absolute;
@@ -280,7 +280,7 @@ body {
 .content .contact form .btn-login {
   text-align: center;
   max-width: 205px;
-  padding: 10px 40px;
+  padding: 10px 50px;
   align-self: flex-end;
 }
 .content .contact .map {
@@ -337,7 +337,7 @@ footer svg a {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -346,7 +346,7 @@ footer svg a {
 
 ::-webkit-scrollbar-thumb {
   background: #000000;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 @keyframes shake-top {
