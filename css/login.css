@@ -1,1 +1,186 @@
-/*# sourceMappingURL=login.css.map */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", san-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+body form {
+  display: flex;
+  flex-direction: column;
+  width: 28%;
+  height: 800px;
+  align-self: center;
+  margin-top: 70px;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  row-gap: 20px;
+}
+body form h1 {
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 19px;
+}
+body form h1::before {
+  content: "";
+  background-color: gray;
+  width: 100%;
+  height: 1px;
+  bottom: -20px;
+  border: 10px;
+  position: absolute;
+}
+body form input {
+  height: 40px;
+  border: rgba(0, 0, 0, 0.4862745098) solid 1px;
+  width: 100%;
+  border-radius: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+body form label {
+  font-weight: 600;
+  font-size: 18px;
+}
+body form .btn-login {
+  height: 50px;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+body form .gotosignup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+body form .gotosignup a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+body form .gotosignup a:hover {
+  text-decoration: underline;
+}
+body form .gotosignup::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  top: -40px;
+  border-radius: 10px;
+  background-color: gray;
+  position: absolute;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.526);
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%;
+  z-index: 2;
+}
+.header .navigation {
+  display: flex;
+  justify-content: space-evenly;
+  width: 40%;
+}
+.header .navigation a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .navigation a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .navigation a:hover {
+  font-weight: 600;
+}
+.header .navigation a:hover::before {
+  width: 100%;
+}
+.header .navigation .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .navigation .clicked {
+  font-weight: 600;
+}
+
+.btn-login {
+  text-decoration: none;
+  background-color: black;
+  border: solid black 1px;
+  color: #eef1ef;
+  padding: 8px 38px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.7s ease;
+}
+
+.btn-login:hover {
+  color: black;
+  background-color: white;
+}
+
+footer {
+  background-color: black;
+  width: 100%;
+  padding: 20px 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 490px;
+}
+footer a {
+  text-decoration: none;
+}
+footer p {
+  font-weight: 600;
+}
+footer svg {
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+footer svg a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 5px;
+}/*# sourceMappingURL=login.css.map */
