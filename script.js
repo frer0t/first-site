@@ -34,7 +34,6 @@ buttonSkills.addEventListener('click', function (e) {
 window.onload = function () {
  profileSc.style.opacity = 1;
  profileSc.style.transform = "translateY(0)";
- window.scrollTo(0, 0);
 };
 
 
