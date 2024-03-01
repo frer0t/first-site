@@ -16,6 +16,9 @@ body form {
   flex-direction: column;
   width: 28%;
   height: 800px;
+  transform: translateX(110px);
+  opacity: 0;
+  transition: all ease-in-out 0.9s;
   align-self: center;
   margin-top: 70px;
   margin-bottom: 60px;
