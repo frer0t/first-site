@@ -10,7 +10,7 @@ body {
 }
 
 .header {
-  background-color: rgba(255, 255, 255, 0.526);
+  background-color: rgba(255, 255, 255, 0.5254901961);
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -19,8 +19,55 @@ body {
   width: 100%;
   z-index: 2;
 }
+.header .mobilenav {
+  position: absolute;
+  background-color: #ffffff;
+  top: 79px;
+  right: 0;
+  transform: translateX(900px);
+  height: 90vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 30px;
+  align-items: center;
+  width: 100vw;
+  transition: transform ease-in-out 0.6s;
+  z-index: -1;
+}
+.header .mobilenav a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .mobilenav a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .mobilenav a:hover {
+  font-weight: 600;
+}
+.header .mobilenav a:hover::before {
+  width: 100%;
+}
+.header .mobilenav .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .mobilenav .clicked {
+  font-weight: 600;
+}
 .header .navigation {
   display: flex;
+  position: relative;
   justify-content: space-evenly;
   width: 40%;
 }
@@ -54,6 +101,9 @@ body {
 .header .navigation .clicked {
   font-weight: 600;
 }
+.header .humburger {
+  display: none;
+}
 
 .btn-login {
   text-decoration: none;
@@ -82,7 +132,7 @@ body {
   padding-top: 60px;
 }
 .content .profile {
-  height: 90vh;
+  margin-top: 122px;
   width: 100%;
   justify-content: space-around;
   display: flex;
@@ -156,9 +206,9 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
-  justify-content: space-evenly;
-  padding: 0 200px;
+  margin-top: 130px;
+  row-gap: 40px;
+  padding: 0 100px;
 }
 .content .about h1 {
   font-size: 35px;
@@ -175,47 +225,38 @@ body {
 }
 .content .skills {
   width: 100%;
-  height: 66vh;
   display: flex;
-  padding-top: 15px;
+  margin-top: 180px;
   flex-direction: column;
   align-items: center;
-  row-gap: 100px;
+  row-gap: 60px;
+}
+.content .skills .logs {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  width: 50%;
+  justify-content: space-between;
+}
+.content .skills .logs .skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+.content .skills .logs .skill p {
+  font-weight: bold;
+  font-size: 18px;
+}
+.content .skills .logs .skill img {
+  width: 60px;
+  height: 60px;
+}
+.content .skills .logs .skill img:hover {
+  animation: jello-horizontal ease 1s 2;
 }
 .content .skills h1 {
   font-size: 30px;
-}
-.content .skills .logs {
-  position: relative;
-  display: flex;
-  column-gap: 56px;
-}
-.content .skills .logs img:hover {
-  animation: jello-horizontal 1.2s 2 both;
-}
-.content .skills .logs .logo-names {
-  position: absolute;
-  display: flex;
-  bottom: -30px;
-  width: 100%;
-}
-.content .skills .logs .logo-names p {
-  font-weight: 600;
-}
-.content .skills .logs .logo-names #figma {
-  margin-right: 57px;
-}
-.content .skills .logs .logo-names #js {
-  margin-right: 69px;
-}
-.content .skills .logs .logo-names #git {
-  margin-right: 89px;
-}
-.content .skills .logs .logo-names #github {
-  margin-right: 82px;
-}
-.content .skills .logs .logo-names #html5 {
-  margin-right: 70px;
 }
 .content .contact {
   display: flex;
@@ -223,6 +264,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  margin-top: 290px;
 }
 .content .contact form {
   display: flex;
@@ -319,7 +361,7 @@ footer {
   color: white;
   display: flex;
   align-items: center;
-  column-gap: 492px;
+  column-gap: 30px;
 }
 footer a {
   text-decoration: none;
@@ -327,13 +369,18 @@ footer a {
 footer p {
   font-weight: 600;
 }
-footer svg {
+footer .goto {
+  display: flex;
+  column-gap: 10px;
+}
+footer .goto svg {
   height: 30px;
   width: 30px;
-  fill: white;
+  fill: rgb(255, 255, 255);
 }
-footer svg a {
-  text-decoration: none;
+footer .goto svg:hover {
+  fill: #878f89;
+  transform: scale(12px);
 }
 
 ::-webkit-scrollbar {
@@ -391,5 +438,216 @@ footer svg a {
   }
   100% {
     transform: scale3d(1, 1, 1);
+  }
+}
+.header .opendrawer {
+  transform: translateY(0);
+}
+
+.animatebar1 {
+  animation: flipbar1 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar2 {
+  animation: fadebar2 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar3 {
+  animation: flipbar3 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes flipbar1 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(45deg) translate(4px, 10px);
+  }
+}
+@keyframes fadebar2 {
+  from {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes flipbar3 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-45deg) translate(4px, -10px);
+  }
+}
+@media all and (max-width: 1073px) {
+  .header .navigation {
+    width: 700px;
+  }
+  .content .profile {
+    padding: 0 40px;
+  }
+  .content .profile .image {
+    margin-left: 20px;
+    width: unset;
+    height: unset;
+  }
+  .content .profile .image::before {
+    width: 280px;
+    height: 260px;
+  }
+  .content .profile .image img {
+    width: 300px;
+  }
+  .content .skills .logs {
+    width: 70%;
+  }
+  .content .about {
+    padding: 0 50px;
+    margin-top: 230px;
+  }
+  .content .contact {
+    padding: 0 30px;
+  }
+  .content .contact .map {
+    width: 50%;
+  }
+}
+@media all and (max-width: 786px) {
+  .header {
+    padding: 20px 20px;
+  }
+  .header .navigation {
+    display: none;
+  }
+  .header .mobilenav {
+    display: flex;
+  }
+  .header .mobilenav .btn-login {
+    display: block;
+  }
+  .header .btn-login {
+    display: none;
+  }
+  .header .humburger {
+    display: flex;
+    flex-direction: column;
+    height: 25px;
+    justify-content: space-between;
+  }
+  .header .humburger .bar1,
+  .header .humburger .bar2,
+  .header .humburger .bar3 {
+    width: 36px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 20px;
+  }
+  .content .btn-login {
+    margin-top: 31px;
+  }
+  .content .contact form {
+    width: 330px;
+  }
+  .content .contact .about {
+    padding: 0 40px;
+  }
+  .content .contact .map {
+    display: none;
+  }
+}
+@media all and (max-width: 685px) {
+  .content .profile {
+    padding: 0 36px;
+    display: grid;
+    place-items: center;
+    margin-top: 40px;
+    row-gap: 10px;
+  }
+  .content .profile .intro .myname .btn-login {
+    margin-top: 20px;
+  }
+  .content .profile .image {
+    grid-row-start: 1;
+    margin-left: unset;
+  }
+  .content .about {
+    padding: 0 19px;
+    margin-top: 130px;
+  }
+  .content .skills {
+    margin-top: 150px;
+  }
+  .content .skills .logs {
+    width: 80%;
+  }
+  .content .contact {
+    margin-top: 210px;
+  }
+}
+@media all and (max-width: 522px) {
+  .content .profile {
+    padding: 0 20px;
+    row-gap: 40px;
+  }
+  .content .profile .intro .myname p {
+    font-size: 19px;
+  }
+  .content .profile .intro .myname h1 {
+    font-size: 39px;
+  }
+  .content .skills .logs {
+    padding: 0 22px;
+  }
+  .content .skills .logs .skill img {
+    width: 40px;
+  }
+  .content .skills .logs .skill p {
+    font-size: 13px;
+  }
+}
+@media all and (max-width: 428px) {
+  .content .profile {
+    padding: 0 20px;
+  }
+  .content .profile .intro .myname h1 {
+    font-size: 35px;
+  }
+}
+@media all and (max-width: 330px) {
+  .content .about {
+    padding: 0 15px;
+  }
+  .content .about p {
+    font-size: 15px;
+  }
+  .content .about h1 {
+    font-size: 25px;
+  }
+  .content .profile .image::before {
+    width: 180px;
+    height: 180px;
+  }
+  .content .profile .image img {
+    width: 200px;
+  }
+  .content .profile .intro .myname .btn-login {
+    padding: 10px 20px;
+    max-width: 140px;
+    font-size: 12px;
+  }
+  .content .profile .intro .myname p {
+    font-size: 14px;
+  }
+  .content .profile .intro .myname h6 {
+    font-size: 15px;
+  }
+  .content .profile .intro .myname h1 {
+    font-size: 29px;
   }
 }/*# sourceMappingURL=homepage.css.map */

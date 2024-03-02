@@ -11,10 +11,32 @@ const contactSc = document.querySelector('.contact');
 const buttonBackTop = document.querySelector('.backtop');
 const buttonConnect = document.querySelector('.letconnect');
 
+const humburger = document.querySelector(".humburger");
+const bar1 = document.querySelector(".bar1");
+const bar2 = document.querySelector(".bar2");
+const bar3 = document.querySelector(".bar3");
+const mobilenav = document.querySelector(".mobilenav");
+
+const mobileLinks = mobilenav.childNodes;
+
+mobileLinks.forEach(cur => cur.addEventListener('click', function () {
+ bar1.classList.toggle("animatebar1");
+ bar2.classList.toggle("animatebar2");
+ bar3.classList.toggle("animatebar3");
+ mobilenav.classList.toggle("opendrawer");
+}));
+
+humburger.addEventListener("click", function () {
+ bar1.classList.toggle("animatebar1");
+ bar2.classList.toggle("animatebar2");
+ bar3.classList.toggle("animatebar3");
+ mobilenav.classList.toggle("opendrawer");
+});
+
 
 buttonConnect.addEventListener('click', function (e) {
  e.preventDefault();
- contactSc.scrollIntoView({ behavior: 'smooth' });
+ contactSc.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 });
 buttonBackTop.addEventListener('click', function (e) {
  e.preventDefault();
@@ -22,7 +44,7 @@ buttonBackTop.addEventListener('click', function (e) {
 });
 buttonContact.addEventListener('click', function (e) {
  e.preventDefault();
- window.scrollTo({ top: 1580, behavior: 'smooth' });
+ contactSc.scrollIntoView({ block: "nearest", behavior: 'smooth' });
 });
 buttonProfile.addEventListener('click', function (e) {
  e.preventDefault();
@@ -30,11 +52,11 @@ buttonProfile.addEventListener('click', function (e) {
 });
 buttonAbout.addEventListener('click', function (e) {
  e.preventDefault();
- aboutSc.scrollIntoView({ behavior: 'smooth' });
+ aboutSc.scrollIntoView({ block: 'center', behavior: 'smooth' });
 });
 buttonSkills.addEventListener('click', function (e) {
  e.preventDefault();
- window.scrollTo({ top: 1209, behavior: 'smooth' });
+ skillsSc.scrollIntoView({ block: 'center', behavior: 'smooth' });
 });
 window.onload = function () {
  profileSc.style.opacity = 1;
