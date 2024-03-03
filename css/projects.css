@@ -55,6 +55,55 @@ body {
 .header .navigation .clicked {
   font-weight: 600;
 }
+.header .mobilenav {
+  position: absolute;
+  background-color: #ffffff;
+  top: 79px;
+  right: 0;
+  transform: translateX(800px);
+  height: 90vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 30px;
+  align-items: center;
+  width: 100vw;
+  transition: transform ease-in-out 0.6s;
+  z-index: -1;
+}
+.header .mobilenav a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .mobilenav a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .mobilenav a:hover {
+  font-weight: 600;
+}
+.header .mobilenav a:hover::before {
+  width: 100%;
+}
+.header .mobilenav .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .mobilenav .clicked {
+  font-weight: 600;
+}
+.header .humburger {
+  display: none;
+}
 
 .btn-login {
   text-decoration: none;
@@ -86,7 +135,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 80px;
   row-gap: 50px;
-  width: 50%;
+  width: 80%;
 }
 .projectsCards .cards .card {
   display: flex;
@@ -194,7 +243,6 @@ footer {
   color: white;
   display: flex;
   align-items: center;
-  column-gap: 510px;
 }
 footer a {
   text-decoration: none;
@@ -224,6 +272,51 @@ footer svg a {
   border-radius: 5px;
 }
 
+.header .opendrawer {
+  transform: translateY(0);
+}
+
+.animatebar1 {
+  animation: flipbar1 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar2 {
+  animation: fadebar2 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar3 {
+  animation: flipbar3 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes flipbar1 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(45deg) translate(4px, 10px);
+  }
+}
+@keyframes fadebar2 {
+  from {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes flipbar3 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-45deg) translate(4px, -10px);
+  }
+}
 @keyframes shake-top {
   0%, 100% {
     transform: rotate(0deg);
@@ -243,5 +336,51 @@ footer svg a {
   }
   90% {
     transform: rotate(2deg);
+  }
+}
+@media all and (max-width: 1310px) {
+  .header .navigation {
+    width: 700px;
+  }
+}
+@media all and (max-width: 770px) {
+  .header .btn-login {
+    display: none;
+  }
+  .header .navigation {
+    display: none;
+  }
+  .header .humburger {
+    display: flex;
+    flex-direction: column;
+    height: 25px;
+    justify-content: space-between;
+  }
+  .header .humburger .bar1,
+  .header .humburger .bar2,
+  .header .humburger .bar3 {
+    width: 36px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 20px;
+  }
+  .header .mobilenav {
+    display: flex;
+  }
+  .header .mobilenav .btn-login {
+    display: block;
+  }
+  .projectsCards .cards {
+    column-gap: 40px;
+    row-gap: 20px;
+  }
+}
+@media all and (max-width: 718px) {
+  .projectsCards .cards {
+    grid-template-columns: unset;
+  }
+  footer svg {
+    height: 20px;
+    width: 20px;
   }
 }/*# sourceMappingURL=projects.css.map */

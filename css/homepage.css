@@ -551,14 +551,15 @@ footer .goto svg:hover {
   .content .btn-login {
     margin-top: 31px;
   }
+  .content .contact {
+    flex-direction: column;
+    row-gap: 70px;
+  }
   .content .contact form {
     width: 330px;
   }
   .content .contact .about {
     padding: 0 40px;
-  }
-  .content .contact .map {
-    display: none;
   }
 }
 @media all and (max-width: 685px) {
@@ -589,6 +590,9 @@ footer .goto svg:hover {
   .content .contact {
     margin-top: 210px;
   }
+  .content .contact .map {
+    width: 80%;
+  }
 }
 @media all and (max-width: 522px) {
   .content .profile {
@@ -609,6 +613,9 @@ footer .goto svg:hover {
   }
   .content .skills .logs .skill p {
     font-size: 13px;
+  }
+  .content .contact .map {
+    width: 100%;
   }
 }
 @media all and (max-width: 428px) {
