@@ -21,10 +21,16 @@ body {
   width: 100%;
   z-index: 2;
 }
+.header .humburger {
+  display: none;
+}
+.header .humburger:hover {
+  cursor: pointer;
+}
 .header .navigation {
   display: flex;
   justify-content: space-evenly;
-  width: 40%;
+  width: 500px;
 }
 .header .navigation a {
   font-size: large;
@@ -56,6 +62,52 @@ body {
 .header .navigation .clicked {
   font-weight: 600;
 }
+.header .mobilenav {
+  position: absolute;
+  background-color: #ffffff;
+  top: 79px;
+  right: 0;
+  transform: translateX(900px);
+  height: 90vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 30px;
+  align-items: center;
+  width: 100vw;
+  transition: transform ease-in-out 0.6s;
+  z-index: -1;
+}
+.header .mobilenav a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .mobilenav a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .mobilenav a:hover {
+  font-weight: 600;
+}
+.header .mobilenav a:hover::before {
+  width: 100%;
+}
+.header .mobilenav .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .mobilenav .clicked {
+  font-weight: 600;
+}
 
 .blogs {
   display: flex;
@@ -67,7 +119,7 @@ body {
   padding-bottom: 40px;
   height: 100vh;
   align-items: center;
-  width: 95%;
+  width: 99%;
   margin-top: 50px;
   transform: translateY(120px);
   opacity: 0;
@@ -76,7 +128,7 @@ body {
 .blogs .blogcard {
   display: flex;
   width: 70%;
-  min-height: 502px;
+  min-height: 400px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-radius: 10px;
   overflow: hidden;
@@ -152,14 +204,13 @@ body {
   flex-direction: column;
 }
 .blogs .blogcard .alldes .rections .like {
-  display: flex;
+  display: grid;
+  grid-template-columns: 7% 1fr 1fr;
   column-gap: 4px;
   width: 100%;
   padding: 12px;
 }
 .blogs .blogcard .alldes .rections .like a {
-  margin-left: 300px;
-  width: 50px;
   height: 30px;
   border-radius: 5px;
   padding: 7px 3px;
@@ -229,7 +280,6 @@ footer {
   color: white;
   display: flex;
   align-items: center;
-  column-gap: 450px;
 }
 footer a {
   text-decoration: none;
@@ -257,4 +307,124 @@ footer svg a {
 ::-webkit-scrollbar-thumb {
   background: #000000;
   border-radius: 5px;
+}
+
+.header .opendrawer {
+  transform: translateY(0);
+}
+
+.animatebar1 {
+  animation: flipbar1 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar2 {
+  animation: fadebar2 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar3 {
+  animation: flipbar3 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes flipbar1 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(45deg) translate(4px, 10px);
+  }
+}
+@keyframes fadebar2 {
+  from {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes flipbar3 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-45deg) translate(4px, -10px);
+  }
+}
+@media all and (max-width: 780px) {
+  .header {
+    padding: 20px 20px 10px 20px;
+  }
+  .header .my-name {
+    font-size: 22px;
+  }
+  .header .mobilenav {
+    display: flex;
+  }
+  .header .navigation {
+    display: none;
+  }
+  .header .btn-login {
+    display: none;
+  }
+  .header .mobilenav .btn-login {
+    display: block;
+  }
+  .header .humburger {
+    display: flex;
+    flex-direction: column;
+    height: 25px;
+    justify-content: space-between;
+  }
+  .header .humburger .bar1,
+  .header .humburger .bar2,
+  .header .humburger .bar3 {
+    width: 36px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 20px;
+  }
+  .blogs .blogcard {
+    width: 90%;
+  }
+}
+@media all and (max-width: 570px) {
+  .blogs {
+    row-gap: 30px;
+  }
+  .blogs .blogcard {
+    min-height: 400px;
+  }
+  .blogs .blogcard .alldes .rections .like {
+    column-gap: 10px;
+  }
+}
+@media all and (max-width: 480px) {
+  .blogs .blogcard .alldes .commentsect .blogmean {
+    font-size: 10px;
+  }
+  .blogs .blogcard .alldes .commentsect .comment {
+    font-size: 10px;
+  }
+  .blogs .blogcard .alldes .author p {
+    column-gap: 10px;
+    font-size: 12px;
+  }
+  .blogs .blogcard .alldes .author p img {
+    width: 30px;
+  }
+  .blogs .blogcard .alldes .rections textarea {
+    font-size: 12px;
+  }
+  .blogs .blogcard .alldes .rections .like {
+    column-gap: 15px;
+  }
+  .blogs .blogcard .alldes .rections .like a {
+    width: unset;
+    height: unset;
+    justify-self: flex-end;
+  }
 }/*# sourceMappingURL=blogspage.css.map */
