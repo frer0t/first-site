@@ -9,13 +9,13 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  height: 800px;
+  width: 600px;
   transform: translateX(-190px);
   transition: all ease-in-out 0.9s;
   align-self: center;
@@ -104,7 +104,7 @@ form .gotologin::before {
 .header .navigation {
   display: flex;
   justify-content: space-evenly;
-  width: 40%;
+  width: 500px;
 }
 .header .navigation a {
   font-size: large;
@@ -136,6 +136,58 @@ form .gotologin::before {
 .header .navigation .clicked {
   font-weight: 600;
 }
+.header .mobilenav {
+  position: absolute;
+  background-color: #ffffff;
+  top: 79px;
+  right: 0;
+  transform: translateX(900px);
+  height: 90vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 30px;
+  align-items: center;
+  width: 100vw;
+  transition: transform ease-in-out 0.6s;
+  z-index: -1;
+}
+.header .mobilenav a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .mobilenav a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .mobilenav a:hover {
+  font-weight: 600;
+}
+.header .mobilenav a:hover::before {
+  width: 100%;
+}
+.header .mobilenav .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .mobilenav .clicked {
+  font-weight: 600;
+}
+.header .humburger {
+  display: none;
+}
+.header .humburger:hover {
+  cursor: pointer;
+}
 
 .btn-login {
   text-decoration: none;
@@ -160,7 +212,6 @@ footer {
   color: white;
   display: flex;
   align-items: center;
-  column-gap: 490px;
 }
 footer a {
   text-decoration: none;
@@ -188,4 +239,103 @@ footer svg a {
 ::-webkit-scrollbar-thumb {
   background: #000000;
   border-radius: 5px;
+}
+
+.header .opendrawer {
+  transform: translateY(0);
+}
+
+.animatebar1 {
+  animation: flipbar1 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar2 {
+  animation: fadebar2 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.animatebar3 {
+  animation: flipbar3 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes flipbar1 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(45deg) translate(4px, 10px);
+  }
+}
+@keyframes fadebar2 {
+  from {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes flipbar3 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-45deg) translate(4px, -10px);
+  }
+}
+@media all and (max-width: 745px) {
+  .header {
+    padding: 15px 20px 10px 20px;
+  }
+  .header .mobilenav {
+    display: flex;
+  }
+  .header h1 {
+    font-size: 23px;
+  }
+}
+@media all and (max-width: 645px) {
+  .header .navigation {
+    display: none;
+  }
+  .header .humburger {
+    display: flex;
+    flex-direction: column;
+    height: 25px;
+    justify-content: space-between;
+  }
+  .header .humburger .bar1,
+  .header .humburger .bar2,
+  .header .humburger .bar3 {
+    width: 36px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 20px;
+  }
+  body form {
+    width: 510px;
+  }
+}
+@media all and (max-width: 537px) {
+  body form {
+    width: 410px;
+  }
+}
+@media all and (max-width: 415px) {
+  body form {
+    width: 350px;
+  }
+}
+@media all and (max-width: 330px) {
+  body form {
+    width: 290px;
+  }
+}
+@media all and (max-width: 290px) {
+  body form {
+    width: 270px;
+  }
 }/*# sourceMappingURL=signup.css.map */
