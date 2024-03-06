@@ -237,26 +237,31 @@ body {
 }
 
 footer {
-  background-color: black;
+  margin-top: 40px;
   width: 100%;
-  padding: 20px 10px;
-  color: white;
+  padding: 20px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 footer a {
   text-decoration: none;
 }
-footer p {
-  font-weight: 600;
+footer .goto {
+  display: flex;
+  column-gap: 20px;
 }
-footer svg {
+footer .goto svg {
+  padding: 4px;
+  background-color: #000000;
+  border-radius: 50%;
   height: 30px;
   width: 30px;
   fill: white;
+  transition: transform 0.7s ease;
 }
-footer svg a {
-  text-decoration: none;
+footer .goto svg:hover {
+  transform: scale(1.2);
 }
 
 ::-webkit-scrollbar {
@@ -364,6 +369,9 @@ footer svg a {
     background-color: #000000;
     border-radius: 20px;
   }
+  .header .humburger:hover {
+    cursor: pointer;
+  }
   .header .mobilenav {
     display: flex;
   }
@@ -378,9 +386,5 @@ footer svg a {
 @media all and (max-width: 718px) {
   .projectsCards .cards {
     grid-template-columns: unset;
-  }
-  footer svg {
-    height: 20px;
-    width: 20px;
   }
 }/*# sourceMappingURL=projects.css.map */

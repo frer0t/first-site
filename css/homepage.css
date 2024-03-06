@@ -69,7 +69,7 @@ body {
   display: flex;
   position: relative;
   justify-content: space-evenly;
-  width: 40%;
+  width: 700px;
 }
 .header .navigation a {
   font-size: large;
@@ -355,12 +355,12 @@ body {
 }
 
 footer {
-  background-color: black;
   width: 100%;
-  padding: 20px 10px;
-  color: white;
+  margin-top: 50px;
+  padding: 20px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   column-gap: 30px;
 }
 footer a {
@@ -374,6 +374,9 @@ footer .goto {
   column-gap: 10px;
 }
 footer .goto svg {
+  padding: 4px;
+  background-color: #000000;
+  border-radius: 50%;
   height: 30px;
   width: 30px;
   fill: rgb(255, 255, 255);
@@ -547,6 +550,9 @@ footer .goto svg:hover {
     height: 5px;
     background-color: #000000;
     border-radius: 20px;
+  }
+  .header .humburger:hover {
+    cursor: pointer;
   }
   .content .btn-login {
     margin-top: 31px;

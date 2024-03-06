@@ -8,7 +8,6 @@ const skillsSc = document.querySelector('.skills');
 const buttonSkills = document.querySelector('.skills-sect1');
 const buttonContact = document.querySelector('.contact-sect1');
 const contactSc = document.querySelector('.contact');
-const buttonBackTop = document.querySelector('.backtop');
 const buttonConnect = document.querySelector('.letconnect');
 
 const humburger = document.querySelector(".humburger");
@@ -37,10 +36,6 @@ humburger.addEventListener("click", function () {
 buttonConnect.addEventListener('click', function (e) {
  e.preventDefault();
  contactSc.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-});
-buttonBackTop.addEventListener('click', function (e) {
- e.preventDefault();
- window.scrollTo({ top: 0, behavior: "smooth" });
 });
 buttonContact.addEventListener('click', function (e) {
  e.preventDefault();
