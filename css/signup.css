@@ -15,7 +15,7 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width: 400px;
   transform: translateX(-190px);
   transition: all ease-in-out 0.9s;
   align-self: center;
@@ -206,25 +206,29 @@ form .gotologin::before {
 }
 
 footer {
-  background-color: black;
   width: 100%;
-  padding: 20px 10px;
+  padding: 20px 0;
   color: white;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 footer a {
   text-decoration: none;
 }
-footer p {
-  font-weight: 600;
+footer .goto {
+  display: flex;
+  column-gap: 20px;
 }
-footer svg {
+footer .goto svg {
+  background-color: #000000;
+  padding: 4px;
+  border-radius: 50%;
   height: 30px;
   width: 30px;
   fill: white;
 }
-footer svg a {
+footer .goto svg a {
   text-decoration: none;
 }
 

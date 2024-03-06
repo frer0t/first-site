@@ -5,12 +5,6 @@ window.onload = function () {
  blogs.style.opacity = 1;
  blogs.style.transform = 'translateY(0)';
 };
-buttonBackTop.addEventListener('click', function (e) {
- e.preventDefault();
- blogs.scrollTo({ top: 0, behavior: 'smooth' });
-
- window.scrollTo({ top: 0, behavior: 'smooth' });
-});
 
 const humburger = document.querySelector(".humburger");
 const bar1 = document.querySelector(".bar1");
