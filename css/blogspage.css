@@ -13,8 +13,8 @@ body {
 
 .header {
   background-color: rgba(255, 255, 255, 0.526);
-  position: fixed;
   display: flex;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
@@ -110,133 +110,55 @@ body {
 }
 
 .blogs {
-  display: flex;
-  flex-direction: column;
-  row-gap: 100px;
-  justify-content: flex-start;
-  overflow-y: scroll;
-  padding-top: 62px;
-  padding-bottom: 40px;
-  height: 100vh;
-  align-items: center;
-  width: 99%;
-  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  padding: 0 10px;
+  column-gap: 20px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  align-self: center;
   transform: translateY(120px);
   opacity: 0;
-  transition: all 0.9s ease;
+  transition: transform 0.9s ease, opacity 0.9s ease;
 }
 .blogs .blogcard {
   display: flex;
-  width: 70%;
-  min-height: 400px;
+  flex-direction: column;
+  max-width: 360px;
+  width: 100%;
+  height: fit-content;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-radius: 10px;
   overflow: hidden;
 }
 .blogs .blogcard img {
-  width: 50%;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
   object-fit: cover;
 }
 .blogs .blogcard .alldes {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 50%;
-}
-.blogs .blogcard .alldes .author {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 12px;
-  background-color: whitesmoke;
-  border-bottom: solid rgb(163, 162, 162) 1px;
-}
-.blogs .blogcard .alldes .author p {
-  display: flex;
-  align-items: center;
-  column-gap: 12px;
-  font-weight: 600;
-  font-size: 18px;
-}
-.blogs .blogcard .alldes .author p img {
-  width: 40px;
-  border-radius: 50%;
-  border: solid rgb(82, 80, 80) 1px;
-}
-.blogs .blogcard .alldes .author .options {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  column-gap: 5px;
-}
-.blogs .blogcard .alldes .author .options .dot {
-  width: 5px;
-  height: 5px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 50%;
-}
-.blogs .blogcard .alldes .commentsect {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow-y: scroll;
-  padding: 5px 10px;
-}
-.blogs .blogcard .alldes .commentsect .blogmean {
-  font-size: 12px;
-  font-weight: 600;
-  background-color: #adadad;
-  padding: 10px 12px;
-  border-radius: 10px;
-}
-.blogs .blogcard .alldes .commentsect .comment {
-  text-align: right;
-  align-self: flex-end;
-  max-width: 80%;
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  background-color: rgb(240, 240, 240);
-  margin-top: 20px;
-}
-.blogs .blogcard .alldes .rections {
-  display: flex;
-  flex-direction: column;
-}
-.blogs .blogcard .alldes .rections .like {
-  display: grid;
-  grid-template-columns: 7% 1fr 1fr;
-  column-gap: 4px;
-  width: 100%;
+  row-gap: 12px;
   padding: 12px;
 }
-.blogs .blogcard .alldes .rections .like a {
-  height: 30px;
-  border-radius: 5px;
-  padding: 7px 3px;
-  font-size: 9px;
-  text-align: center;
+.blogs .blogcard .alldes .date {
+  font-size: 14px;
+  color: rgb(178, 177, 177);
 }
-.blogs .blogcard .alldes .rections .like svg {
-  width: 20px;
-  height: 20px;
-  fill: white;
+.blogs .blogcard .alldes .topic {
+  text-decoration: none;
+  color: #000000;
+  font-size: 22px;
 }
-.blogs .blogcard .alldes .rections .like svg:hover {
-  cursor: pointer;
+.blogs .blogcard .alldes .topic:hover {
+  text-decoration: underline;
 }
-.blogs .blogcard .alldes .rections textarea {
-  height: 50px;
-  background-color: whitesmoke;
-  border: none;
-  outline: none;
-  width: 100%;
-  padding-left: 10px;
-  padding-top: 8px;
-  padding-right: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  resize: none;
+.blogs .blogcard .alldes .blog-text {
+  font-size: 14px;
+  line-height: 20px;
+  padding-bottom: 12px;
 }
 
 .btn-login {
@@ -387,44 +309,14 @@ footer svg a {
     background-color: #000000;
     border-radius: 20px;
   }
-  .blogs .blogcard {
-    width: 90%;
-  }
 }
 @media all and (max-width: 570px) {
-  .blogs {
-    row-gap: 30px;
-  }
-  .blogs .blogcard {
-    min-height: 400px;
-  }
-  .blogs .blogcard .alldes .rections .like {
-    column-gap: 10px;
+  .blogs .blogcard .alldes .topic {
+    font-size: 18px;
   }
 }
 @media all and (max-width: 480px) {
-  .blogs .blogcard .alldes .commentsect .blogmean {
-    font-size: 10px;
-  }
-  .blogs .blogcard .alldes .commentsect .comment {
-    font-size: 10px;
-  }
-  .blogs .blogcard .alldes .author p {
-    column-gap: 10px;
-    font-size: 12px;
-  }
-  .blogs .blogcard .alldes .author p img {
-    width: 30px;
-  }
-  .blogs .blogcard .alldes .rections textarea {
-    font-size: 12px;
-  }
-  .blogs .blogcard .alldes .rections .like {
-    column-gap: 15px;
-  }
-  .blogs .blogcard .alldes .rections .like a {
-    width: unset;
-    height: unset;
-    justify-self: flex-end;
+  .blogs {
+    grid-template-columns: 1fr;
   }
 }/*# sourceMappingURL=blogspage.css.map */
