@@ -12,6 +12,7 @@ body {
 
 .header {
   background-color: rgba(255, 255, 255, 0.526);
+  backdrop-filter: blur(5px);
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -23,7 +24,7 @@ body {
 .header .navigation {
   display: flex;
   justify-content: space-evenly;
-  width: 40%;
+  width: 700px;
 }
 .header .navigation a {
   font-size: large;
@@ -58,7 +59,7 @@ body {
 .header .mobilenav {
   position: absolute;
   background-color: #ffffff;
-  top: 79px;
+  top: 55px;
   right: 0;
   transform: translateX(800px);
   height: 90vh;
@@ -345,10 +346,13 @@ footer .goto svg:hover {
 }
 @media all and (max-width: 1310px) {
   .header .navigation {
-    width: 700px;
+    width: 600px;
   }
 }
 @media all and (max-width: 770px) {
+  .header {
+    padding: 15px 20px 15px 20px;
+  }
   .header .btn-login {
     display: none;
   }
@@ -381,6 +385,9 @@ footer .goto svg:hover {
   .projectsCards .cards {
     column-gap: 40px;
     row-gap: 20px;
+  }
+  h1 {
+    font-size: 23px;
   }
 }
 @media all and (max-width: 718px) {

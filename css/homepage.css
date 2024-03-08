@@ -11,6 +11,7 @@ body {
 
 .header {
   background-color: rgba(255, 255, 255, 0.5254901961);
+  backdrop-filter: blur(4px);
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -22,7 +23,7 @@ body {
 .header .mobilenav {
   position: absolute;
   background-color: #ffffff;
-  top: 79px;
+  top: 55px;
   right: 0;
   transform: translateX(900px);
   height: 90vh;
@@ -380,10 +381,10 @@ footer .goto svg {
   height: 30px;
   width: 30px;
   fill: rgb(255, 255, 255);
+  transition: transform ease 0.9s;
 }
 footer .goto svg:hover {
-  fill: #878f89;
-  transform: scale(12px);
+  transform: scale(1.2);
 }
 
 ::-webkit-scrollbar {
@@ -524,6 +525,9 @@ footer .goto svg:hover {
 @media all and (max-width: 786px) {
   .header {
     padding: 20px 20px;
+  }
+  .header h1 {
+    font-size: 22px;
   }
   .header .navigation {
     display: none;

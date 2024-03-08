@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+   href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+   rel="stylesheet"
+  />
+  <link rel="shortcut icon" href="/Assets/Teckjolt.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/blogspage.css" />
+ </head>
+ <body>
+  <header class="header">
+   <h1 class="my-name">Frerot</h1>
+   <nav class="navigation">
+    <a class="link" id="profile-sect1" href="index.html">Home</a>
+    <a class="link about-sect1" href="index.html#about-sect">About</a>
+    <a class="link skills-sect1" href="index.html#skills-sect">Skills</a>
+    <a class="link contact-sect1" href="index.html#contact-sect">Contact</a>
+    <a class="link" href="projects.html">Projects</a>
+    <a class="link clicked" href="blogspage.html">Blogs</a>
+   </nav>
+   <nav class="mobilenav">
+    <a class="link" href="index.html#profile-sect">Home</a>
+    <a class="link" href="index.html#about-sect">About</a>
+    <a class="link" href="index.html#skills-sect">Skills</a>
+    <a class="link" href="index.html#contact-sect">Contact</a>
+    <a class="link" href="projects.html">Projects</a>
+    <a class="link clicked" href="blogspage.html">Blogs</a>
+    <button
+     type="button"
+     class="btn-login"
+     onclick="location.href='login.html'"
+    >
+     Login
+    </button>
+   </nav>
+   <a class="btn-login" href="login.html">Login</a>
+   <div class="humburger">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+   </div>
+  </header>
+  <main class="blogs">
+   <div class="blogcard">
+    <img src="/Assets/blog-1.png" alt="" />
+    <div class="alldes">
+     <p class="date">31 Dec 2024</p>
+     <h3>
+      <a href="kdk" class="topic"
+       >Bulding microservices with Dropwizard, MongoDB & Docker</a
+      >
+     </h3>
+     <p class="blog-text">
+      This NoSQL database oriented to documents (by documents like JSON)
+      combines some of the features from relational databases, easy to use and
+      the multi-platform is the best option for scale up and have fault
+      tolerance, load balancing, map reduce, etc.
+     </p>
+     <div class="reactions">
+      <div class="like">
+       <svg
+        width="100"
+        height="100"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+       >
+        <rect width="100%" height="100%" fill="none" />
+        <path
+         stroke="black"
+         stroke-width="1"
+         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+       </svg>
+       <p class="likes">120</p>
+      </div>
+      <div class="comment">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path
+         d="M168.2 384.9c-15-5.4-31.7-3.1-44.6 6.4c-8.2 6-22.3 14.8-39.4 22.7c5.6-14.7 9.9-31.3 11.3-49.4c1-12.9-3.3-25.7-11.8-35.5C60.4 302.8 48 272 48 240c0-79.5 83.3-160 208-160s208 80.5 208 160s-83.3 160-208 160c-31.6 0-61.3-5.5-87.8-15.1zM26.3 423.8c-1.6 2.7-3.3 5.4-5.1 8.1l-.3 .5c-1.6 2.3-3.2 4.6-4.8 6.9c-3.5 4.7-7.3 9.3-11.3 13.5c-4.6 4.6-5.9 11.4-3.4 17.4c2.5 6 8.3 9.9 14.8 9.9c5.1 0 10.2-.3 15.3-.8l.7-.1c4.4-.5 8.8-1.1 13.2-1.9c.8-.1 1.6-.3 2.4-.5c17.8-3.5 34.9-9.5 50.1-16.1c22.9-10 42.4-21.9 54.3-30.6c31.8 11.5 67 17.9 104.1 17.9c141.4 0 256-93.1 256-208S397.4 32 256 32S0 125.1 0 240c0 45.1 17.7 86.8 47.7 120.9c-1.9 24.5-11.4 46.3-21.4 62.9zM144 272a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm80 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+        />
+       </svg>
+       <p class="comments">120</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="blogcard">
+    <img src="/Assets/blog-10.png" alt="" />
+    <div class="alldes">
+     <p class="date">1 Dec 2024</p>
+     <h3>
+      <a href="kdk" class="topic"
+       >How to connect a React frontend with a NodeJS/Express backend</a
+      >
+     </h3>
+     <p class="blog-text">
+      The MERN (MongoDB, Express, React, NodeJS) stack is very popular for
+      making full stack applications, utilizing Javascript for both the frontend
+      and backend...
+     </p>
+     <div class="reactions">
+      <div class="like">
+       <svg
+        width="100"
+        height="100"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+       >
+        <rect width="100%" height="100%" fill="none" />
+        <path
+         stroke="black"
+         stroke-width="1"
+         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+       </svg>
+       <p class="likes">120</p>
+      </div>
+      <div class="comment">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path
+         d="M168.2 384.9c-15-5.4-31.7-3.1-44.6 6.4c-8.2 6-22.3 14.8-39.4 22.7c5.6-14.7 9.9-31.3 11.3-49.4c1-12.9-3.3-25.7-11.8-35.5C60.4 302.8 48 272 48 240c0-79.5 83.3-160 208-160s208 80.5 208 160s-83.3 160-208 160c-31.6 0-61.3-5.5-87.8-15.1zM26.3 423.8c-1.6 2.7-3.3 5.4-5.1 8.1l-.3 .5c-1.6 2.3-3.2 4.6-4.8 6.9c-3.5 4.7-7.3 9.3-11.3 13.5c-4.6 4.6-5.9 11.4-3.4 17.4c2.5 6 8.3 9.9 14.8 9.9c5.1 0 10.2-.3 15.3-.8l.7-.1c4.4-.5 8.8-1.1 13.2-1.9c.8-.1 1.6-.3 2.4-.5c17.8-3.5 34.9-9.5 50.1-16.1c22.9-10 42.4-21.9 54.3-30.6c31.8 11.5 67 17.9 104.1 17.9c141.4 0 256-93.1 256-208S397.4 32 256 32S0 125.1 0 240c0 45.1 17.7 86.8 47.7 120.9c-1.9 24.5-11.4 46.3-21.4 62.9zM144 272a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm80 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+        />
+       </svg>
+       <p class="comments">120</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="blogcard">
+    <img src="/Assets/blog-3.png" alt="" />
+    <div class="alldes">
+     <p class="date">3 Dec 2024</p>
+     <h3>
+      <a href="kdk" class="topic">Accessibility Tips for Web Develops</a>
+     </h3>
+     <p class="blog-text">
+      It's awesome to build sites that are inclusive and accessible to everyone.
+      There are at least six key areas of disability we can optimize for:
+      visual,
+     </p>
+     <div class="reactions">
+      <div class="like">
+       <svg
+        width="100"
+        height="100"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+       >
+        <rect width="100%" height="100%" fill="none" />
+        <path
+         stroke="black"
+         stroke-width="1"
+         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+       </svg>
+       <p class="likes">120</p>
+      </div>
+      <div class="comment">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path
+         d="M168.2 384.9c-15-5.4-31.7-3.1-44.6 6.4c-8.2 6-22.3 14.8-39.4 22.7c5.6-14.7 9.9-31.3 11.3-49.4c1-12.9-3.3-25.7-11.8-35.5C60.4 302.8 48 272 48 240c0-79.5 83.3-160 208-160s208 80.5 208 160s-83.3 160-208 160c-31.6 0-61.3-5.5-87.8-15.1zM26.3 423.8c-1.6 2.7-3.3 5.4-5.1 8.1l-.3 .5c-1.6 2.3-3.2 4.6-4.8 6.9c-3.5 4.7-7.3 9.3-11.3 13.5c-4.6 4.6-5.9 11.4-3.4 17.4c2.5 6 8.3 9.9 14.8 9.9c5.1 0 10.2-.3 15.3-.8l.7-.1c4.4-.5 8.8-1.1 13.2-1.9c.8-.1 1.6-.3 2.4-.5c17.8-3.5 34.9-9.5 50.1-16.1c22.9-10 42.4-21.9 54.3-30.6c31.8 11.5 67 17.9 104.1 17.9c141.4 0 256-93.1 256-208S397.4 32 256 32S0 125.1 0 240c0 45.1 17.7 86.8 47.7 120.9c-1.9 24.5-11.4 46.3-21.4 62.9zM144 272a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm80 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+        />
+       </svg>
+       <p class="comments">120</p>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="blogcard">
+    <img src="/Assets/blog-4.png" alt="" />
+    <div class="alldes">
+     <p class="date">31 May 2024</p>
+     <h3>
+      <a href="kdk" class="topic"
+       >Dynamically Securing Databases using Hashicorp Vault</a
+      >
+     </h3>
+     <p class="blog-text">
+      Nowadays, it's hard to profoundly talk about security in the IT industry,
+      since it has to be considered on so many different levels: from...
+     </p>
+     <div class="reactions">
+      <div class="like">
+       <svg
+        width="100"
+        height="100"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+       >
+        <rect width="100%" height="100%" fill="none" />
+        <path
+         stroke="black"
+         stroke-width="1"
+         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+       </svg>
+       <p class="likes">120</p>
+      </div>
+      <div class="comment">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path
+         d="M168.2 384.9c-15-5.4-31.7-3.1-44.6 6.4c-8.2 6-22.3 14.8-39.4 22.7c5.6-14.7 9.9-31.3 11.3-49.4c1-12.9-3.3-25.7-11.8-35.5C60.4 302.8 48 272 48 240c0-79.5 83.3-160 208-160s208 80.5 208 160s-83.3 160-208 160c-31.6 0-61.3-5.5-87.8-15.1zM26.3 423.8c-1.6 2.7-3.3 5.4-5.1 8.1l-.3 .5c-1.6 2.3-3.2 4.6-4.8 6.9c-3.5 4.7-7.3 9.3-11.3 13.5c-4.6 4.6-5.9 11.4-3.4 17.4c2.5 6 8.3 9.9 14.8 9.9c5.1 0 10.2-.3 15.3-.8l.7-.1c4.4-.5 8.8-1.1 13.2-1.9c.8-.1 1.6-.3 2.4-.5c17.8-3.5 34.9-9.5 50.1-16.1c22.9-10 42.4-21.9 54.3-30.6c31.8 11.5 67 17.9 104.1 17.9c141.4 0 256-93.1 256-208S397.4 32 256 32S0 125.1 0 240c0 45.1 17.7 86.8 47.7 120.9c-1.9 24.5-11.4 46.3-21.4 62.9zM144 272a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm80 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+        />
+       </svg>
+       <p class="comments">120</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </main>
+  <footer>
+   <div class="goto">
+    <a href="mailto:ntwalifrerotjacques@gmail.com"
+     ><svg
+      width="179"
+      height="135"
+      viewBox="0 0 179 135"
+      fill="unset"
+      xmlns="http://www.w3.org/2000/svg"
+     >
+      <path
+       d="M138.27 12.0597L89.72 49.0597L40.06 12.0597V12.0697L40.12 12.1197V63.9297L89.16 101.73L138.27 65.3897V12.0597Z"
+       fill="unset"
+      />
+      <path
+       d="M151.02 3.05971L138.27 12.0597V65.3897L178.39 35.3097V17.1897C178.39 17.1897 173.52 -8.69029 151.02 3.05971Z"
+       fill="unset"
+       fill-opacity="1"
+      />
+      <path
+       d="M138.27 65.3897V134.56H169.02C169.02 134.56 177.77 133.68 178.4 123.94V35.3097L138.27 65.3897Z"
+       fill="unset"
+       fill-opacity="1"
+      />
+      <path
+       d="M40.12 134.62V63.9297L40.06 63.8797L40.12 134.62Z"
+       fill="unset"
+       fill-opacity="1"
+      />
+      <path
+       d="M40.06 12.0697L27.38 3.11971C4.88 -8.63029 0 17.2397 0 17.2397V35.3597L40.06 63.8797V12.0697Z"
+       fill="unset"
+       fill-opacity="1"
+      />
+      <path
+       d="M40.06 12.0697V63.8797L40.12 63.9297V12.1197L40.06 12.0697Z"
+       fill="unset"
+       fill-opacity="1"
+      />
+      <path
+       d="M0 35.3697V124C0.62 133.75 9.38 134.62 9.38 134.62H40.13L40.06 63.8797L0 35.3697Z"
+       fill="unset"
+       fill-opacity="1"
+      />
+     </svg>
+    </a>
+    <a href="https://github.com/iamfrerot" target="_blank"
+     ><svg
+      width="68"
+      height="67"
+      viewBox="0 0 68 67"
+      fill="unset"
+      xmlns="http://www.w3.org/2000/svg"
+     >
+      <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       d="M34.0403 1.57031C15.9746 1.57031 1.3252 16.217 1.3252 34.2854C1.3252 48.7398 10.6991 61.0028 23.6978 65.3287C25.3328 65.6315 25.933 64.619 25.933 63.7549C25.933 62.9748 25.9027 60.3977 25.8886 57.664C16.7872 59.6431 14.8667 53.8041 14.8667 53.8041C13.3786 50.0227 11.2343 49.0172 11.2343 49.0172C8.26608 46.9867 11.4581 47.0284 11.4581 47.0284C14.7432 47.2592 16.473 50.3997 16.473 50.3997C19.3909 55.4012 24.1263 53.9552 25.9932 53.1193C26.2868 51.0049 27.1346 49.5617 28.0702 48.7447C20.8038 47.9174 13.1651 45.1123 13.1651 32.5768C13.1651 29.005 14.4431 26.0866 16.5359 23.7955C16.1962 22.9715 15.0764 19.6441 16.8528 15.1379C16.8528 15.1379 19.6 14.2586 25.8518 18.4913C28.4614 17.7664 31.2601 17.4029 34.0403 17.3905C36.8206 17.4029 39.6214 17.7664 42.2359 18.4913C48.4801 14.2586 51.2235 15.1379 51.2235 15.1379C53.0042 19.6441 51.8839 22.9715 51.5442 23.7955C53.6419 26.0866 54.9112 29.005 54.9112 32.5768C54.9112 45.1421 47.2579 47.9088 39.973 48.7187C41.1464 49.7339 42.192 51.7249 42.192 54.7771C42.192 59.1544 42.1541 62.6774 42.1541 63.7549C42.1541 64.6255 42.743 65.6456 44.4013 65.3244C57.3929 60.9936 66.7549 48.7349 66.7549 34.2854C66.7549 16.217 52.1076 1.57031 34.0403 1.57031ZM13.5781 48.1737C13.506 48.3362 13.2503 48.385 13.0174 48.2734C12.7801 48.1666 12.6468 47.9451 12.7237 47.782C12.7942 47.6146 13.0504 47.568 13.2872 47.6802C13.525 47.7869 13.6604 48.0106 13.5781 48.1737ZM15.1873 49.6096C15.0313 49.7542 14.7263 49.687 14.5193 49.4584C14.3053 49.2304 14.2652 48.9253 14.4234 48.7785C14.5843 48.6339 14.8801 48.7016 15.0947 48.9297C15.3086 49.1605 15.3504 49.4633 15.1873 49.6096ZM16.2913 51.4467C16.0908 51.586 15.7631 51.4554 15.5605 51.1645C15.36 50.8736 15.36 50.5247 15.5648 50.3849C15.7679 50.2451 16.0908 50.3708 16.2962 50.6596C16.4961 50.9554 16.4961 51.3043 16.2913 51.4467ZM18.1584 53.5744C17.979 53.7722 17.5971 53.7191 17.3176 53.4493C17.0315 53.1855 16.9519 52.8111 17.1317 52.6134C17.3132 52.4151 17.6973 52.4709 17.979 52.7385C18.2629 53.0018 18.3496 53.3789 18.1584 53.5744ZM20.5714 54.2927C20.4923 54.549 20.1244 54.6654 19.7539 54.5566C19.3839 54.4444 19.1417 54.1443 19.2165 53.8853C19.2934 53.6275 19.6629 53.5061 20.0361 53.6226C20.4056 53.7342 20.6483 54.0321 20.5714 54.2927ZM23.3175 54.5974C23.3267 54.8672 23.0125 55.0909 22.6235 55.0958C22.2324 55.1045 21.916 54.8862 21.9116 54.6207C21.9116 54.3482 22.2188 54.1266 22.61 54.1201C22.9989 54.1125 23.3175 54.3292 23.3175 54.5974ZM26.0152 54.494C26.0618 54.7573 25.7915 55.0276 25.4052 55.0997C25.0255 55.169 24.6739 55.0065 24.6256 54.7454C24.5785 54.4756 24.8537 54.2052 25.2329 54.1354C25.6198 54.0682 25.9659 54.2264 26.0152 54.494Z"
+       fill="unset"
+       fill-opacity="1"
+      />
+     </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/fr%C3%A9rot/" target="_blank"
+     ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path
+       d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+      />
+     </svg>
+    </a>
+   </div>
+  </footer>
+  <script src="/Javascript/blogspage.js"></script>
+ </body>
+</html>

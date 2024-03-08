@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blogs Page</title>
+  <title>My Brand</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -11,26 +11,26 @@
    rel="stylesheet"
   />
   <link rel="shortcut icon" href="/Assets/Teckjolt.png" type="image/x-icon" />
-  <link rel="stylesheet" href="/css/blogspage.css" />
+  <link rel="stylesheet" href="/css/homepage.css" />
  </head>
  <body>
   <header class="header">
    <h1 class="my-name">Frerot</h1>
    <nav class="navigation">
-    <a class="link" id="profile-sect1" href="index.html">Home</a>
-    <a class="link about-sect1" href="index.html#about-sect">About</a>
-    <a class="link skills-sect1" href="index.html#skills-sect">Skills</a>
-    <a class="link contact-sect1" href="index.html#contact-sect">Contact</a>
-    <a class="link" href="projects.html">Projects</a>
-    <a class="link clicked" href="blogspage.html">Blogs</a>
+    <a class="clicked link" id="profile-sect1" href="#profile-sect">Home</a>
+    <a class="link about-sect1" href="#about-sect">About</a>
+    <a class="link skills-sect1" href="#skills-sect">Skills</a>
+    <a class="link contact-sect1" href="#contact-sect">Contact</a>
+    <a class="link" href="/html/projects.html">Projects</a>
+    <a class="link" href="/html/blogspage.html">Blogs</a>
    </nav>
    <nav class="mobilenav">
-    <a class="link" href="index.html#profile-sect">Home</a>
-    <a class="link" href="index.html#about-sect">About</a>
-    <a class="link" href="index.html#skills-sect">Skills</a>
-    <a class="link" href="index.html#contact-sect">Contact</a>
-    <a class="link" href="projects.html">Projects</a>
-    <a class="link clicked" href="blogspage.html">Blogs</a>
+    <a class="clicked link" href="#profile-sect">Home</a>
+    <a class="link" href="#about-sect">About</a>
+    <a class="link" href="#skills-sect">Skills</a>
+    <a class="link" href="#contact-sect">Contact</a>
+    <a class="link" href="/html/projects.html">Projects</a>
+    <a class="link" href="/html/blogspage.html">Blogs</a>
     <button
      type="button"
      class="btn-login"
@@ -39,80 +39,112 @@
      Login
     </button>
    </nav>
-   <a class="btn-login" href="login.html">Login</a>
+   <a class="btn-login" href="/html/login.html">Login</a>
    <div class="humburger">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
    </div>
   </header>
-  <main class="blogs">
-   <div class="blogcard">
-    <img src="Assets/blog-1.png" alt="" />
-    <div class="alldes">
-     <p class="date">31 Dec 2024</p>
-     <h3>
-      <a href="kdk" class="topic"
-       >Bulding microservices with Dropwizard, MongoDB & Docker</a
-      >
-     </h3>
-     <p class="blog-text">
-      This NoSQL database oriented to documents (by documents like JSON)
-      combines some of the features from relational databases, easy to use and
-      the multi-platform is the best option for scale up and have fault
-      tolerance, load balancing, map reduce, etc.
-     </p>
+  <main class="content">
+   <section class="profile" id="profile-sect">
+    <div class="intro">
+     <div class="social">
+      <a href="https://github.com/iamfrerot" target="_blank">
+       <img src="/Assets/Github.svg" alt="github logo"
+      /></a>
+      <a href="mailto:ntwalifrerotjacques@gmail.com"
+       ><img src="/Assets/gmail.svg" alt="Google mail"
+      /></a>
+      <a href="https://www.linkedin.com/in/fr%C3%A9rot/" target="_blank">
+       <img src="/Assets/linkedin.svg" alt="linkedIn Logo"
+      /></a>
+     </div>
+     <div class="myname">
+      <h1>Ntwali Frerot J.</h1>
+      <h6>Software Developer</h6>
+      <p>
+       Looking for a well-rounded web professional?
+       <span>I code, I design, I deliver</span>
+      </p>
+      <a class="btn-login letconnect" href="#contact-sect">Let's Connect 👋🏾</a>
+     </div>
     </div>
-   </div>
-   <div class="blogcard">
-    <img src="Assets/blog-10.png" alt="" />
-    <div class="alldes">
-     <p class="date">1 Dec 2024</p>
-     <h3>
-      <a href="kdk" class="topic"
-       >How to connect a React frontend with a NodeJS/Express backend</a
-      >
-     </h3>
-     <p class="blog-text">
-      The MERN (MongoDB, Express, React, NodeJS) stack is very popular for
-      making full stack applications, utilizing Javascript for both the frontend
-      and backend...
-     </p>
+    <div class="image"><img src="/Assets/me.jpg" alt="" /></div>
+   </section>
+   <section class="about" id="about-sect">
+    <h1>About</h1>
+    <p>
+     I'm a developer with expertise in JavaScript, HTML/CSS, and Figma UX. I
+     bridge the gap between design and development, crafting user-centric
+     interfaces from concept to completion. Eager to collaborate and bring your
+     ideas to life
+    </p>
+    <a class="btn-login" href="Assets/CV Resume.pdf" target="_blank">Resume</a>
+   </section>
+   <section class="skills" id="skills-sect">
+    <h1>Skills</h1>
+    <div class="logs">
+     <div class="skill">
+      <img src="/Assets/Figma.svg" alt="Figma Logo" />
+      <p id="figma">Figma</p>
+     </div>
+     <div class="skill">
+      <img src="/Assets/Javascript.svg" alt="JavaScript Logo" />
+      <p id="js">JavaScript</p>
+     </div>
+     <div class="skill">
+      <img src="/Assets/Git.svg" alt="Git " />
+      <p id="git">Git</p>
+     </div>
+     <div class="skill">
+      <img src="/Assets/Github2.svg" alt="Github Logo" />
+      <p id="github">Github</p>
+     </div>
+     <div class="skill">
+      <img src="/Assets/HTML5.svg" alt="HTML5" />
+      <p id="html5">HTML5</p>
+     </div>
+     <div class="skill">
+      <img src="/Assets/Css.svg" alt="Css Logo" />
+      <p id="css">Css</p>
+     </div>
+     <div class="logo-names"></div>
     </div>
-   </div>
-   <div class="blogcard">
-    <img src="Assets/blog-3.png" alt="" />
-    <div class="alldes">
-     <p class="date">3 Dec 2024</p>
-     <h3>
-      <a href="kdk" class="topic">Accessibility Tips for Web Develops</a>
-     </h3>
-     <p class="blog-text">
-      It's awesome to build sites that are inclusive and accessible to everyone.
-      There are at least six key areas of disability we can optimize for:
-      visual,
-     </p>
+   </section>
+   <section class="contact" id="contact-sect">
+    <form action="Get">
+     <h1>Contact Me</h1>
+     <label for="guest">Name</label>
+     <input type="text" name="Yourname" id="guest" placeholder="Your Name" />
+     <label for="guestEmail">Email</label>
+     <input
+      type="text"
+      name="email"
+      id="guestEmail"
+      placeholder="yourname@work.com"
+     />
+     <label for="message">Message</label>
+     <textarea name="message" id="message" placeholder="Hello......"></textarea>
+     <a class="btn-login" href="sent">Send</a>
+    </form>
+    <div class="map">
+     <p>Live Location</p>
+     <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255203.5538306012!2d29.96242927509804!3d-1.9297626219633406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca4258ed8e797%3A0x32fbb533d31f0834!2sKigali%20City%2C%20Kigali!5e0!3m2!1sen!2srw!4v1709466012412!5m2!1sen!2srw"
+      width="103%"
+      height="103%"
+      style="border-radius: 10px"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+     ></iframe>
     </div>
-   </div>
-   <div class="blogcard">
-    <img src="Assets/blog-4.png" alt="" />
-    <div class="alldes">
-     <p class="date">31 May 2024</p>
-     <h3>
-      <a href="kdk" class="topic"
-       >Dynamically Securing Databases using Hashicorp Vault</a
-      >
-     </h3>
-     <p class="blog-text">
-      Nowadays, it's hard to profoundly talk about security in the IT industry,
-      since it has to be considered on so many different levels: from...
-     </p>
-    </div>
-   </div>
+   </section>
   </main>
   <footer>
    <div class="goto">
-    <a href="mailto:ntwalifrerotjacques@gmail.com"
+    <a href="mailto:ntwalifrerotjacques@gmail.com" target="_blank"
      ><svg
       width="179"
       height="135"
@@ -161,7 +193,7 @@
       width="68"
       height="67"
       viewBox="0 0 68 67"
-      fill="unset"
+      fill="black"
       xmlns="http://www.w3.org/2000/svg"
      >
       <path
@@ -182,6 +214,6 @@
     </a>
    </div>
   </footer>
-  <script src="blogspage.js"></script>
+  <script src="/Javascript/script.js"></script>
  </body>
 </html>
