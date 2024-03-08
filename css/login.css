@@ -93,6 +93,7 @@ body form .gotosignup::before {
 
 .header {
   background-color: rgba(255, 255, 255, 0.526);
+  backdrop-filter: blur(4px);
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -110,7 +111,7 @@ body form .gotosignup::before {
 .header .mobilenav {
   position: absolute;
   background-color: #ffffff;
-  top: 79px;
+  top: 55px;
   right: 0;
   transform: translateX(900px);
   height: 90vh;
@@ -291,7 +292,7 @@ footer .goto svg a {
 }
 @media all and (max-width: 745px) {
   .header {
-    padding: 15px 20px 10px 20px;
+    padding: 15px 20px 15px 20px;
   }
   .header .mobilenav {
     display: flex;
