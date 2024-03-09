@@ -8,11 +8,13 @@
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .header {
   background-color: rgba(255, 255, 255, 0.526);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(4px);
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -21,48 +23,13 @@ body {
   width: 100%;
   z-index: 2;
 }
-.header .navigation {
-  display: flex;
-  justify-content: space-evenly;
-  width: 700px;
-}
-.header .navigation a {
-  font-size: large;
-  position: relative;
-  text-decoration: none;
-  color: black;
-  transition: font-weight 0.3s ease;
-}
-.header .navigation a::before {
-  content: "";
-  position: absolute;
-  top: 22px;
-  height: 3px;
-  width: 0%;
-  transition: width 0.3s ease;
-  border-radius: 35px;
-  background-color: black;
-}
-.header .navigation a:hover {
-  font-weight: 600;
-}
-.header .navigation a:hover::before {
-  width: 100%;
-}
-.header .navigation .clicked::before {
-  width: 100%;
-  font-weight: 600;
-}
-.header .navigation .clicked {
-  font-weight: 600;
-}
 .header .mobilenav {
   position: absolute;
   background-color: #ffffff;
   top: 55px;
   right: 0;
-  transform: translateX(800px);
-  height: 90vh;
+  transform: translateX(900px);
+  height: 100vh;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -102,24 +69,73 @@ body {
 .header .mobilenav .clicked {
   font-weight: 600;
 }
-.header .humburger {
-  display: none;
+.header .navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 480px;
 }
-
-.btn-login {
+.header .navigation a {
+  font-size: large;
+  position: relative;
   text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .navigation a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .navigation a:hover {
+  font-weight: 600;
+}
+.header .navigation a:hover::before {
+  width: 100%;
+}
+.header .navigation .clicked::before {
+  width: 100%;
+  font-weight: 600;
+}
+.header .navigation .clicked {
+  font-weight: 600;
+}
+.header .btn-signout {
   background-color: black;
   border: solid black 1px;
-  color: #eef1ef;
-  padding: 8px 38px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  color: white;
   font-weight: 700;
-  transition: all 0.7s ease;
+  border-radius: 10px;
+  transition: all ease 0.3s;
 }
-
-.btn-login:hover {
-  color: black;
+.header .btn-signout:hover {
+  cursor: pointer;
   background-color: white;
+  border: solid black 1px;
+  color: black;
+}
+.header .humburger {
+  display: none;
+  flex-direction: column;
+  height: 25px;
+  justify-content: space-between;
+}
+.header .humburger .bar1,
+.header .humburger .bar2,
+.header .humburger .bar3 {
+  width: 36px;
+  height: 5px;
+  background-color: #000000;
+  border-radius: 20px;
+}
+.header .humburger:hover {
+  cursor: pointer;
 }
 
 .projectsCards {
@@ -204,6 +220,19 @@ body {
 .projectsCards .cards .card .stacks {
   display: flex;
   column-gap: 12px;
+  align-items: center;
+}
+.projectsCards .cards .card .stacks .actions {
+  justify-self: end;
+}
+.projectsCards .cards .card .stacks .actions a {
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+}
+.projectsCards .cards .card .stacks .actions a svg {
+  width: 25px;
+  height: 25px;
 }
 .projectsCards .cards .card .stacks .stack {
   padding: 9px 17px;
@@ -217,34 +246,6 @@ body {
 }
 .projectsCards .cards .card .stacks .stack:hover {
   background-color: #b9b8b8;
-}
-
-footer {
-  margin-top: 40px;
-  width: 100%;
-  padding: 20px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-footer a {
-  text-decoration: none;
-}
-footer .goto {
-  display: flex;
-  column-gap: 20px;
-}
-footer .goto svg {
-  padding: 4px;
-  background-color: #000000;
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  fill: white;
-  transition: transform 0.7s ease;
-}
-footer .goto svg:hover {
-  transform: scale(1.2);
 }
 
 ::-webkit-scrollbar {
@@ -335,7 +336,7 @@ footer .goto svg:hover {
   .header {
     padding: 15px 20px 15px 20px;
   }
-  .header .btn-login {
+  .header .btn-signout {
     display: none;
   }
   .header .navigation {
@@ -376,4 +377,4 @@ footer .goto svg:hover {
   .projectsCards .cards {
     grid-template-columns: unset;
   }
-}/*# sourceMappingURL=projects.css.map */
+}/*# sourceMappingURL=adminpro.css.map */
