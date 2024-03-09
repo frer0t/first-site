@@ -3,7 +3,12 @@ const bar1 = document.querySelector(".bar1");
 const bar2 = document.querySelector(".bar2");
 const bar3 = document.querySelector(".bar3");
 const mobilenav = document.querySelector(".mobilenav");
+const dashboard = document.querySelector('.dashboard');
 
+window.onload = function () {
+ dashboard.style.opacity = 1;
+ dashboard.style.transform = 'translateY(0)';
+};
 const mobileLinks = mobilenav.childNodes;
 
 mobileLinks.forEach(cur => cur.addEventListener('click', function () {

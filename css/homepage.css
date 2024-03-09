@@ -265,7 +265,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  margin-top: 290px;
+  margin-top: 160px;
 }
 .content .contact form {
   display: flex;
@@ -325,6 +325,7 @@ body {
   max-width: 205px;
   padding: 10px 50px;
   align-self: flex-end;
+  justify-content: center;
 }
 .content .contact .map {
   position: relative;
@@ -513,7 +514,7 @@ footer .goto svg:hover {
   }
   .content .about {
     padding: 0 50px;
-    margin-top: 230px;
+    margin-top: 165px;
   }
   .content .contact {
     padding: 0 30px;

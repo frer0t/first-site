@@ -145,6 +145,9 @@ body {
   margin-top: 80px;
   margin-bottom: 40px;
   width: 90%;
+  transform: translateY(100px);
+  transition: transform ease 0.9s, opacity ease 0.9s;
+  opacity: 0;
 }
 .dashboard .subs-blogs {
   display: flex;
