@@ -111,7 +111,7 @@ body {
   background-color: black;
   border: solid black 1px;
   color: #eef1ef;
-  padding: 8px 38px;
+  padding: 15px 30px;
   border-radius: 10px;
   font-weight: 700;
   transition: all 0.7s ease;
@@ -139,7 +139,7 @@ body {
   display: flex;
   transform: translateY(102px);
   opacity: 0;
-  transition: all 1s ease-in-out;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
   align-items: center;
 }
 .content .profile .intro {
@@ -198,9 +198,12 @@ body {
   font-weight: bold;
 }
 .content .profile .intro .myname .btn-login {
+  display: flex;
+  justify-content: center;
   margin-top: 40px;
   max-width: 220px;
-  padding: 14px 40px;
+  font-size: 18px;
+  padding: 20px 30px;
   text-align: center;
 }
 .content .about {
@@ -222,7 +225,9 @@ body {
 .content .about .btn-login {
   justify-content: center;
   text-align: center;
-  max-width: 80px;
+  max-width: 100px;
+  font-size: 20px;
+  padding: 20px 30px;
 }
 .content .skills {
   width: 100%;
@@ -528,7 +533,7 @@ footer .goto svg:hover {
     padding: 20px 20px;
   }
   .header h1 {
-    font-size: 22px;
+    font-size: 35px;
   }
   .header .navigation {
     display: none;
@@ -567,10 +572,13 @@ footer .goto svg:hover {
     row-gap: 70px;
   }
   .content .contact form {
-    width: 330px;
+    width: 590px;
   }
   .content .contact .about {
     padding: 0 40px;
+  }
+  .content .skills .logs {
+    width: 90%;
   }
 }
 @media all and (max-width: 685px) {
@@ -580,9 +588,6 @@ footer .goto svg:hover {
     place-items: center;
     margin-top: 40px;
     row-gap: 10px;
-  }
-  .content .profile .intro .myname .btn-login {
-    margin-top: 20px;
   }
   .content .profile .image {
     grid-row-start: 1;
@@ -600,6 +605,9 @@ footer .goto svg:hover {
   }
   .content .contact {
     margin-top: 210px;
+  }
+  .content .contact form {
+    width: 510px;
   }
   .content .contact .map {
     width: 80%;
@@ -625,6 +633,9 @@ footer .goto svg:hover {
   .content .skills .logs .skill p {
     font-size: 13px;
   }
+  .content .contact form {
+    width: 420px;
+  }
   .content .contact .map {
     width: 100%;
   }
@@ -635,6 +646,9 @@ footer .goto svg:hover {
   }
   .content .profile .intro .myname h1 {
     font-size: 35px;
+  }
+  .content .contact form {
+    width: 320px;
   }
 }
 @media all and (max-width: 330px) {
@@ -667,5 +681,8 @@ footer .goto svg:hover {
   }
   .content .profile .intro .myname h1 {
     font-size: 29px;
+  }
+  .content .contact form {
+    width: 280px;
   }
 }/*# sourceMappingURL=homepage.css.map */
