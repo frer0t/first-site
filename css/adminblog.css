@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  row-gap: 20px;
 }
 
 .header {
@@ -108,7 +109,7 @@ body {
 .header .btn-signout {
   background-color: black;
   border: solid black 1px;
-  padding: 10px 20px;
+  padding: 15px 30px;
   color: white;
   font-weight: 700;
   border-radius: 10px;
@@ -138,18 +139,8 @@ body {
   cursor: pointer;
 }
 
-.projectsCards {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  transform: translateY(200px);
-  row-gap: 20px;
-  opacity: 0;
-  align-items: center;
-  padding-top: 90px;
-  transition: all 0.9s ease-in-out;
-}
-.projectsCards .add-new {
+.add-new {
+  margin-top: 90px;
   background-color: black;
   border: solid black 1px;
   padding: 10px 20px;
@@ -157,129 +148,105 @@ body {
   font-weight: 700;
   border-radius: 10px;
   transition: all ease 0.3s;
+  padding: 20px 40px;
+  font-size: 16px;
   align-self: flex-start;
-  margin-left: 60px;
-  padding: 20px 30px;
-  width: 200px;
+  margin-left: 105px;
+  text-decoration: none;
 }
-.projectsCards .add-new:hover {
+.add-new:hover {
   cursor: pointer;
   background-color: white;
   border: solid black 1px;
   color: black;
 }
-.projectsCards .cards {
+
+.blogs {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
-  row-gap: 40px;
-  width: 90%;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 0 10px;
+  margin-bottom: 45px;
+  align-self: center;
+  transform: translateY(120px);
+  opacity: 0;
+  transition: transform 0.9s ease, opacity 0.9s ease;
 }
-.projectsCards .cards .card {
+.blogs .blogcard {
   display: flex;
-  width: auto;
   flex-direction: column;
-  row-gap: 18px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  border-radius: 20px;
+  max-width: 560px;
+  width: 100%;
+  height: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.blogs .blogcard img {
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  object-fit: cover;
+}
+.blogs .blogcard .alldes {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
   padding: 12px;
 }
-.projectsCards .cards .card p {
-  font-size: 13px;
-  font-weight: 600;
+.blogs .blogcard .alldes .date {
+  font-size: 14px;
+  color: rgb(178, 177, 177);
 }
-.projectsCards .cards .card .gitrep {
-  font-size: 10px;
+.blogs .blogcard .alldes .topic {
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  column-gap: 12px;
+  color: #000000;
+  font-size: 22px;
 }
-.projectsCards .cards .card .gitrep:hover img {
-  animation: shake-top 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 2 both;
-}
-.projectsCards .cards .card .gitrep:hover {
+.blogs .blogcard .alldes .topic:hover {
   text-decoration: underline;
 }
-.projectsCards .cards .card .gitrep:visited {
-  color: unset;
+.blogs .blogcard .alldes .blog-text {
+  font-size: 14px;
+  line-height: 20px;
+  padding-bottom: 12px;
 }
-.projectsCards .cards .card .gitrep img {
-  width: 30px;
-}
-.projectsCards .cards .card img {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  align-self: center;
-}
-.projectsCards .cards .card .site {
-  position: relative;
-  text-decoration: none;
-  color: black;
-  height: fit-content;
-  width: fit-content;
-}
-.projectsCards .cards .card .site p {
-  position: absolute;
+.blogs .blogcard .alldes .reactions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  border-radius: 20px;
-  color: white;
-  left: 0;
-  opacity: 0;
-  width: 100%;
-  height: 98%;
-  background-color: rgba(0, 0, 0, 0.638);
-  transition: all 0.7s ease-in;
-}
-.projectsCards .cards .card .site:hover p {
-  opacity: 1;
-}
-.projectsCards .cards .card .stacks {
-  display: flex;
-  column-gap: 12px;
+  height: 30px;
+  column-gap: 20px;
+  font-weight: bold;
   align-items: center;
 }
-.projectsCards .cards .card .stacks .actions {
-  justify-self: end;
+.blogs .blogcard .alldes .reactions .like {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
-.projectsCards .cards .card .stacks .actions a {
+.blogs .blogcard .alldes .reactions .like svg {
   width: 20px;
   height: 20px;
-  text-decoration: none;
+  fill: #ff3040;
 }
-.projectsCards .cards .card .stacks .actions a svg {
+.blogs .blogcard .alldes .reactions .comment {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.blogs .blogcard .alldes .reactions .comment svg {
+  width: 20px;
+  height: 20px;
+}
+.blogs .blogcard .alldes .reactions .actions {
+  display: flex;
+  align-items: center;
+}
+.blogs .blogcard .alldes .reactions .actions a {
   width: 25px;
   height: 25px;
 }
-.projectsCards .cards .card .stacks .stack {
-  padding: 9px 17px;
-  background-color: #eaeaea;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.577);
-  border-radius: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: backgroud-color ease-in 0.8s;
-}
-.projectsCards .cards .card .stacks .stack:hover {
-  background-color: #b9b8b8;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #000000;
-  border-radius: 5px;
+.blogs .blogcard .alldes .reactions .actions a svg {
+  width: 25px;
+  height: 25px;
 }
 
 .header .opendrawer {
@@ -348,49 +315,33 @@ body {
     transform: rotate(2deg);
   }
 }
-@media all and (max-width: 790px) {
+@media all and (max-width: 880px) {
   .header {
-    padding: 15px 20px 15px 20px;
+    padding: 20px 20px;
   }
-  .header .btn-signout {
-    display: none;
-  }
-  .header .navigation {
-    display: none;
-  }
-  .header .humburger {
-    display: flex;
-    flex-direction: column;
-    height: 25px;
-    justify-content: space-between;
-  }
-  .header .humburger .bar1,
-  .header .humburger .bar2,
-  .header .humburger .bar3 {
-    width: 36px;
-    height: 5px;
-    background-color: #000000;
-    border-radius: 20px;
-  }
-  .header .humburger:hover {
-    cursor: pointer;
+  .header .my-name {
+    font-size: 22px;
   }
   .header .mobilenav {
     display: flex;
   }
-  .projectsCards .cards {
-    column-gap: 40px;
-    row-gap: 20px;
+  .header .navigation {
+    display: none;
   }
-  h1 {
-    font-size: 23px;
+  .header .btn-signout {
+    display: none;
+  }
+  .header .humburger {
+    display: flex;
   }
 }
-@media all and (max-width: 718px) {
-  .projectsCards .cards {
-    grid-template-columns: unset;
+@media all and (max-width: 570px) {
+  .blogs .blogcard .alldes .topic {
+    font-size: 18px;
   }
-  .projectsCards .add-new {
-    margin-left: 30px;
+}
+@media all and (max-width: 520px) {
+  .blogs {
+    grid-template-columns: 1fr;
   }
-}/*# sourceMappingURL=adminpro.css.map */
+}/*# sourceMappingURL=adminblog.css.map */
