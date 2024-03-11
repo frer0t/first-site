@@ -1,0 +1,423 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", san-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.526);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%;
+  z-index: 2;
+}
+.header .my-name {
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+.header .my-name:hover {
+  cursor: pointer;
+}
+.header .navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+}
+.header .navigation a {
+  font-size: large;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.3s ease;
+}
+.header .navigation a::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  height: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 35px;
+  background-color: black;
+}
+.header .navigation a:hover {
+  font-weight: 600;
+}
+.header .navigation a:hover::before {
+  width: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 0.3fr 1.9fr 1fr;
+  margin-top: 80px;
+  width: 100%;
+}
+main .hero {
+  display: flex;
+  position: relative;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  width: 100%;
+  height: 300px;
+}
+main .hero img {
+  width: 100%;
+  object-fit: cover;
+}
+main .hero .title {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.808);
+  opacity: 0;
+  transition: opacity ease-in 1s;
+}
+main .theblog {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  position: relative;
+  margin-top: 110px;
+  margin-bottom: 100px;
+  grid-column-start: 2;
+}
+main .theblog .time {
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  left: -80px;
+}
+main .theblog .time .date::before {
+  content: "";
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  background-color: green;
+  bottom: 0;
+}
+main .theblog .img2 {
+  width: 100%;
+  object-fit: cover;
+}
+main .theblog .thename {
+  font-size: 25px;
+  font-weight: bold;
+}
+main .theblog .fulltext {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  font-weight: 500;
+  color: #383d3d;
+  line-height: 1.8;
+  line-break: normal;
+}
+main .theblog .fulltext .quote {
+  font-weight: bold;
+  font-style: italic;
+}
+main .theblog .react {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+main .theblog .react .like {
+  display: flex;
+  align-items: center;
+  width: 65px;
+  column-gap: 10px;
+  font-weight: bolder;
+  font-size: 17px;
+}
+main .theblog .react .like .svglike {
+  fill: white;
+  width: 30px;
+  height: 30px;
+}
+main .theblog .react .like .svglike:hover {
+  cursor: pointer;
+}
+main .theblog .react .like .addlike {
+  fill: rgb(238, 31, 31);
+  stroke: none;
+}
+main .theblog .react .comments h2 {
+  position: relative;
+}
+main .theblog .react .comments h2::before {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 4px;
+  border-radius: 5px;
+  bottom: -10px;
+  background-color: green;
+}
+main .theblog .react .comments .comment {
+  display: flex;
+  padding: 40px 0;
+}
+main .theblog .react .comments .comment img {
+  width: 40px;
+  height: 40px;
+}
+main .theblog .react .comments .comment .themessage {
+  padding-left: 15px;
+}
+main .theblog .react .comments .comment .themessage .guest {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+main .theblog .react form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+main .theblog .react form h2 {
+  position: relative;
+}
+main .theblog .react form h2::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  bottom: -10px;
+  background-color: green;
+  border-radius: 10px;
+}
+main .theblog .react form #thecomment,
+main .theblog .react form #theemail,
+main .theblog .react form #thename {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+main .theblog .react form label {
+  font-weight: bold;
+}
+main .theblog .react form input {
+  height: 40px;
+  max-width: 400px;
+  padding-left: 10px;
+  font-size: 16px;
+  border: #383d3d solid 1px;
+  border-radius: 6px;
+}
+main .theblog .react form textarea {
+  resize: none;
+  max-width: 400px;
+  height: 300px;
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 6px;
+}
+main .theblog .react form .post {
+  padding: 14px 15px;
+  background-color: black;
+  color: white;
+  max-width: 150px;
+  font-weight: bold;
+  border: black solid 1px;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+main .theblog .react form .post:hover {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+}
+main .likealso {
+  display: flex;
+  flex-direction: column;
+  margin-top: 110px;
+}
+main .likealso h4 {
+  position: relative;
+  width: fit-content;
+}
+main .likealso h4::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  bottom: -10px;
+  right: 0;
+  border-radius: 10px;
+  height: 5px;
+  background-color: gray;
+}
+main .likealso .cards {
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  font-size: 19px;
+}
+main .likealso .cards .card {
+  padding: 10px;
+}
+main .likealso .cards .card a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+main .likealso .cards .card a:hover {
+  text-decoration: underline;
+}
+main .likealso .subscribe {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 20px;
+  font-size: 20px;
+}
+main .likealso .subscribe input {
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+  padding-left: 5px;
+  max-width: 300px;
+  border: #383d3d solid 1px;
+}
+main .likealso .subscribe .sub {
+  background-color: black;
+  max-width: 100px;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: black solid 1px;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  font-weight: bold;
+}
+main .likealso .subscribe .sub:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  margin-top: 50px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+}
+footer a {
+  text-decoration: none;
+}
+footer p {
+  font-weight: 600;
+}
+footer .goto {
+  display: flex;
+  column-gap: 10px;
+}
+footer .goto svg {
+  padding: 4px;
+  background-color: #000000;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  fill: rgb(255, 255, 255);
+  transition: transform ease 0.9s;
+}
+footer .goto svg:hover {
+  transform: scale(1.2);
+}
+
+.animatein {
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: 0 0 0.6rem #ff0000;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
+@media all and (max-width: 900px) {
+  main {
+    grid-template-columns: 2fr 0.2fr;
+  }
+  main .hero {
+    grid-column-end: 3;
+  }
+  main .theblog {
+    grid-column-start: 1;
+    padding-left: 20px;
+  }
+  main .theblog .time {
+    left: 20px;
+    top: -90px;
+  }
+}
+@media all and (max-width: 700px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  main .hero {
+    grid-column-end: unset;
+    grid-column-start: unset;
+  }
+  main .theblog {
+    padding-right: 20px;
+    margin-bottom: unset;
+  }
+  main .likealso {
+    margin-top: 50px;
+  }
+  main .likealso h4 {
+    padding-left: 20px;
+  }
+}
+@media all and (max-width: 425px) {
+  .header {
+    padding: 20px 10px;
+  }
+  .header .my-name {
+    font-size: 25px;
+  }
+  .header .navigation {
+    width: 120px;
+  }
+  .header .navigation a {
+    font-size: medium;
+  }
+}/*# sourceMappingURL=blog.css.map */

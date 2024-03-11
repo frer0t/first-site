@@ -9,6 +9,63 @@ body {
   display: flex;
   flex-direction: column;
   height: fit-content;
+  position: relative;
+}
+body .subscribe {
+  position: fixed;
+  top: 430px;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  background-color: #2a2d34;
+  padding: 10px 10px 10px 5px;
+  justify-content: space-between;
+  width: 400px;
+  border-radius: 20px;
+  height: 60px;
+  transition: transform ease 1s;
+}
+body .subscribe::before {
+  content: "Get notified of New Blog";
+  position: absolute;
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  top: -45px;
+  right: 0;
+  background-color: #2a2d34;
+  color: white;
+}
+body .subscribe input {
+  width: 260px;
+  border: rgb(21, 17, 17) solid 1px;
+  border-radius: 10px;
+  padding: 0 0 0 5px;
+  font-size: 18px;
+}
+body .subscribe .opener {
+  width: 35px;
+  height: 100%;
+  fill: white;
+  transition: transform ease 1s;
+}
+body .subscribe .opener:hover {
+  cursor: pointer;
+  fill: rgba(255, 255, 255, 0.579);
+}
+body .subscribe button {
+  background-color: #fefefe;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 8px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: background-color ease 0.5s, color ease 0.5s;
+}
+body .subscribe button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: rgb(255, 255, 255);
 }
 
 .header {
@@ -113,6 +170,7 @@ body {
 .blogs {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
   row-gap: 20px;
   padding: 0 10px;
   column-gap: 20px;
@@ -246,6 +304,13 @@ footer .goto svg:hover {
   border-radius: 5px;
 }
 
+.close {
+  transform: translateX(360px);
+}
+.close .opener {
+  transform: rotate(180deg);
+}
+
 .header .opendrawer {
   transform: translateY(0);
 }
@@ -333,5 +398,20 @@ footer .goto svg:hover {
 @media all and (max-width: 480px) {
   .blogs {
     grid-template-columns: 1fr;
+  }
+}
+@media all and (max-width: 400px) {
+  body .subscribe {
+    width: 310px;
+  }
+  body .subscribe input {
+    width: 170px;
+    font-size: 14px;
+  }
+  body .subscribe .opener {
+    width: 35px;
+  }
+  .close {
+    transform: translateX(270px);
   }
 }/*# sourceMappingURL=blogspage.css.map */
