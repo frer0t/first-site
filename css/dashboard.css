@@ -443,6 +443,9 @@ body {
   .header .mobilenav {
     display: flex;
   }
+  .header .mobilenav .btn-signout {
+    display: flex;
+  }
   .dashboard .subs-blogs .subscribers h1 {
     font-size: 20px;
   }

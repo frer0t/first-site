@@ -325,6 +325,9 @@ body {
   .header .mobilenav {
     display: flex;
   }
+  .header .mobilenav .btn-signout {
+    display: block;
+  }
   .header .navigation {
     display: none;
   }

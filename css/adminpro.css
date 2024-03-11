@@ -378,6 +378,9 @@ body {
   .header .mobilenav {
     display: flex;
   }
+  .header .mobilenav .btn-signout {
+    display: block;
+  }
   .projectsCards .cards {
     column-gap: 40px;
     row-gap: 20px;
