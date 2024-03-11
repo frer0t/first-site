@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+   href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+   rel="stylesheet"
+  />
+  <link rel="shortcut icon" href="/Assets/Teckjolt.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/blog.css" />
+ </head>
+ <body>
+  <header class="header">
+   <a href="/index.html" class="my-name">Frerot</a>
+   <nav class="navigation">
+    <a class="link" id="profile-sect1" href="/index.html">Home</a>
+    <a class="link" href="blogspage.html">Go Back</a>
+   </nav>
+  </header>
+  <main class="blog">
+   <div class="hero">
+    <img class="img1" src="/Assets/blog-1.png" alt="" />
+    <p class="title">Bulding microservices with Dropwizard, MongoDB & Docker</p>
+   </div>
+   <div class="theblog">
+    <div class="time">
+     <p class="date">31</p>
+     <p class="month">Mar</p>
+    </div>
+    <p class="thename">
+     Bulding microservices with Dropwizard, MongoDB & Docker
+    </p>
+    <img class="img2" src="/Assets/mongodb.png" alt="" />
+    <div class="fulltext">
+     <p class="text">
+      This NoSQL database oriented to documents (by documents like JSON)
+      combines some of the features from relational databases, easy to use and
+      the multi-platform is the best option for scale up and have fault
+      tolerance, load balancing, map reduce, etc.
+     </p>
+     <p class="text">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
+      numquam qui quaerat iure, delectus, omnis natus quis in illo praesentium
+      veniam error non asperiores deleniti voluptas itaque, impedit eum!
+      Nesciunt!Lorem
+     </p>
+     <p class="text">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
+      numquam qui quaerat iure, delectus, omnis natus quis in illo praesentium
+      veniam error non asperiores deleniti voluptas itaque, impedit eum!
+      Nesciunt!Lorem
+     </p>
+     <p class="text">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
+      numquam qui quaerat iure, delectus, omnis natus quis in illo praesentium
+      veniam error non asperiores deleniti voluptas itaque, impedit eum!
+      Nesciunt!Lorem
+     </p>
+     <q class="quote">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
+      numquam qui quaerat iure, delectus, omnis natus quis in illo praesentium
+      veniam error non asperiores deleniti voluptas itaque, impedit eum!
+      Nesciunt!Lorem
+     </q>
+     <p class="text">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
+      numquam qui quaerat iure, delectus, omnis natus quis in illo praesentium
+      veniam error non asperiores deleniti voluptas itaque, impedit eum!
+      Nesciunt!Lorem
+     </p>
+    </div>
+    <div class="react">
+     <div class="like">
+      <svg
+       class="svglike"
+       width="100"
+       height="100"
+       viewBox="0 0 24 24"
+       xmlns="http://www.w3.org/2000/svg"
+      >
+       <rect width="100%" height="100%" fill="none" />
+       <path
+        stroke="black"
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+       />
+      </svg>
+      <p class="likes">120</p>
+     </div>
+     <div class="comments">
+      <h2><span class="comment-count">12</span> Coments</h2>
+      <div class="comment">
+       <img src="/Assets/profile-comment.png" alt="" />
+       <div class="themessage">
+        <p class="guest">Kwizera Chris</p>
+        <p class="message">
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro aut
+         minima magni laboriosam similique officiis iusto eos recusandae
+         repellat assumenda, cumque itaque exercitationem, alias provident ad
+         perspiciatis nostrum quo molestiae
+        </p>
+       </div>
+      </div>
+      <div class="comment">
+       <img src="/Assets/profile-comment.png" alt="" />
+       <div class="themessage">
+        <p class="guest">Kwizera Chris</p>
+        <p class="message">
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro aut
+         minima magni laboriosam similique officiis iusto eos recusandae
+         repellat assumenda, cumque itaque exercitationem, alias provident ad
+         perspiciatis nostrum quo molestiae
+        </p>
+       </div>
+      </div>
+     </div>
+     <form>
+      <h2>Your Comment</h2>
+      <div id="thename">
+       <label for="name">Name</label>
+       <input type="text" id="name" placeholder="Ntwali Frerot" required />
+      </div>
+      <div id="theemail">
+       <label for="email">Email</label>
+       <input
+        type="email"
+        id="email"
+        placeholder="example@gmail.com"
+        required
+       />
+      </div>
+      <div id="thecomment">
+       <label for="thecomment">Comment</label>
+       <textarea id="thecommentin" placeholder="Hello..." required></textarea>
+      </div>
+      <button class="post">Post Comment</button>
+     </form>
+    </div>
+   </div>
+   <div class="likealso">
+    <h4>You may also like</h4>
+    <div class="cards">
+     <div class="card">
+      <a href="blogspage.html"
+       >How to connect a React frontend with a NodeJS/Express backend</a
+      >
+     </div>
+     <div class="card">
+      <a href="blogspage.html"
+       >Dynamically Securing Databases using Hashicorp Vault</a
+      >
+     </div>
+     <div class="card">
+      <a href="blogspage.html">Accessibility Tips for Web Develops</a>
+     </div>
+    </div>
+    <form class="subscribe">
+     <label for="subscribe">Subscribe To get Latest Blogs</label>
+     <input
+      type="email"
+      id="subscribe"
+      placeholder="example@gmail.com "
+      required
+     />
+     <button class="sub">Subscribe</button>
+    </form>
+   </div>
+  </main>
+  <script src="/Javascript/blog.js"></script>
+ </body>
+</html>

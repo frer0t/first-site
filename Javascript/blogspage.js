@@ -1,5 +1,11 @@
 const buttonBackTop = document.querySelector('.backtop');
 const blogs = document.querySelector('.blogs');
+const subscribe = document.querySelector('.subscribe');
+const opener = document.querySelector('.opener');
+
+opener.addEventListener('click', () => {
+ subscribe.classList.toggle('close');
+});
 
 window.onload = function () {
  blogs.style.opacity = 1;
