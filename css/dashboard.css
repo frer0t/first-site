@@ -267,68 +267,6 @@ body {
   background: rgb(91, 103, 103);
   border-radius: 2px;
 }
-.dashboard .mess-pro {
-  display: flex;
-  column-gap: 20px;
-  row-gap: 20px;
-}
-.dashboard .mess-pro .projects {
-  width: 500px;
-  border: 1px solid rgb(91, 103, 103);
-  height: fit-content;
-  padding: 20px;
-  border-radius: 20px;
-}
-.dashboard .mess-pro .projects h1 {
-  font-size: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: solid black 2px;
-  padding-bottom: 8px;
-}
-.dashboard .mess-pro .projects h1 a {
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
-}
-.dashboard .mess-pro .projects h1 a:hover {
-  text-decoration: underline;
-}
-.dashboard .mess-pro .projects .proje {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  column-gap: 18px;
-  font-weight: 700;
-  padding-top: 10px;
-  font-size: 20px;
-}
-.dashboard .mess-pro .projects .proje .proj {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-}
-.dashboard .mess-pro .projects .proje .proj a {
-  text-decoration: none;
-  color: black;
-}
-.dashboard .mess-pro .projects .proje .proj a:hover {
-  text-decoration: underline;
-}
-.dashboard .mess-pro .projects .proje .proj img {
-  width: 80px;
-  border-radius: 10px;
-}
-.dashboard .mess-pro .projects .proje .actions {
-  display: flex;
-  width: 65px;
-  justify-content: space-between;
-}
-.dashboard .mess-pro .projects .proje .actions a svg {
-  width: 25px;
-  height: 25px;
-}
 .dashboard .mess-pro .queries {
   border: solid rgb(91, 103, 103) 1px;
   border-radius: 12px;
@@ -337,7 +275,20 @@ body {
   height: fit-content;
 }
 .dashboard .mess-pro .queries h1 {
-  border-bottom: solid 1px rgb(91, 103, 103);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32px;
+  border-bottom: solid 2px rgb(91, 103, 103);
+}
+.dashboard .mess-pro .queries h1 a {
+  font-size: 18px;
+  color: rgb(91, 103, 103);
+  text-decoration: none;
+}
+.dashboard .mess-pro .queries h1 a:hover {
+  text-decoration: underline;
 }
 .dashboard .mess-pro .queries .querie {
   display: flex;
@@ -359,11 +310,6 @@ body {
 }
 .dashboard .mess-pro .queries .querie .message {
   font-size: 15px;
-  text-decoration: none;
-  color: #000000;
-}
-.dashboard .mess-pro .queries .querie .message:hover {
-  text-decoration: underline;
 }
 
 ::-webkit-scrollbar {
