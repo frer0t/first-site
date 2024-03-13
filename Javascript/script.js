@@ -77,6 +77,17 @@ const inputContactMessage = document.getElementById('message');
 const btnContact = document.getElementById('btn-contact');
 
 
+
+
+//  REmove error on input
+const removeErrorInput = function () {
+ this.classList.remove('animatein');
+};
+inputContactEmail.onfocus = removeErrorInput;
+inputContactMessage.onfocus = removeErrorInput;
+inputContactname.onfocus = removeErrorInput;
+
+
 btnContact.addEventListener('click', function (e) {
  if (!inputContactname.value) {
   inputContactname.classList.add('animatein');
