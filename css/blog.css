@@ -99,7 +99,6 @@ main .theblog {
   row-gap: 20px;
   position: relative;
   margin-top: 110px;
-  margin-bottom: 100px;
   grid-column-start: 2;
 }
 main .theblog .time {
@@ -355,21 +354,21 @@ footer .goto svg:hover {
 
 .animatein {
   animation: shake 0.2s ease-in-out 0s 2;
-  box-shadow: 0 0 0.6rem #ff0000;
+  box-shadow: rgba(255, 0, 0, 0.83) 0px 2px 8px 0px;
 }
 
 @keyframes shake {
   0% {
-    margin-left: 0rem;
+    transform: translateX(0rem);
   }
   25% {
-    margin-left: 0.5rem;
+    transform: translateX(0.5rem);
   }
   75% {
-    margin-left: -0.5rem;
+    transform: translateX(-0.5rem);
   }
   100% {
-    margin-left: 0rem;
+    transform: translateX(0rem);
   }
 }
 @media all and (max-width: 900px) {

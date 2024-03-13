@@ -113,20 +113,20 @@
     </div>
    </section>
    <section class="contact" id="contact-sect">
-    <form action="Get">
+    <form class="contact-form">
      <h1>Contact Me</h1>
      <label for="guest">Name</label>
-     <input type="text" name="Yourname" id="guest" placeholder="Your Name" />
-     <label for="guestEmail">Email</label>
+     <input type="text" name="guest" id="guest" placeholder="Your Name" />
+     <label for="guestemail">Email</label>
      <input
-      type="text"
-      name="email"
-      id="guestEmail"
+      type="email"
+      name="guestemail"
+      id="guestemail"
       placeholder="yourname@work.com"
      />
      <label for="message">Message</label>
      <textarea name="message" id="message" placeholder="Hello......"></textarea>
-     <a class="btn-login" href="sent">Send</a>
+     <button type="submit" id="btn-contact" class="btn-login">Send</button>
     </form>
     <div class="map">
      <p>Live Location</p>
