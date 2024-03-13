@@ -1,9 +1,39 @@
-const loginCard = document.querySelector(".logincard");
+const loginForm = document.querySelector(".logincard");
+const btnLogin = document.querySelector('.btn-login');
+const inputUsername = document.querySelector('#username');
+const inputPassword = document.querySelector('#password');
+const user1 = {
+ username: 'frerot',
+ password: 'iamfrerot',
+};
 
+// Remove error animation
+const removeErrorInput = function () {
+ this.classList.remove('animatein');
+};
+inputUsername.onfocus = removeErrorInput;
+inputPassword.onfocus = removeErrorInput;
+
+loginForm.onsubmit = function () {
+ inputPassword.value = '';
+ inputUsername.value = '';
+};
+btnLogin.addEventListener('click', function (e) {
+ if (user1.username !== inputUsername.value) {
+  e.preventDefault();
+  inputUsername.classList.add('animatein');
+  inputUsername.value = '';
+ }
+ if (user1.password !== inputPassword.value) {
+  e.preventDefault();
+  inputPassword.classList.add('animatein');
+  inputPassword.value = '';
+ }
+});
 
 window.onload = function () {
- loginCard.style.opacity = 1;
- loginCard.style.transform = "translateX(0)";
+ loginForm.style.opacity = 1;
+ loginForm.style.transform = "translateX(0)";
 
 };
 const humburger = document.querySelector(".humburger");

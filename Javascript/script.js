@@ -70,3 +70,25 @@ all.forEach(function (a) {
  });
 });
 
+const contactForm = document.querySelector('.contact-form');
+const inputContactname = document.getElementById('guest');
+const inputContactEmail = document.getElementById('guestemail');
+const inputContactMessage = document.getElementById('message');
+const btnContact = document.getElementById('btn-contact');
+
+
+btnContact.addEventListener('click', function (e) {
+ if (!inputContactname.value) {
+  inputContactname.classList.add('animatein');
+  e.preventDefault();
+ };
+ const emailReg = /^[a-zA-Z0-9. _%+-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,}$/;
+ if (inputContactEmail.value === '' || !emailReg.test(inputContactEmail.value)) {
+  inputContactEmail.classList.add('animatein');
+  e.preventDefault();
+ }
+ if (inputContactMessage.value === '') {
+  inputContactMessage.classList.add('animatein');
+  e.preventDefault();
+ }
+});
