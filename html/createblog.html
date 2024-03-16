@@ -49,24 +49,24 @@
    </div>
   </header>
   <main class="newblog">
-   <form class="form" action="">
+   <form class="form">
     <div class="images">
      <div class="allimage1">
       <img class="getimage1" />
-      <label for="image1" class="labelimg">Upload Image 1</label>
+      <label for="image1" class="labelimg1">Upload Image 1</label>
       <input type="file" id="image1" name="image1" accept="image/*" />
      </div>
      <div class="allimage2">
       <img class="getimage2" />
-      <label for="image2" class="labelimg">Upload Image 2</label>
+      <label for="image2" class="labelimg2">Upload Image 2</label>
       <input type="file" id="image2" name="image2" accept="image/*" />
      </div>
     </div>
     <label for="title">Title of the Blog:</label>
-    <input type="text" id="title" />
+    <input type="text" name="title" id="title" />
     <label for="body">Blog Body:</label>
-    <textarea name="" id="body"></textarea>
-    <input type="submit" class="post" value="Post" />
+    <textarea name="body" id="body"></textarea>
+    <button type="submit" class="post">Post</button>
    </form>
   </main>
   <script src="/Javascript/createblog.js"></script>

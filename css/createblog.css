@@ -175,6 +175,7 @@ body {
   flex-direction: column;
   align-items: center;
   row-gap: 20px;
+  border-radius: 20px;
 }
 .newblog form .images .allimage1 img,
 .newblog form .images .allimage2 img {
@@ -185,7 +186,8 @@ body {
   border: solid black 1px;
   border-radius: 10px;
 }
-.newblog form .labelimg {
+.newblog form .labelimg1,
+.newblog form .labelimg2 {
   padding: 10px 15px;
   text-align: center;
   font-size: 12px;
@@ -196,7 +198,8 @@ body {
   max-width: 150px;
   transition: background-color 0.3s, color 0.3s;
 }
-.newblog form .labelimg:hover {
+.newblog form .labelimg1:hover,
+.newblog form .labelimg2:hover {
   cursor: pointer;
   background-color: white;
   color: black;
@@ -292,6 +295,25 @@ body {
   }
   to {
     transform: rotate(-45deg) translate(4px, -10px);
+  }
+}
+.animatein {
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: rgba(255, 0, 0, 0.83) 0px 2px 8px 0px;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0rem);
+  }
+  25% {
+    transform: translateX(0.5rem);
+  }
+  75% {
+    transform: translateX(-0.5rem);
+  }
+  100% {
+    transform: translateX(0rem);
   }
 }
 @media all and (max-width: 880px) {
