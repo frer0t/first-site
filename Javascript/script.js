@@ -87,7 +87,9 @@ inputContactEmail.onfocus = removeErrorInput;
 inputContactMessage.onfocus = removeErrorInput;
 inputContactname.onfocus = removeErrorInput;
 
-
+contactForm.onsubmit = function () {
+ alert('Message Sent');
+};
 btnContact.addEventListener('click', function (e) {
  if (!inputContactname.value) {
   inputContactname.classList.add('animatein');
