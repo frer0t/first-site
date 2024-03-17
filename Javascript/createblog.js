@@ -70,7 +70,7 @@ postBtn.addEventListener('click', function (e) {
 const submit = function () {
  const today = new Date();
  const date = today.getDate();
- const month = String(today.getMonth()).padStart(2, '0');
+ const month = String(today.getMonth() + 1).padStart(2, '0');
  const year = today.getFullYear();
  blog = {
   image1: getImage1.src,
