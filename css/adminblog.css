@@ -140,7 +140,6 @@ body {
 }
 
 .add-new {
-  margin-top: 90px;
   background-color: black;
   border: solid black 1px;
   padding: 10px 20px;
@@ -149,9 +148,11 @@ body {
   border-radius: 10px;
   transition: all ease 0.3s;
   padding: 20px 40px;
+  margin-top: 100px;
   font-size: 16px;
   align-self: flex-start;
-  margin-left: 105px;
+  position: relative;
+  left: 110px;
   text-decoration: none;
 }
 .add-new:hover {
@@ -166,6 +167,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding: 0 10px;
+  margin-top: 10px;
   margin-bottom: 45px;
   align-self: center;
   transform: translateY(120px);
@@ -336,6 +338,9 @@ body {
   }
   .header .humburger {
     display: flex;
+  }
+  .add-new {
+    left: 15px;
   }
 }
 @media all and (max-width: 570px) {
