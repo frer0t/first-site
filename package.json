@@ -1,0 +1,22 @@
+{
+  "name": "my-brand-front-end_frerot",
+  "version": "1.0.0",
+  "description": "This the 8 weeks Andela program core concepts",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamfrerot/My-Brand-Front-end_frerot.git"
+  },
+  "author": "Ntwali frerot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamfrerot/My-Brand-Front-end_frerot/issues"
+  },
+  "homepage": "https://github.com/iamfrerot/My-Brand-Front-end_frerot#readme",
+  "dependencies": {
+    "firebase": "^10.9.0"
+  }
+}
