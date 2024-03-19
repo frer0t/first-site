@@ -38,12 +38,22 @@
     <div class="bar3"></div>
    </div>
   </header>
-  <form action="/html/dashboard.html" class="logincard">
+  <form class="logincard">
    <h1>Log in</h1>
    <label for="username">Username</label>
-   <input type="text" id="username" placeholder="Enter Username " />
+   <input
+    type="text"
+    id="username"
+    placeholder="Enter Username "
+    name="username"
+   />
    <label for="password">Password</label>
-   <input type="password" id="password" placeholder="Enter Your Password" />
+   <input
+    type="password"
+    id="password"
+    placeholder="Enter Your Password"
+    name="password"
+   />
    <button class="btn-login" type="submit">Login</button>
    <div class="gotosignup">
     <p>Don't have an account?</p>
@@ -122,6 +132,6 @@
     </a>
    </div>
   </footer>
-  <script src="/Javascript/login.js"></script>
+  <script type="module" src="/Javascript/login.js"></script>
  </body>
 </html>
