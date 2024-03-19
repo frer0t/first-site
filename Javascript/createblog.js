@@ -1,3 +1,6 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js';
 
 const humburger = document.querySelector(".humburger");
 const bar1 = document.querySelector(".bar1");
@@ -10,11 +13,11 @@ const inputImage1 = document.querySelector('#image1');
 const inputImage2 = document.querySelector('#image2');
 const labelImage1 = document.querySelector('.labelimg1');
 const labelImage2 = document.querySelector('.labelimg2');
-const form = document.querySelector('.form');
-const titleForm = document.querySelector('#title');
-const bodyForm = document.querySelector('#body');
+const formCreate = document.querySelector('.form');
+const titleBlog = document.querySelector('#title');
+const bodyBlog = document.querySelector('#body');
 const postBtn = document.querySelector('.post');
-let arrayBlogs = [];
+const loader = document.querySelector('.loader');
 
 humburger.addEventListener("click", function () {
  bar1.classList.toggle("animatebar1");
@@ -24,13 +27,27 @@ humburger.addEventListener("click", function () {
 });
 
 window.onload = function () {
- form.style.opacity = 1;
- form.style.transform = 'translateX(0)';
+ formCreate.style.opacity = 1;
+ formCreate.style.transform = 'translateX(0)';
 };
 
 const removeErrorInput = function () {
  this.classList.remove('animatein');
 };
+
+const firebaseConfig = {
+ apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
+ authDomain: "my-brand-frontend.firebaseapp.com",
+ projectId: "my-brand-frontend",
+ storageBucket: "my-brand-frontend.appspot.com",
+ messagingSenderId: "23360536523",
+ appId: "1:23360536523:web:e255e314c23f4298a9404e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+const blogsRef = collection(db, 'blogs');
+const storage = getStorage(app);
 
 inputImage1.addEventListener('change', function (e) {
  getImage1.style.display = 'block';
@@ -44,55 +61,62 @@ inputImage2.addEventListener('change', function (e) {
 });
 
 
-titleForm.onfocus = removeErrorInput;
-bodyForm.onfocus = removeErrorInput;
+titleBlog.onfocus = removeErrorInput;
+bodyBlog.onfocus = removeErrorInput;
 labelImage1.onclick = removeErrorInput;
 labelImage2.onclick = removeErrorInput;
 
 postBtn.addEventListener('click', function (e) {
- if (titleForm.value === "") {
+ if (titleBlog.value === "") {
   e.preventDefault();
-  titleForm.classList.add('animatein');
+  titleBlog.classList.add('animatein');
  }
- if (bodyForm.value === '') {
+ if (bodyBlog.value === '') {
   e.preventDefault();
-  bodyForm.classList.add('animatein');
+  bodyBlog.classList.add('animatein');
  }
  if (getImage1.src === '') {
+  e.preventDefault();
   labelImage1.classList.add('animatein');
  }
  if (getImage2.src === '') {
+  e.preventDefault();
   labelImage2.classList.add('animatein');
  }
 });
 
-
-const submit = function () {
- const today = new Date();
- const date = today.getDate();
- const month = String(today.getMonth() + 1).padStart(2, '0');
- const year = today.getFullYear();
- blog = {
-  image1: getImage1.src,
-  image2: getImage2.src,
-  title: titleForm.value,
-  body: bodyForm.value,
-  thedate: `${date} ${month} ${year}`,
-  likes: 0,
-  comments: 0,
- };
- if (localStorage.getItem('blogs')) {
-  arrayBlogs = JSON.parse(localStorage.getItem('blogs'));
-  arrayBlogs.unshift(blog);
-  localStorage.setItem('blogs', JSON.stringify(arrayBlogs));
+const uploadData = async function (e) {
+ e.preventDefault();
+ if (titleBlog.value !== "" && bodyBlog.value !== '' && getImage1.src !== '' && getImage2.src !== '') {
+  postBtn.disable;
+  loader.style.display = 'flex';
+  const file1 = inputImage1.files[0];
+  const file2 = inputImage2.files[0];
+  const blogImg1 = ref(storage, 'blogsImg/' + file1.name);
+  const blogImg2 = ref(storage, 'blogsImg/' + file2.name);
+  try {
+   await uploadBytes(blogImg1, file1);
+   await uploadBytes(blogImg2, file2);
+   const image1 = await getDownloadURL(blogImg1);
+   const image2 = await getDownloadURL(blogImg2);
+   const data = {
+    title: titleBlog.value,
+    body: bodyBlog.value,
+    image1: image1,
+    image2: image2,
+    thedate: serverTimestamp(),
+    comments: [],
+    comment: 0,
+    likes: 0
+   };
+   await addDoc(blogsRef, data);
+   formCreate.reset();
+   alert('Posted Successful');
+   window.location.reload();
+  } catch {
+   console.log(err => console.log("error:", err));
+  }
  }
- if (!localStorage.getItem('blogs')) {
-  arrayBlogs.unshift(blog);
-  localStorage.setItem('blogs', JSON.stringify(arrayBlogs));
- }
-
- alert('Posted');
 };
 
-
-form.onsubmit = submit;
+formCreate.addEventListener('submit', uploadData);
