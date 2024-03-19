@@ -8,6 +8,7 @@
 body {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .header {
@@ -140,6 +141,28 @@ body {
 }
 .header .humburger:hover {
   cursor: pointer;
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  row-gap: 40px;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  font-size: 25px;
+  font-weight: bold;
+}
+.loader .posting {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-top: #000000 solid 2px;
+  animation: rotate 1s linear infinite;
 }
 
 .newblog {
@@ -314,6 +337,14 @@ body {
   }
   100% {
     transform: translateX(0rem);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 @media all and (max-width: 880px) {
