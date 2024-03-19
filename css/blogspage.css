@@ -232,7 +232,10 @@ body .subscribe button:hover {
 .blogs .blogcard .alldes .reactions .like svg {
   width: 20px;
   height: 20px;
-  fill: #ff3040;
+  fill: white;
+}
+.blogs .blogcard .alldes .reactions .like svg:hover {
+  cursor: pointer;
 }
 .blogs .blogcard .alldes .reactions .comment {
   display: flex;
@@ -282,10 +285,12 @@ footer {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 15px 0;
-  justify-content: center;
+  padding: 6px 0;
+  background-color: rgba(255, 255, 255, 0.537);
+  backdrop-filter: blur(1px);
   position: fixed;
   bottom: 0;
+  justify-content: center;
 }
 footer a {
   text-decoration: none;
@@ -348,6 +353,25 @@ footer .goto svg:hover {
   animation-fill-mode: forwards;
 }
 
+.animatein {
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: rgba(255, 0, 0, 0.83) 0px 2px 8px 0px;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0rem);
+  }
+  25% {
+    transform: translateX(0.5rem);
+  }
+  75% {
+    transform: translateX(-0.5rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
 @keyframes flipbar1 {
   from {
     transform: rotate(0);
