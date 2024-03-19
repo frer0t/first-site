@@ -1,10 +1,17 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
+import { getFirestore, collection, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 const loginForm = document.querySelector(".logincard");
 const btnLogin = document.querySelector('.btn-login');
 const inputUsername = document.querySelector('#username');
 const inputPassword = document.querySelector('#password');
-const user1 = {
- username: 'frerot',
- password: 'iamfrerot',
+
+const firebaseConfig = {
+ apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
+ authDomain: "my-brand-frontend.firebaseapp.com",
+ projectId: "my-brand-frontend",
+ storageBucket: "my-brand-frontend.appspot.com",
+ messagingSenderId: "23360536523",
+ appId: "1:23360536523:web:e255e314c23f4298a9404e"
 };
 
 // Remove error animation
@@ -13,23 +20,6 @@ const removeErrorInput = function () {
 };
 inputUsername.onfocus = removeErrorInput;
 inputPassword.onfocus = removeErrorInput;
-
-loginForm.onsubmit = function () {
- inputPassword.value = '';
- inputUsername.value = '';
-};
-btnLogin.addEventListener('click', function (e) {
- if (user1.username !== inputUsername.value) {
-  e.preventDefault();
-  inputUsername.classList.add('animatein');
-  inputUsername.value = '';
- }
- if (user1.password !== inputPassword.value) {
-  e.preventDefault();
-  inputPassword.classList.add('animatein');
-  inputPassword.value = '';
- }
-});
 
 window.onload = function () {
  loginForm.style.opacity = 1;
@@ -42,15 +32,6 @@ const bar2 = document.querySelector(".bar2");
 const bar3 = document.querySelector(".bar3");
 const mobilenav = document.querySelector(".mobilenav");
 
-const mobileLinks = mobilenav.childNodes;
-
-mobileLinks.forEach(cur => cur.addEventListener('click', function () {
- bar1.classList.toggle("animatebar1");
- bar2.classList.toggle("animatebar2");
- bar3.classList.toggle("animatebar3");
- mobilenav.classList.toggle("opendrawer");
-}));
-
 humburger.addEventListener("click", function () {
  bar1.classList.toggle("animatebar1");
  bar2.classList.toggle("animatebar2");
@@ -58,3 +39,38 @@ humburger.addEventListener("click", function () {
  mobilenav.classList.toggle("opendrawer");
 });
 
+
+initializeApp(firebaseConfig);
+const db = getFirestore();
+const userColRef = collection(db, 'users');
+
+
+
+loginForm.onsubmit = function (e) {
+ e.preventDefault();
+ onSnapshot(userColRef, (snapshot => {
+  let users = [];
+  snapshot;
+  snapshot.docs.forEach(doc => {
+   users.push({ ...doc.data(), id: doc.id });
+  });
+  users.forEach((user, i, arr) => {
+   if (i === arr.length - 1 && inputUsername.value.trim() !== user.username) {
+    inputUsername.classList.add('animatein');
+    inputUsername.value = '';
+   }
+   if (i === arr.length - 1 && inputPassword.value.trim() !== user.password) {
+    inputPassword.classList.add('animatein');
+    inputPassword.value = "";
+   }
+   if (user.username === inputUsername.value.trim() && user.password === inputPassword.value.trim()) {
+    alert('Loggin success');
+    loginForm.reset();
+    setTimeout(() => {
+     window.open('/html/dashboard.html', '_top');
+    }, 1000);
+   }
+  });
+ }));
+
+};
