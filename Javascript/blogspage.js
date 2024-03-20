@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, collection, onSnapshot, query, orderBy, addDoc, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { getFirestore, collection, onSnapshot, query, orderBy, getDoc, addDoc, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 
 const blogs = document.querySelector('.blogs');
 const subscribe = document.querySelector('.subscribe');
@@ -27,6 +27,7 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 const blogsColRef = collection(db, 'blogs');
 const subsColRef = doc(db, 'subscribers', 'xBecjxrnuTWLOMY43IDh');
+const docRef = collection(db, 'suscribers');
 const q = query(blogsColRef, orderBy('thedate', 'asc'));
 
 onSnapshot(q, (snapshot) => {
@@ -92,18 +93,16 @@ subscribe.addEventListener('submit', function (e) {
  if (subscriber.value === '' || !emailRegex.test(subscriber.value)) {
   subscriber.classList.add('animatein');
  } else {
-  let emails;
-  onSnapshot(docRef, (doc) => {
-   emails = doc.data();
-   emails.push(subscriber.value);
-  });
-  updateDoc(subsColRef, {
-   emails: emails,
-  }).then(() => {
-   subscribe.reset();
-   setTimeout(() => {
-    alert('Successfully Subscribed');
-   }, 800);
+  let emailss = [];
+  getDoc(subsColRef, (doc) => { }).then((data) => {
+   emailss = data.data().emails;
+   emailss.push(subscriber.value);
+   updateDoc(subsColRef, { emails: emailss }).then(() => {
+    subscribe.reset();
+    setTimeout(() => {
+     alert('Successfully Subscribed');
+    }, 800);
+   });
   });
  }
 });
