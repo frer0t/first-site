@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, collection, onSnapshot, query, orderBy, addDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { getFirestore, collection, onSnapshot, query, orderBy, addDoc, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 
 const blogs = document.querySelector('.blogs');
 const subscribe = document.querySelector('.subscribe');
@@ -26,27 +26,27 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 const db = getFirestore();
 const blogsColRef = collection(db, 'blogs');
-const subsColRef = collection(db, 'subscribers');
+const subsColRef = doc(db, 'subscribers', 'xBecjxrnuTWLOMY43IDh');
 const q = query(blogsColRef, orderBy('thedate', 'asc'));
-let blogDocs = [];
 
-if (blogDocs) {
- noBlogs.style.display = 'none';
- blogs.style.marginTop = '100px';
- blogs.style.marginBottom = '70px';
- onSnapshot(blogsColRef, (snapshot) => {
-  snapshot.docs.forEach((blog) => {
-   blogDocs.push({ ...blog.data(), id: blog.id });
-  });
-  blogDocs.forEach((cur) => {
-
-   const { seconds, nanoseconds } = cur.thedate;
-   const timeStamp_float = seconds + nanoseconds / (10 ** 9);
-   const date = new Date(timeStamp_float * 1000);
-   const month = String(date.getMonth() + 1).padStart(2, '0');
-   const day = String(date.getDate()).padStart(2, '0');
-   const outputDate = `${day} ${month} ${date.getFullYear()}`;
-   const html = `<div class="blogcard">
+onSnapshot(q, (snapshot) => {
+ let blogDocs = [];
+ snapshot.docs.forEach((blog) => {
+  blogDocs.push({ ...blog.data(), id: blog.id });
+  if (blogDocs) {
+   noBlogs.style.display = 'none';
+   blogs.style.marginTop = '100px';
+   blogs.style.marginBottom = '70px';
+  }
+ });
+ blogDocs.forEach((cur) => {
+  const { seconds, nanoseconds } = cur.thedate;
+  const timeStamp_float = seconds + nanoseconds / (10 ** 9);
+  const date = new Date(timeStamp_float * 1000);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const outputDate = `${day} ${month} ${date.getFullYear()}`;
+  const html = `<div class="blogcard">
   <img src="${cur.image1}" class="image" alt="" />
   <div class="alldes">
    <p class="date">${outputDate}</p>
@@ -83,17 +83,23 @@ if (blogDocs) {
     </div>
    </div>
   </div>`;
-   blogs.insertAdjacentHTML('afterbegin', html);
-  });
+  blogs.insertAdjacentHTML('afterbegin', html);
  });
-}
+});
 subscriber.onfocus = removeErrorInput;
 subscribe.addEventListener('submit', function (e) {
  e.preventDefault();
  if (subscriber.value === '' || !emailRegex.test(subscriber.value)) {
   subscriber.classList.add('animatein');
  } else {
-  addDoc(subsColRef, { email: subscriber.value }).then(() => {
+  let emails;
+  onSnapshot(docRef, (doc) => {
+   emails = doc.data();
+   emails.push(subscriber.value);
+  });
+  updateDoc(subsColRef, {
+   emails: emails,
+  }).then(() => {
    subscribe.reset();
    setTimeout(() => {
     alert('Successfully Subscribed');

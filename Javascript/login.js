@@ -4,6 +4,7 @@ const loginForm = document.querySelector(".logincard");
 const btnLogin = document.querySelector('.btn-login');
 const inputUsername = document.querySelector('#username');
 const inputPassword = document.querySelector('#password');
+const loader = document.querySelector('.loader');
 
 const firebaseConfig = {
  apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
@@ -55,16 +56,18 @@ loginForm.onsubmit = function (e) {
    users.push({ ...doc.data(), id: doc.id });
   });
   users.forEach((user, i, arr) => {
-   if (i === arr.length - 1 && inputUsername.value.trim() !== user.username) {
+
+   if (i === arr.length - 1 && inputPassword.value.trim() !== user.password || inputUsername.value.trim() !== user.username) {
+    inputPassword.classList.add('animatein');
     inputUsername.classList.add('animatein');
     inputUsername.value = '';
-   }
-   if (i === arr.length - 1 && inputPassword.value.trim() !== user.password) {
-    inputPassword.classList.add('animatein');
     inputPassword.value = "";
    }
    if (user.username === inputUsername.value.trim() && user.password === inputPassword.value.trim()) {
-    alert('Loggin success');
+    inputPassword.blur();
+    inputUsername.blur();
+    loginForm.reset();
+    loader.style.display = 'flex';
     loginForm.reset();
     setTimeout(() => {
      window.open('/html/dashboard.html', '_top');

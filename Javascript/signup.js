@@ -14,6 +14,7 @@ const btnSignup = document.querySelector('.btn-login');
 const inputSignupName = document.querySelector('#name');
 const inputSignupEmail = document.querySelector('#email');
 const inputSignupPassword = document.querySelector('#password');
+const loader = document.querySelector('.loader');
 const emailRegex = /^[a-zA-Z0-9. _%+-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,}$/;
 
 //  REmove error on input
@@ -49,13 +50,18 @@ const userColRef = collection(db, 'users');
 signupForm.onsubmit = function (e) {
  e.preventDefault();
  if (signupForm.username.value !== '' && signupForm.email.value !== "" && signupForm.password.value !== '') {
+  loader.style.display = 'flex';
   addDoc(userColRef, {
    email: signupForm.email.value,
    password: signupForm.password.value,
    username: signupForm.username.value,
   }).then(() => {
+   inputSignupEmail.blur();
+   inputSignupName.blur();
+   inputSignupPassword.blur();
    signupForm.reset();
    alert('Account Successfully Created');
+   loader.style.display = 'none';
    setTimeout(() => {
     window.open('/html/login.html', '_top');
    }, 1000);;
