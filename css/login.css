@@ -12,6 +12,7 @@ body {
   align-items: center;
   height: 100vh;
   justify-content: space-between;
+  overflow-x: hidden;
 }
 body form {
   display: flex;
@@ -89,6 +90,28 @@ body form .gotosignup::before {
   border-radius: 10px;
   background-color: gray;
   position: absolute;
+}
+
+.loader {
+  display: none;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 2;
+}
+.loader .load {
+  width: 100px;
+  height: 100px;
+  border-top: solid black 2px;
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
 }
 
 .header {
@@ -318,6 +341,14 @@ footer .goto svg a {
   }
   .header h1 {
     font-size: 23px;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 @media all and (max-width: 645px) {
