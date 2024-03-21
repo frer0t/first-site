@@ -52,7 +52,7 @@ onSnapshot(q, (snapshot) => {
   <div class="alldes">
    <p class="date">${outputDate}</p>
    <h3>
-    <a href="blog.html" class="topic"
+    <a href="blog.html" data-id='${cur.id}' class="topic"
     >${cur.title}</a
     >
    </h3>
@@ -120,4 +120,10 @@ humburger.addEventListener("click", function () {
  bar2.classList.toggle("animatebar2");
  bar3.classList.toggle("animatebar3");
  mobilenav.classList.toggle("opendrawer");
+});
+
+blogs.addEventListener('click', function (event) {
+ const blogPage = event.target;
+ const blogId = blogPage.dataset.id;
+ localStorage.setItem('singleblog', JSON.stringify(blogId));
 });
