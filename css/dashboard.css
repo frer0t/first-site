@@ -212,6 +212,9 @@ body {
 .dashboard .subs-blogs .recent-art .articles article .actions svg {
   width: 24px;
 }
+.dashboard .subs-blogs .recent-art .articles article .actions svg:hover {
+  cursor: pointer;
+}
 .dashboard .subs-blogs .recent-art .create {
   background-color: black;
   border: solid black 1px;
