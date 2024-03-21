@@ -1,12 +1,12 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, collection, onSnapshot, doc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { getFirestore, collection, onSnapshot, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 const firebaseConfig = {
- apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
- authDomain: "my-brand-frontend.firebaseapp.com",
- projectId: "my-brand-frontend",
- storageBucket: "my-brand-frontend.appspot.com",
- messagingSenderId: "23360536523",
- appId: "1:23360536523:web:e255e314c23f4298a9404e"
+    apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
+    authDomain: "my-brand-frontend.firebaseapp.com",
+    projectId: "my-brand-frontend",
+    storageBucket: "my-brand-frontend.appspot.com",
+    messagingSenderId: "23360536523",
+    appId: "1:23360536523:web:e255e314c23f4298a9404e"
 };
 initializeApp(firebaseConfig);
 const db = getFirestore();
@@ -24,49 +24,50 @@ const queries = document.querySelector('.queries');
 const subsSec = document.querySelector('.subs');
 
 window.onload = function () {
- dashboard.style.opacity = 1;
- dashboard.style.transform = 'translateY(0)';
+    dashboard.style.opacity = 1;
+    dashboard.style.transform = 'translateY(0)';
 };
 const mobileLinks = mobilenav.childNodes;
 
 mobileLinks.forEach(cur => cur.addEventListener('click', function () {
- bar1.classList.toggle("animatebar1");
- bar2.classList.toggle("animatebar2");
- bar3.classList.toggle("animatebar3");
- mobilenav.classList.toggle("opendrawer");
+    bar1.classList.toggle("animatebar1");
+    bar2.classList.toggle("animatebar2");
+    bar3.classList.toggle("animatebar3");
+    mobilenav.classList.toggle("opendrawer");
 }));
 
 humburger.addEventListener("click", function () {
- bar1.classList.toggle("animatebar1");
- bar2.classList.toggle("animatebar2");
- bar3.classList.toggle("animatebar3");
- mobilenav.classList.toggle("opendrawer");
+    bar1.classList.toggle("animatebar1");
+    bar2.classList.toggle("animatebar2");
+    bar3.classList.toggle("animatebar3");
+    mobilenav.classList.toggle("opendrawer");
 });
 // Adding recent Blogs
 onSnapshot(blogsColRef, (snapshot) => {
- let blogs = [];
- snapshot.docs.forEach((blog) => {
-  if (blogs.length < 5) {
-   blogs.push({ ...blog.data(), id: blog.id });
-  }
- });
+    let blogs = [];
+    snapshot.docs.forEach((blog) => {
+        if (blogs.length < 5) {
+            blogs.push({ ...blog.data(), id: blog.id });
+        }
+    });
 
- blogs.forEach(cur => {
-  const { seconds, nanoseconds } = cur.thedate;
-  const timeStamp_float = seconds + nanoseconds / (10 ** 9);
-  const date = new Date(timeStamp_float * 1000);
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  const outputDate = `${day}/${month}/${date.getFullYear()}`;
-  const html = `<article>
+    blogs.forEach(cur => {
+        const { seconds, nanoseconds } = cur.thedate;
+        const timeStamp_float = seconds + nanoseconds / (10 ** 9);
+        const date = new Date(timeStamp_float * 1000);
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const outputDate = `${day}/${month}/${date.getFullYear()}`;
+        const html = `<article>
        <p class="time-date">${outputDate}</p>
        <div class="art">
-        <img src="${cur.image1}" alt="" />
+        <img src="${cur.image1}" />
         <p>${cur.title}</p>
        </div>
        <div class="actions">
-        <a class="edit" href=""
-         ><svg
+        <a class="edit" data-id="${cur.id}" ><svg
+        class="edit"
+        data-id="${cur.id}"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -74,6 +75,8 @@ onSnapshot(blogsColRef, (snapshot) => {
           style="fill: rgba(0, 0, 0, 1)"
          >
           <path
+          data-id="${cur.id}"
+          class="edit"
            d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"
           ></path>
           <path
@@ -81,8 +84,10 @@ onSnapshot(blogsColRef, (snapshot) => {
           ></path>
          </svg>
         </a>
-        <a href="" class="delete"
+        <a class="delete" data-id="${cur.id}"
          ><svg
+         class="delete"
+         data-id="${cur.id}"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -91,6 +96,8 @@ onSnapshot(blogsColRef, (snapshot) => {
           class="w-6 h-6"
          >
           <path
+          class="delete"
+          data-id="${cur.id}"
            stroke-linecap="round"
            stroke-linejoin="round"
            d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
@@ -99,37 +106,37 @@ onSnapshot(blogsColRef, (snapshot) => {
         </a>
        </div>
       </article>`;
-  articles.insertAdjacentHTML('beforeend', html);
- });
+        articles.insertAdjacentHTML('beforeend', html);
+    });
 });
 
 // Adding recent Queries
 
 onSnapshot(messagesColRef, snapshot => {
- let messages = [];
- snapshot.docs.forEach(message => {
-  if (messages.length < 5) {
-   messages.push({ ...message.data(), id: message.id });
-  }
- });
- messages.forEach(cur => {
-  const html2 = `<div class="querie">
+    let messages = [];
+    snapshot.docs.forEach(message => {
+        if (messages.length < 5) {
+            messages.push({ ...message.data(), id: message.id });
+        }
+    });
+    messages.forEach(cur => {
+        const html2 = `<div class="querie">
       <div class="sender-dt">
        <p class="sender-name">${cur.guest}</p>
        <a href="mailto:${cur.guestemail}" class="sender-mail">${cur.guestemail}</a>
       </div>
       <p class="message">${cur.message}</p>
      </div>`;
-  queries.insertAdjacentHTML('beforeend', html2);
- });
+        queries.insertAdjacentHTML('beforeend', html2);
+    });
 });
 
 // Adding SubsList
 
 onSnapshot(subsColRef, snapshot => {
- const subs = snapshot.data().emails;
- subs.forEach(sub => {
-  const html3 = `<p class="sub">${sub}
+    const subs = snapshot.data().emails;
+    subs.forEach(sub => {
+        const html3 = `<p class="sub">${sub}
        <a href="" class="remove"
         ><svg
          xmlns="http://www.w3.org/2000/svg"
@@ -147,6 +154,33 @@ onSnapshot(subsColRef, snapshot => {
         </svg>
        </a>
       </p>`;
-  subsSec.insertAdjacentHTML('beforeend', html3);
- });
+        subsSec.insertAdjacentHTML('beforeend', html3);
+    });
+});
+
+// Deleting Blog
+
+articles.addEventListener('click', function (event) {
+    if (event.target.classList.contains('delete')) {
+        if (confirm('Are you Sure you i want to delete The Blog')) {
+            const deleteButton = event.target;
+            const deleteId = deleteButton.dataset.id;
+            const blogRef = doc(db, 'blogs', deleteId);
+            deleteDoc(blogRef).then(() => {
+                alert('Deleteted Successfully');
+                window.location.reload();
+            });
+        }
+    }
+});
+
+// Editing blog
+
+articles.addEventListener('click', function (event) {
+    if (event.target.classList.contains('edit')) {
+        const editButton = event.target;
+        const editId = editButton.dataset.id;
+        localStorage.setItem('blogEdit', JSON.stringify(editId));
+        window.open('/html/updateblog.html', '_self');
+    }
 });

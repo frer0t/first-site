@@ -138,6 +138,7 @@ onSnapshot(blogsColRef, snapshot => {
     });
   });
 });
+// Deleting blogs
 blogs.addEventListener('click', function (event) {
   if (event.target.classList.contains('delete')) {
     if (confirm('Are you Sure you i want to delete The Blog')) {
@@ -149,5 +150,15 @@ blogs.addEventListener('click', function (event) {
         window.location.reload();
       });
     }
+  }
+});
+
+// Editing Blog
+blogs.addEventListener('click', function (event) {
+  if (event.target.classList.contains('edit')) {
+    const editButton = event.target;
+    const editId = editButton.dataset.id;
+    localStorage.setItem('blogEdit', JSON.stringify(editId));
+    window.open('/html/updateblog.html', '_self');
   }
 });
