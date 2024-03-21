@@ -420,6 +420,11 @@ body {
     font-size: 14px;
   }
 }
+@media all and (max-width: 799px) {
+  .dashboard .subs-blogs {
+    column-gap: 9px;
+  }
+}
 @media all and (max-width: 735px) {
   .dashboard .subs-blogs {
     flex-direction: column;
@@ -440,6 +445,9 @@ body {
   }
   .dashboard .mess-pro .queries {
     width: unset;
+  }
+  .dashboard .mess-pro .queries h1 {
+    column-gap: unset;
   }
   .dashboard .mess-pro .projects {
     width: unset;

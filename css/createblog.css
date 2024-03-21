@@ -9,6 +9,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
+  overflow-x: hidden;
 }
 
 .header {
@@ -145,7 +146,7 @@ body {
 
 .loader {
   width: 100vw;
-  height: 100vh;
+  height: 130vh;
   background-color: white;
   position: absolute;
   display: none;
@@ -175,7 +176,7 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
   width: 400px;
-  height: 500px;
+  height: 700px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -230,7 +231,8 @@ body {
 .newblog form label {
   font-size: 17px;
 }
-.newblog form #title {
+.newblog form #title,
+.newblog form #sub-title {
   height: 36px;
   border: solid gray 1px;
   border-radius: 5px;
