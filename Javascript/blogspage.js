@@ -56,7 +56,7 @@ onSnapshot(q, (snapshot) => {
     >${cur.title}</a
     >
    </h3>
-   <p class="blog-text">${cur.body}</p>
+   <p class="blog-text">${cur.subtitle}</p>
    <div class="reactions">
     <div class="like">
      <svg

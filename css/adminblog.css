@@ -22,7 +22,7 @@ body {
   align-items: center;
   padding: 20px 40px;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
 }
 .header .mobilenav {
   position: absolute;
@@ -154,6 +154,7 @@ body {
   position: relative;
   left: 110px;
   text-decoration: none;
+  z-index: 2;
 }
 .add-new:hover {
   cursor: pointer;
@@ -200,12 +201,8 @@ body {
   color: rgb(178, 177, 177);
 }
 .blogs .blogcard .alldes .topic {
-  text-decoration: none;
   color: #000000;
   font-size: 22px;
-}
-.blogs .blogcard .alldes .topic:hover {
-  text-decoration: underline;
 }
 .blogs .blogcard .alldes .blog-text {
   font-size: 14px;
@@ -227,7 +224,7 @@ body {
 .blogs .blogcard .alldes .reactions .like svg {
   width: 20px;
   height: 20px;
-  fill: #ff3040;
+  fill: #ffffff;
 }
 .blogs .blogcard .alldes .reactions .comment {
   display: flex;
@@ -241,14 +238,31 @@ body {
 .blogs .blogcard .alldes .reactions .actions {
   display: flex;
   align-items: center;
+  width: 60px;
+  justify-content: space-between;
 }
 .blogs .blogcard .alldes .reactions .actions a {
-  width: 25px;
-  height: 25px;
+  width: fit-content;
+  height: fit-content;
+}
+.blogs .blogcard .alldes .reactions .actions a:hover {
+  cursor: pointer;
 }
 .blogs .blogcard .alldes .reactions .actions a svg {
   width: 25px;
   height: 25px;
+}
+
+.noblogs {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .header .opendrawer {

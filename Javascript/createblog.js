@@ -15,10 +15,11 @@ const labelImage1 = document.querySelector('.labelimg1');
 const labelImage2 = document.querySelector('.labelimg2');
 const formCreate = document.querySelector('.form');
 const titleBlog = document.querySelector('#title');
+const subTitleBlog = document.querySelector('#sub-title');
 const bodyBlog = document.querySelector('#body');
 const postBtn = document.querySelector('.post');
 const loader = document.querySelector('.loader');
-
+const body = document.querySelector('body');
 humburger.addEventListener("click", function () {
  bar1.classList.toggle("animatebar1");
  bar2.classList.toggle("animatebar2");
@@ -65,7 +66,7 @@ titleBlog.onfocus = removeErrorInput;
 bodyBlog.onfocus = removeErrorInput;
 labelImage1.onclick = removeErrorInput;
 labelImage2.onclick = removeErrorInput;
-
+subTitleBlog.onfocus = removeErrorInput;
 postBtn.addEventListener('click', function (e) {
  if (titleBlog.value === "") {
   e.preventDefault();
@@ -74,6 +75,11 @@ postBtn.addEventListener('click', function (e) {
  if (bodyBlog.value === '') {
   e.preventDefault();
   bodyBlog.classList.add('animatein');
+ }
+ if (subTitleBlog.value === '') {
+  e.preventDefault();
+  subTitleBlog.classList.add('animatein');
+
  }
  if (getImage1.src === '') {
   e.preventDefault();
@@ -84,12 +90,12 @@ postBtn.addEventListener('click', function (e) {
   labelImage2.classList.add('animatein');
  }
 });
-
 const uploadData = async function (e) {
  e.preventDefault();
- if (titleBlog.value !== "" && bodyBlog.value !== '' && getImage1.src !== '' && getImage2.src !== '') {
+ if (subTitleBlog.value !== '' && titleBlog.value !== "" && bodyBlog.value !== '' && getImage1.src !== '' && getImage2.src !== '') {
   postBtn.disable;
   loader.style.display = 'flex';
+  body.style.overflow = 'hidden';
   const file1 = inputImage1.files[0];
   const file2 = inputImage2.files[0];
   const blogImg1 = ref(storage, 'blogsImg/' + file1.name);
@@ -102,12 +108,13 @@ const uploadData = async function (e) {
    const data = {
     title: titleBlog.value,
     body: bodyBlog.value,
+    subtitle: subTitleBlog.value,
     image1: image1,
     image2: image2,
     thedate: serverTimestamp(),
     comments: [],
     comment: 0,
-    likes: 0
+    likes: 0,
    };
    await addDoc(blogsRef, data);
    formCreate.reset();
