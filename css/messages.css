@@ -169,6 +169,14 @@ body {
 }
 .messages .messagecard .email {
   color: rgba(0, 0, 0, 0.503);
+  text-decoration: none;
+  font-weight: bold;
+}
+.messages .messagecard .email:hover {
+  text-decoration: underline;
+}
+.messages .messagecard .delete:hover {
+  cursor: pointer;
 }
 .messages .messagecard .message {
   padding-top: 20px;
