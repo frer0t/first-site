@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, collection, onSnapshot, query, orderBy, getDoc, addDoc, doc, updateDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { getFirestore, collection, onSnapshot, query, orderBy, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 import { getStorage, ref, deleteObject } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js';
 const firebaseConfig = {
   apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
@@ -40,45 +40,32 @@ humburger.addEventListener("click", function () {
   bar3.classList.toggle("animatebar3");
   mobilenav.classList.toggle("opendrawer");
 });
-onSnapshot(blogsColRef, snapshot => {
+
+getDocs(blogsColRef).then(snapshot => {
   let blogsDocs = [];
+  noBlogs.style.display = 'none';
   snapshot.docs.forEach((blog) => {
     blogsDocs.push({ ...blog.data(), id: blog.id });
-    if (blogsDocs) {
-      noBlogs.style.display = 'none';
-    }
-    blogsDocs.forEach((cur, i, arr) => {
-      const { seconds, nanoseconds } = cur.thedate;
-      const timeStamp_float = seconds + nanoseconds / (10 ** 9);
-      const date = new Date(timeStamp_float * 1000);
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      const outputDate = `${day} ${month} ${date.getFullYear()}`;
-      const html = `<div class="blogcard">
-    <img src="${cur.image1}" alt="" />
-    <div class="alldes">
-     <p class="date">${outputDate}</p>
-     <h3>
-      <a class="topic"
-       >${cur.title}</a
-      >
-     </h3>
-     <p class="blog-text">
-     ${cur.subtitle}
-     </p>
-     <div class="reactions">
-      <div class="like">
-       <svg
-        width="100"
-        height="100"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-       >
+  });
+  blogsDocs.forEach((cur) => {
+    const { seconds, nanoseconds } = cur.thedate;
+    const timeStamp_float = seconds + nanoseconds / (10 ** 9);
+    const date = new Date(timeStamp_float * 1000);
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const outputDate = `${day} ${month} ${date.getFullYear()}`;
+    const html = `<div class="blogcard">
+        <img src="${cur.image1}"/>
+        <div class="alldes">
+        <p class="date">${outputDate}</p>
+        <h3><a class="topic">${cur.title}</a></h3>
+        <p class="blog-text">${cur.subtitle}</p>
+        <div class="reactions">
+        <div class="like">
+        <svg width="100" height="100" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <rect width="100%" height="100%" fill="none" />
-        <path
-         stroke="black"
-         stroke-width="1"
-         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        <path stroke="black" stroke-width="1" 
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         />
        </svg>
        <p class="likes">${cur.likes}</p>
@@ -90,27 +77,27 @@ onSnapshot(blogsColRef, snapshot => {
         />
        </svg>
        <p class="comments">${cur.comment}</p>
-      </div><div class="actions">
+       </div><div class="actions">
        <a class="edit" data-id='${cur.id}' ><svg
        data-id='${cur.id}'
         class="edit"
-         xmlns="http://www.w3.org/2000/svg"
-         width="24"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
          height="24"
          viewBox="0 0 24 24"
          style="fill: rgba(0, 0, 0, 1)"
         >
-         <path
-          class="edit"
+        <path
+        class="edit"
           data-id='${cur.id}'
           d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"
          ></path>
          <path
-          d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"
+         d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"
          ></path>
         </svg>
-       </a>
-       <a data-id='${cur.id}' class="delete"
+        </a>
+        <a data-id='${cur.id}' class="delete"
         ><svg
         class="delete"
         data-id='${cur.id}'
@@ -120,7 +107,7 @@ onSnapshot(blogsColRef, snapshot => {
          stroke-width="1.5"
          stroke="red"
          class="w-6 h-6"
-        >
+         >
          <path
          class="delete"
          data-id='${cur.id}'
@@ -131,12 +118,14 @@ onSnapshot(blogsColRef, snapshot => {
         </svg>
        </a>
       </div>
-     </div>
-    </div>
+      </div>
+      </div>
    </div>`;
-      blogs.insertAdjacentHTML('afterbegin', html);
-    });
+    blogs.insertAdjacentHTML('afterbegin', html);
+
   });
+
+
 });
 // Deleting blogs
 blogs.addEventListener('click', function (event) {

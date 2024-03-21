@@ -213,6 +213,7 @@ body .subscribe button:hover {
 }
 .blogs .blogcard .alldes .topic:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 .blogs .blogcard .alldes .blog-text {
   font-size: 14px;
@@ -234,10 +235,7 @@ body .subscribe button:hover {
 .blogs .blogcard .alldes .reactions .like svg {
   width: 20px;
   height: 20px;
-  fill: white;
-}
-.blogs .blogcard .alldes .reactions .like svg:hover {
-  cursor: pointer;
+  fill: rgb(255, 0, 0);
 }
 .blogs .blogcard .alldes .reactions .comment {
   display: flex;

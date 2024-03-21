@@ -224,7 +224,7 @@ body {
 .blogs .blogcard .alldes .reactions .like svg {
   width: 20px;
   height: 20px;
-  fill: #ffffff;
+  fill: #ff0000;
 }
 .blogs .blogcard .alldes .reactions .comment {
   display: flex;

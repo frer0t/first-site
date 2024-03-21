@@ -106,7 +106,7 @@ onSnapshot(blogsColRef, (snapshot) => {
         </a>
        </div>
       </article>`;
-        articles.insertAdjacentHTML('beforeend', html);
+        articles.insertAdjacentHTML('afterbegin', html);
     });
 });
 

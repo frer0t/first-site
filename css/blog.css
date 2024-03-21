@@ -8,6 +8,8 @@
 body {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .header {
@@ -58,6 +60,25 @@ body {
 }
 .header .navigation a:hover::before {
   width: 100%;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 2;
+}
+.loading .load {
+  width: 100px;
+  height: 100px;
+  border-top: solid black 2px;
+  border-radius: 50%;
+  animation: rotate linear 1s infinite;
 }
 
 main {
@@ -352,6 +373,19 @@ footer .goto svg:hover {
   transform: scale(1.2);
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 2px;
+}
+
 .animatein {
   animation: shake 0.2s ease-in-out 0s 2;
   box-shadow: rgba(255, 0, 0, 0.83) 0px 2px 8px 0px;
@@ -369,6 +403,14 @@ footer .goto svg:hover {
   }
   100% {
     transform: translateX(0rem);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 @media all and (max-width: 900px) {
