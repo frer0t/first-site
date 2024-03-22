@@ -43,10 +43,13 @@ humburger.addEventListener("click", function () {
 
 getDocs(blogsColRef).then(snapshot => {
   let blogsDocs = [];
-  noBlogs.style.display = 'none';
+
   snapshot.docs.forEach((blog) => {
     blogsDocs.push({ ...blog.data(), id: blog.id });
   });
+  if (blogsDocs.length >= 1) {
+    noBlogs.style.display = 'none';
+  }
   blogsDocs.forEach((cur) => {
     const { seconds, nanoseconds } = cur.thedate;
     const timeStamp_float = seconds + nanoseconds / (10 ** 9);
@@ -124,8 +127,6 @@ getDocs(blogsColRef).then(snapshot => {
     blogs.insertAdjacentHTML('afterbegin', html);
 
   });
-
-
 });
 // Deleting blogs
 blogs.addEventListener('click', function (event) {
