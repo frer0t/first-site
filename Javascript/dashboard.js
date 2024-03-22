@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, collection, onSnapshot, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+import { getFirestore, collection, getDocs, onSnapshot, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 const firebaseConfig = {
     apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
     authDomain: "my-brand-frontend.firebaseapp.com",
@@ -112,7 +112,7 @@ onSnapshot(blogsColRef, (snapshot) => {
 
 // Adding recent Queries
 
-onSnapshot(messagesColRef, snapshot => {
+getDocs(messagesColRef).then(snapshot => {
     let messages = [];
     snapshot.docs.forEach(message => {
         if (messages.length < 5) {
@@ -135,10 +135,11 @@ onSnapshot(messagesColRef, snapshot => {
 
 onSnapshot(subsColRef, snapshot => {
     const subs = snapshot.data().emails;
-    subs.forEach(sub => {
+    subs.forEach((sub, i) => {
         const html3 = `<p class="sub">${sub}
-       <a href="" class="remove"
+       <a href='' data-id='${i}' class="remove"
         ><svg
+        data-id='${i}' class="remove"
          xmlns="http://www.w3.org/2000/svg"
          fill="none"
          viewBox="0 0 24 24"
@@ -147,6 +148,7 @@ onSnapshot(subsColRef, snapshot => {
          class="w-6 h-6"
         >
          <path
+         data-id='${i}' class="remove"
           stroke-linecap="round"
           stroke-linejoin="round"
           d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
@@ -154,7 +156,7 @@ onSnapshot(subsColRef, snapshot => {
         </svg>
        </a>
       </p>`;
-        subsSec.insertAdjacentHTML('beforeend', html3);
+        subsSec.insertAdjacentHTML('afterbegin', html3);
     });
 });
 
