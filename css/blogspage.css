@@ -188,6 +188,15 @@ body .subscribe button:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-radius: 10px;
   overflow: hidden;
+  transition: transform ease-in-out 0.4s;
+}
+.blogs .blogcard:hover {
+  transform: scale(0.96);
+  cursor: pointer;
+}
+.blogs .blogcard a {
+  text-decoration: none;
+  color: inherit;
 }
 .blogs .blogcard img {
   width: 100%;
@@ -210,10 +219,6 @@ body .subscribe button:hover {
   text-decoration: none;
   color: #000000;
   font-size: 22px;
-}
-.blogs .blogcard .alldes .topic:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 .blogs .blogcard .alldes .blog-text {
   font-size: 14px;
