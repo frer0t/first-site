@@ -41,7 +41,7 @@ form {
   flex-direction: column;
   width: 400px;
   transform: translateX(-190px);
-  transition: all ease-in-out 0.9s;
+  transition: opacity ease-in-out 0.9s, transform ease-in-out 0.9s;
   align-self: center;
   margin-top: 70px;
   margin-bottom: 60px;
@@ -86,7 +86,6 @@ form .btn-login {
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
-  padding-top: 15px;
 }
 form .gotologin {
   position: relative;
