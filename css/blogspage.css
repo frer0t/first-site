@@ -205,7 +205,7 @@ body .subscribe button:hover {
   border-radius: 0 0 10px 10px;
   object-fit: cover;
 }
-.blogs .blogcard .alldes {
+.blogs .blogcard .alldes a {
   display: flex;
   flex-direction: column;
   row-gap: 12px;
@@ -218,10 +218,10 @@ body .subscribe button:hover {
 .blogs .blogcard .alldes .topic {
   text-decoration: none;
   color: #000000;
-  font-size: 22px;
+  font-size: 23px;
 }
 .blogs .blogcard .alldes .blog-text {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 20px;
   padding-bottom: 12px;
 }

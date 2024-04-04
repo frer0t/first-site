@@ -11,36 +11,36 @@ const mobilenav = document.querySelector(".mobilenav");
 const noBlogs = document.querySelector('.sorry');
 const emailRegex = /^[a-zA-Z0-9. _%+-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,}$/;
 const removeErrorInput = function () {
- this.classList.remove('animatein');
+  this.classList.remove('animatein');
 };
 /// Getting blogs
 (async () => {
- let blogsData;
- try {
-  const response = await fetch('http://localhost:2000/api/blogs');
-  const data = await response.json();
-  blogsData = [...data];
- } catch (error) {
-  console.log(error);
- }
- if (blogsData) {
-  noBlogs.style.display = 'none';
-  blogs.style.marginTop = '100px';
-  blogs.style.marginBottom = '70px';
- }
- blogsData.forEach(blog => {
-  const dateString = new Date(blog.createdAt);
-  const options = {
-   weekday: 'long', // Options for toLocaleDateString()
-   year: 'numeric',
-   month: 'long',
-   day: 'numeric',
-   hour: 'numeric',
-   minute: '2-digit',
-   hour12: false,
-  };
-  const outputDate = dateString.toLocaleDateString('en-us', options);
-  const html = `<div class="blogcard">
+  let blogsData;
+  try {
+    const response = await fetch('http://localhost:2000/api/blogs');
+    const data = await response.json();
+    blogsData = [...data];
+  } catch (error) {
+    console.log(error);
+  }
+  if (blogsData) {
+    noBlogs.style.display = 'none';
+    blogs.style.marginTop = '100px';
+    blogs.style.marginBottom = '70px';
+  }
+  blogsData.forEach(blog => {
+    const dateString = new Date(blog.createdAt);
+    const options = {
+      weekday: 'long', // Options for toLocaleDateString()
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: false,
+    };
+    const outputDate = dateString.toLocaleDateString('en-us', options);
+    const html = `<div class="blogcard">
   <a href="blog.html" data-id="${blog._id}">
    <img src="${blog.img1}" class="image" alt="" />
   <div class="alldes">
@@ -77,54 +77,53 @@ const removeErrorInput = function () {
    </div>
    </a>
   </div>`;
-  blogs.insertAdjacentHTML('beforeend', html);
- }
- );
+    blogs.insertAdjacentHTML('beforeend', html);
+  }
+  );
 })();
 subscriber.onfocus = removeErrorInput;
 subscribe.addEventListener('submit', async function (e) {
- e.preventDefault();
- if (subscriber.value === '' || !emailRegex.test(subscriber.value)) {
-  subscriber.classList.add('animatein');
- } else {
-  subscriber.disabled = true;
-  subscribeBtn.disabled = true;
-  await fetch('http://localhost:2000/api/sub', {
-   method: "post", headers: {
-    'Content-Type': 'application/json'
-   }, body: JSON.stringify({ subscriber: subscriber.value })
-  })
-   .then(() => {
-    subscriber.disabled = false;
-    subscribeBtn.disabled = false;
-    subscriber.value = "";
-    alert("Subscribed Successfully Check Your Inbox");
-   });
- }
+  e.preventDefault();
+  if (subscriber.value === '' || !emailRegex.test(subscriber.value)) {
+    subscriber.classList.add('animatein');
+  } else {
+    subscriber.disabled = true;
+    subscribeBtn.disabled = true;
+    await fetch('http://localhost:2000/api/sub', {
+      method: "post", headers: {
+        'Content-Type': 'application/json'
+      }, body: JSON.stringify({ subscriber: subscriber.value })
+    })
+      .then(() => {
+        subscriber.disabled = false;
+        subscribeBtn.disabled = false;
+        subscriber.value = "";
+        alert("Subscribed Successfully Check Your Inbox");
+      });
+  }
 });
 
 // Close Subs input
 opener.addEventListener('click', () => {
- subscribe.classList.toggle('close');
+  subscribe.classList.toggle('close');
 });
 
 
 window.onload = function () {
- blogs.style.opacity = 1;
- blogs.style.transform = 'translateY(0)';
+  blogs.style.opacity = 1;
+  blogs.style.transform = 'translateY(0)';
 };
 
 humburger.addEventListener("click", function () {
- bar1.classList.toggle("animatebar1");
- bar2.classList.toggle("animatebar2");
- bar3.classList.toggle("animatebar3");
- mobilenav.classList.toggle("opendrawer");
+  bar1.classList.toggle("animatebar1");
+  bar2.classList.toggle("animatebar2");
+  bar3.classList.toggle("animatebar3");
+  mobilenav.classList.toggle("opendrawer");
 });
 
 blogs.addEventListener('click', function (event) {
- const blogPage = event.target;
- console.log(blogPage);
- if (blogPage.dataset.id) {
-  localStorage.setItem('singleblog', JSON.stringify(blogPage.dataset.id));
- }
+  const blogPage = event.target;
+  if (blogPage.dataset.id) {
+    localStorage.setItem('singleblog', JSON.stringify(blogPage.dataset.id));
+  }
 });
