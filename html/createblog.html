@@ -12,6 +12,14 @@
   />
   <link rel="shortcut icon" href="/Assets/Teckjolt.png" type="image/x-icon" />
   <link rel="stylesheet" href="/css/createblog.css" />
+  <script>
+   (async function () {
+    const token = localStorage.getItem("token");
+    if (!token) {
+     window.location.href = "login.html";
+    }
+   })();
+  </script>
  </head>
  <body>
   <header class="header">
@@ -67,7 +75,7 @@
     <label for="title">Title of the Blog:</label>
     <input type="text" name="title" id="title" />
     <label for="sub-title">Sub-Title</label>
-    <input type="text" id="sub-title" />
+    <input type="text" id="sub-title" name="subtitle" />
     <label for="body">Blog Body:</label>
     <textarea name="body" id="body"></textarea>
     <button type="submit" class="post">Post</button>

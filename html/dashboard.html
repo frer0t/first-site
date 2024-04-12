@@ -14,6 +14,14 @@
   <link rel="shortcut icon" href="/Assets/Teckjolt.png" type="image/x-icon" />
   <link rel="stylesheet" href="/css/dashboard.css" />
  </head>
+ <script async>
+  (async function () {
+   const token = localStorage.getItem("token");
+   if (!token) {
+    window.location.href = "login.html";
+   }
+  })();
+ </script>
  <body>
   <header class="header">
    <h1 class="my-name">Frerot</h1>
@@ -22,13 +30,7 @@
     <a class="link" href="messages.html">Messages</a>
     <a class="link" href="adminblog.html">Blogs</a>
    </nav>
-   <button
-    type="button"
-    class="btn-signout"
-    onclick="location.href='/index.html'"
-   >
-    Signout
-   </button>
+   <button type="button" class="btn-signout">Signout</button>
    <nav class="mobilenav">
     <a class="link clicked" href="dashboard.html">Dashboard</a>
     <a class="link" href="messages.html">Messages</a>

@@ -138,6 +138,7 @@ main .theblog .time .date::before {
 }
 main .theblog .img2 {
   width: 100%;
+  max-height: 500px;
   object-fit: cover;
 }
 main .theblog .thename {

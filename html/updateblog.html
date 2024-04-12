@@ -12,6 +12,14 @@
   />
   <link rel="shortcut icon" href="/Assets/Teckjolt.png" type="image/x-icon" />
   <link rel="stylesheet" href="/css/updateblog.css" />
+  <script async>
+   (async function () {
+    const token = localStorage.getItem("token");
+    if (!token) {
+     window.location.href = "login.html";
+    }
+   })();
+  </script>
  </head>
  <body>
   <header class="header">
@@ -53,7 +61,7 @@
     <label for="title">Title of the Blog:</label>
     <input type="text" name="title" id="title" />
     <label for="sub-title">Sub-Title</label>
-    <input type="text" id="sub-title" />
+    <input type="text" name="subtitle" id="sub-title" />
     <label for="body">Blog Body:</label>
     <textarea name="body" id="body"></textarea>
     <button type="submit" class="post">Update</button>
