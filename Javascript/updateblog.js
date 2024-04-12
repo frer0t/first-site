@@ -1,6 +1,3 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, collection, serverTimestamp, getDoc, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js';
 const humburger = document.querySelector(".humburger");
 const bar1 = document.querySelector(".bar1");
 const bar2 = document.querySelector(".bar2");
@@ -32,31 +29,18 @@ window.onload = function () {
 const removeErrorInput = function () {
  this.classList.remove('animatein');
 };
-
-const firebaseConfig = {
- apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
- authDomain: "my-brand-frontend.firebaseapp.com",
- projectId: "my-brand-frontend",
- storageBucket: "my-brand-frontend.appspot.com",
- messagingSenderId: "23360536523",
- appId: "1:23360536523:web:e255e314c23f4298a9404e"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore();
-const blogRef = doc(db, 'blogs', JSON.parse(localStorage.getItem('blogEdit')));
-const storage = getStorage(app);
-
-getDoc(blogRef).then((data) => {
+(async function (e) {
+ const response = await fetch(`http://localhost:2000/admin/blog/${JSON.parse(localStorage.getItem('blogEdit'))}`);
+ const data = await response.json();
  getImage1.style.display = 'block';
  getImage2.style.display = 'block';
- const blog = data.data();
- getImage1.src = blog.image1;
- getImage2.src = blog.image2;
+ const blog = data;
+ getImage1.src = blog.img1;
+ getImage2.src = blog.img2;
  titleBlog.value = blog.title;
  subTitleBlog.value = blog.subtitle;
  bodyBlog.value = blog.body;
-});
-
+})();
 inputImage1.addEventListener('change', function (e) {
  getImage1.style.display = 'block ';
  getImage1.src = URL.createObjectURL(e.target.files[0]);
@@ -105,43 +89,17 @@ const updateBlog = async function (e) {
    postBtn.disable;
    loader.style.display = 'flex';
    body.style.overflow = 'hidden';
-   const file1 = inputImage1.files[0];
-   const file2 = inputImage2.files[0];
-   let image1;
-   let image2;
    try {
-    if (file1) {
-     const blogImg1 = ref(storage, 'blogsImg/' + file1.name);
-     await uploadBytes(blogImg1, file1);
-     image1 = await getDownloadURL(blogImg1);
-    } else {
-     image1 = getImage1.src;
-    }
-    if (file2) {
-     const blogImg2 = ref(storage, 'blogsImg/' + file2.name);
-     await uploadBytes(blogImg2, file2);
-     image2 = await getDownloadURL(blogImg2);
-    } else {
-     image2 = getImage2.src;
-    }
-    const data = {
-     title: titleBlog.value,
-     body: bodyBlog.value,
-     subtitle: subTitleBlog.value,
-     image1: image1,
-     image2: image2,
-     thedate: serverTimestamp(),
-    };
-    await updateDoc(blogRef, data).then(() => {
-     formCreate.reset();
-     loader.style.disable = 'none';
-     localStorage.clear();
-     alert('Update Successful');
-     window.open('./adminblog.html', '_self');
+    const formData = new FormData(formCreate);
+    const response = await fetch(`http://localhost:2000/api/blog/${JSON.parse(localStorage.getItem('blogEdit'))}`, {
+     method: "PUT",
+     body: formData
     });
-
-   } catch {
-    console.log(err => console.log("error:", err));
+    const json = await response.json();
+    alert(json.message);
+    window.location.href = "dashboard.html";
+   } catch (error) {
+    console.log(error);
    }
   }
  }

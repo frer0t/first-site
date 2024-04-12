@@ -161,6 +161,7 @@ body {
   border: solid 2px rgb(118, 115, 115);
   border-radius: 10px;
   width: 635px;
+  height: fit-content;
 }
 .dashboard .subs-blogs .recent-art h1 {
   display: flex;
@@ -199,7 +200,8 @@ body {
   column-gap: 18px;
 }
 .dashboard .subs-blogs .recent-art .articles article .art img {
-  width: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
 }
 .dashboard .subs-blogs .recent-art .articles article .actions {

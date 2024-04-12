@@ -33,7 +33,7 @@ humburger.addEventListener("click", function () {
  mobilenav.classList.toggle("opendrawer");
 });
 
-btnSignup.addEventListener('click', async function (e) {
+signupForm.addEventListener("submit", async function (e) {
  e.preventDefault();
  if (inputSignupName.value === '') {
   inputSignupName.classList.add('animatein');
@@ -51,7 +51,7 @@ btnSignup.addEventListener('click', async function (e) {
   e.preventDefault();
   return;
  }
- loader.style.display = 'flex';
+ loader.style.display = "flex";
  const user = await fetch('http://localhost:2000/api/user', {
   method: "post", headers: {
    "Content-type": "application/json"
@@ -61,14 +61,23 @@ btnSignup.addEventListener('click', async function (e) {
    email: inputSignupEmail.value
   })
  });
- const alertMessage = await user.json();
- if (user.code !== 201) {
-  loader.style.display = 'none';
-  signupForm.reset();
-  alert(alertMessage.message);
+ const json = await user.json();
+ if (user.status === 409) {
+  alert(json.message);
+  inputSignupName.classList.add('animatein');
+  inputSignupName.value = '';
+  inputSignupEmail.classList.add('animatein');
+  inputSignupEmail.value = '';
+  return false;
  }
- if (user.code === 201) {
-  loader.style.display = 'none';
-  alert(alertMessage.message);
+ if (user.status === 201) {
+  alert(json.message);
+  window.location.href = json.open;
+  return true;
  }
+ if (user.status !== 201 || user.status !== 409) {
+  alert(json.messages);
+  window.location.reload();
+ }
+
 });

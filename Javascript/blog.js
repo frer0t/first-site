@@ -1,19 +1,3 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, getDoc, getDocs, collection, query, onSnapshot, doc, updateDoc, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
-    authDomain: "my-brand-frontend.firebaseapp.com",
-    projectId: "my-brand-frontend",
-    storageBucket: "my-brand-frontend.appspot.com",
-    messagingSenderId: "23360536523",
-    appId: "1:23360536523:web:e255e314c23f4298a9404e"
-};
-initializeApp(firebaseConfig);
-const db = getFirestore();
-const subsColRef = doc(db, 'subscribers', 'xBecjxrnuTWLOMY43IDh');
-const blogRef = doc(db, 'blogs', JSON.parse(localStorage.getItem('singleblog')));
-const blogsCol = collection(db, 'blogs');
 const title = document.querySelector('.title');
 const body = document.querySelector('body');
 const commentSect = document.querySelector('.comments');
@@ -43,18 +27,17 @@ const emailRegex = /^[a-zA-Z0-9. _%+-]+@[a-zA-Z0-9. -]+\.[a-zA-Z]{2,}$/;
 const removeErrorInput = function () {
     this.classList.remove('animatein');
 };
-
-getDoc(blogRef).then(doc => {
-    const data = doc.data();
+const blogId = JSON.parse(localStorage.getItem('singleblog'));
+(async () => {
+    const response = await fetch(`http://localhost:2000/api/blog/${blogId}`);
+    const data = await response.json();
     body.style.overflowY = 'unset';
     loader.style.display = 'none';
-    img1.src = data.image1;
-    img2.src = data.image2;
+    img1.src = data.img1;
+    img2.src = data.img2;
     title.textContent = data.title;
     thename.textContent = data.title;
-    const { seconds, nanoseconds } = data.thedate;
-    const timeStamp_float = seconds + nanoseconds / (10 ** 9);
-    const date = new Date(timeStamp_float * 1000);
+    const date = new Date(data.createdAt);
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     dates.textContent = day;
@@ -114,7 +97,6 @@ getDoc(blogRef).then(doc => {
             }
         }
     });
-    likes.textContent = data.likes;
     data.comments.forEach((comment) => {
         const hmtl3 = `<div class="comment">
        <img src="/Assets/profile-comment.png"  />
@@ -126,39 +108,49 @@ getDoc(blogRef).then(doc => {
         commentSect.insertAdjacentHTML('beforeend', hmtl3);
     });
     commentCount.textContent = data.comments.length;
-});
-
+    likes.textContent = data.likes;
+})();
+window.onload = function () {
+    title.style.opacity = 1;
+};
 inputSub.addEventListener('focus', removeErrorInput);
+
 /// Subscriber
-btnSub.addEventListener('click', function (e) {
+
+btnSub.addEventListener('click', async (e) => {
     e.preventDefault();
     if (inputSub.value === "" || !emailRegex.test(inputSub.value)) {
         inputSub.classList.add('animatein');
     } else {
-        updateDoc(subsColRef, { emails: arrayUnion(inputSub.value) }).then(() => {
-            inputSub.value = '';
-            setTimeout(() => {
-                alert('Successfully Subscribed');
-            }, 800);
-        });
+        inputSub.disabled = true;
+        btnSub.disabled = true;
+        await fetch('http://localhost:2000/api/sub', {
+            method: "post", headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({ subscriber: inputSub.value })
+        })
+            .then(() => {
+                inputSub.disabled = false;
+                btnSub.disabled = false;
+                inputSub.value = "";
+                alert("Subscribed Successfully Check Your Inbox");
+            });
     }
 });
 
-// Comments updating
-let commentsnum = comments.length;
-commentCount.textContent = commentsnum;
-
-updateDoc(blogRef, {
-    comment: Number(commentsnum)
-});
 inputEmail.addEventListener('focus', removeErrorInput);
 inputName.addEventListener('focus', removeErrorInput);
 textMessage.addEventListener('focus', removeErrorInput);
 
 // Post comment functionality;
-const postFunctionality = function (e) {
+const postFunctionality = async function (e) {
     e.preventDefault();
     if (inputEmail.value !== '' && emailRegex.test(inputEmail.value) && inputName.value !== '' && textMessage.value !== '') {
+        const comment = {
+            email: inputEmail.value,
+            name: inputName.value,
+            comment: textMessage.value
+        };
         const html = `<div class="comment">
        <img src="/Assets/profile-comment.png" alt="" />
        <div class="themessage">
@@ -169,10 +161,6 @@ const postFunctionality = function (e) {
        </div>
       </div>`;
         commentCount.textContent++;
-        updateDoc(blogRef, {
-            comment: Number(commentCount.textContent),
-            comments: arrayUnion({ name: inputName.value, email: inputEmail.value, comment: textMessage.value })
-        });
         commentSect.insertAdjacentHTML('beforeend', html);
         inputEmail.value = '';
         inputName.value = '';
@@ -180,8 +168,15 @@ const postFunctionality = function (e) {
         textMessage.classList.remove('animatein');
         inputEmail.classList.remove('animatein');
         inputName.classList.remove('animatein');
+        await fetch(`http://localhost:2000/comment/new/${blogId}`, {
+            method: "POST", headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(comment),
+        });
     } else {
         if (inputEmail.value === '' || !emailRegex.test(inputEmail.value)) {
+            inputEmail.value = '';
             inputEmail.classList.add('animatein');
         }
         if (inputName.value === '') {
@@ -199,7 +194,7 @@ btnPost.addEventListener('click', postFunctionality);
 if (JSON.parse(localStorage.getItem('liked'))) {
     svglike.classList.add('addlike');
 }
-svglike.addEventListener('click', function (e) {
+svglike.addEventListener('click', async function (e) {
     svglike.classList.toggle('addlike');
     !svglike.classList.contains('addlike') ? likescount.textContent-- : likescount.textContent++;
     if (svglike.classList.contains('addlike')) {
@@ -207,37 +202,64 @@ svglike.addEventListener('click', function (e) {
     } else {
         localStorage.setItem('liked', JSON.stringify(false));
     }
-    updateDoc(blogRef, {
-        likes: Number(likescount.textContent)
+    const likes = likescount.textContent;
+    await fetch(`http://localhost:2000/like/${blogId}`, {
+        method: "POST", headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            likes: Number(likes)
+        }),
     });
 });
 
-window.onload = function () {
-    title.style.opacity = 1;
-};
+
 
 
 // You may so like
 
-getDocs(blogsCol).then(data => {
-    const blogs = [];
-    data.docs.forEach((doc) => {
-        blogs.push({ ...doc.data(), id: doc.id });
-    });
-    if (blogs.length <= 1) {
+// getDocs(blogsCol).then(data => {
+//     const blogs = [];
+//     data.docs.forEach((doc) => {
+//         blogs.push({ ...doc.data(), id: doc.id });
+//     });
+// if (blogs.length <= 1) {
+//     likeAlsoSec.style.display = 'none';
+//     likealsoh1.style.display = 'none';
+// } else {
+//     blogs.forEach(blog => {
+//         const html4 = `<div  class="card">
+//     <a data-id='${blog.id}' href="blog.html">${blog.title}</a>
+//     </div>`;
+//         if (blog.id !== JSON.parse(localStorage.getItem('singleblog'))) {
+//             likeAlsoSec.insertAdjacentHTML('afterbegin', html4);
+//         }
+//     });
+// }
+// });
+(async () => {
+    let blogsData;
+    try {
+        const response = await fetch('http://localhost:2000/api/blogs');
+        const data = await response.json();
+        blogsData = [...data];
+    } catch (error) {
+        console.log(error);
+    }
+    if (blogsData.length <= 1) {
         likeAlsoSec.style.display = 'none';
         likealsoh1.style.display = 'none';
     } else {
-        blogs.forEach(blog => {
+        blogsData.forEach(blog => {
             const html4 = `<div  class="card">
-        <a data-id='${blog.id}' href="blog.html">${blog.title}</a>
+        <a data-id='${blog._id}' href="blog.html">${blog.title}</a>
         </div>`;
-            if (blog.id !== JSON.parse(localStorage.getItem('singleblog'))) {
+            if (blog._id !== JSON.parse(localStorage.getItem('singleblog'))) {
                 likeAlsoSec.insertAdjacentHTML('afterbegin', html4);
             }
         });
     }
-});
+})();
 likeAlsoSec.addEventListener('click', function (e) {
     const blogPage = e.target;
     const blogId = blogPage.dataset.id;

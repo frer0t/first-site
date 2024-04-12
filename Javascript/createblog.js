@@ -1,7 +1,3 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js';
-
 const humburger = document.querySelector(".humburger");
 const bar1 = document.querySelector(".bar1");
 const bar2 = document.querySelector(".bar2");
@@ -35,21 +31,6 @@ window.onload = function () {
 const removeErrorInput = function () {
  this.classList.remove('animatein');
 };
-
-const firebaseConfig = {
- apiKey: "AIzaSyCHHyJJfqNFz5G2r9Ohsdc__fzz8bg6Y9c",
- authDomain: "my-brand-frontend.firebaseapp.com",
- projectId: "my-brand-frontend",
- storageBucket: "my-brand-frontend.appspot.com",
- messagingSenderId: "23360536523",
- appId: "1:23360536523:web:e255e314c23f4298a9404e"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore();
-const blogsRef = collection(db, 'blogs');
-const storage = getStorage(app);
-
 inputImage1.addEventListener('change', function (e) {
  getImage1.style.display = 'block';
  getImage1.src = URL.createObjectURL(e.target.files[0]);
@@ -90,33 +71,20 @@ postBtn.addEventListener('click', function (e) {
   labelImage2.classList.add('animatein');
  }
 });
-const uploadData = async function (e) {
+formCreate.addEventListener('submit', async function (e) {
  e.preventDefault();
  if (subTitleBlog.value !== '' && titleBlog.value !== "" && bodyBlog.value !== '' && getImage1.src !== '' && getImage2.src !== '') {
   postBtn.disable;
   loader.style.display = 'flex';
   body.style.overflow = 'hidden';
-  const file1 = inputImage1.files[0];
-  const file2 = inputImage2.files[0];
-  const blogImg1 = ref(storage, 'blogsImg/' + file1.name);
-  const blogImg2 = ref(storage, 'blogsImg/' + file2.name);
   try {
-   await uploadBytes(blogImg1, file1);
-   await uploadBytes(blogImg2, file2);
-   const image1 = await getDownloadURL(blogImg1);
-   const image2 = await getDownloadURL(blogImg2);
-   const data = {
-    title: titleBlog.value,
-    body: bodyBlog.value,
-    subtitle: subTitleBlog.value,
-    image1: image1,
-    image2: image2,
-    thedate: serverTimestamp(),
-    comments: [],
-    comment: 0,
-    likes: 0,
-   };
-   await addDoc(blogsRef, data);
+   const formData = new FormData(formCreate);
+   fetch("http://localhost:2000/api/blog", {
+    method: "post",
+    body: formData,
+   }).then(respons => {
+    console.log(respons);
+   });
    formCreate.reset();
    alert('Posted Successful');
    window.location.reload();
@@ -124,6 +92,4 @@ const uploadData = async function (e) {
    console.log(err => console.log("error:", err));
   }
  }
-};
-
-formCreate.addEventListener('submit', uploadData);
+});
