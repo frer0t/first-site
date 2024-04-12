@@ -217,26 +217,6 @@ svglike.addEventListener('click', async function (e) {
 
 
 // You may so like
-
-// getDocs(blogsCol).then(data => {
-//     const blogs = [];
-//     data.docs.forEach((doc) => {
-//         blogs.push({ ...doc.data(), id: doc.id });
-//     });
-// if (blogs.length <= 1) {
-//     likeAlsoSec.style.display = 'none';
-//     likealsoh1.style.display = 'none';
-// } else {
-//     blogs.forEach(blog => {
-//         const html4 = `<div  class="card">
-//     <a data-id='${blog.id}' href="blog.html">${blog.title}</a>
-//     </div>`;
-//         if (blog.id !== JSON.parse(localStorage.getItem('singleblog'))) {
-//             likeAlsoSec.insertAdjacentHTML('afterbegin', html4);
-//         }
-//     });
-// }
-// });
 (async () => {
     let blogsData;
     try {
