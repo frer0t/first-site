@@ -45,7 +45,8 @@ loginForm.addEventListener('submit', async (e) => {
    username: inputUsername.value,
    password: inputPassword.value
   };
-  const login = await fetch("http://localhost:2000/html/dashboard", {
+  loader.style.display = "flex";
+  const login = await fetch("http://localhost:2000/api/user/login", {
    method: "post", method: "post", headers: {
     "Content-type": "application/json"
    },
@@ -54,6 +55,7 @@ loginForm.addEventListener('submit', async (e) => {
   const data = await login.json();
 
   if (login.status === 401) {
+   loader.style.display = 'none';
    loginForm.reset();
    inputPassword.blur();
    inputUsername.blur();
@@ -65,7 +67,6 @@ loginForm.addEventListener('submit', async (e) => {
    return false;
   }
   localStorage.setItem('token', data.token);
-  alert(data.message);
   window.location.href = data.open;
  } catch (error) {
   console.error("Error Login", error);

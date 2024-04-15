@@ -52,7 +52,7 @@ signupForm.addEventListener("submit", async function (e) {
   return;
  }
  loader.style.display = "flex";
- const user = await fetch('http://localhost:2000/api/user', {
+ const user = await fetch('http://localhost:2000/api/user/new', {
   method: "post", headers: {
    "Content-type": "application/json"
   }, body: JSON.stringify({

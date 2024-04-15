@@ -203,7 +203,7 @@ svglike.addEventListener('click', async function (e) {
         localStorage.setItem('liked', JSON.stringify(false));
     }
     const likes = likescount.textContent;
-    await fetch(`http://localhost:2000/like/${blogId}`, {
+    await fetch(`http://localhost:2000/api/like/new/${blogId}`, {
         method: "POST", headers: {
             'Content-Type': 'application/json'
         },

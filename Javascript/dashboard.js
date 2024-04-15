@@ -7,24 +7,20 @@ const dashboard = document.querySelector('.dashboard');
 const articles = document.querySelector('.articles');
 const queries = document.querySelector('.queries');
 const subsSec = document.querySelector('.subs');
-const signOut = document.querySelector('.btn-signout');
+const signOut = document.querySelectorAll('.btn-signout');
 window.onload = function () {
     dashboard.style.opacity = 1;
     dashboard.style.transform = 'translateY(0)';
 };
-const mobileLinks = mobilenav.childNodes;
 
-signOut.addEventListener('click', function () {
-    localStorage.clear();
-    window.location.reload();
+signOut.forEach(button => {
+    button.addEventListener('click', function (event) {
+        localStorage.clear();
+        window.location.reload();
+    });
 });
 
-mobileLinks.forEach(cur => cur.addEventListener('click', function () {
-    bar1.classList.toggle("animatebar1");
-    bar2.classList.toggle("animatebar2");
-    bar3.classList.toggle("animatebar3");
-    mobilenav.classList.toggle("opendrawer");
-}));
+
 
 humburger.addEventListener("click", function () {
     bar1.classList.toggle("animatebar1");
@@ -34,7 +30,11 @@ humburger.addEventListener("click", function () {
 });
 // Adding recent Blogs
 (async function (e) {
-    const response = await fetch('http://localhost:2000/admin/blogsre');
+    const response = await fetch('http://localhost:2000/admin/blogsre', {
+        'headers': {
+            'authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     const blogs = await response.json();
     blogs.forEach(blog => {
         const date = new Date(blog.createdAt).toDateString();
@@ -86,14 +86,18 @@ humburger.addEventListener("click", function () {
         </a>
        </div>
       </article>`;
-        articles.insertAdjacentHTML('afterbegin', html);
+        articles.insertAdjacentHTML('beforeend', html);
     });
 })();
 
 // Adding recent Queries
 
 (async function (e) {
-    const response = await fetch("http://localhost:2000/admin/messagesre");
+    const response = await fetch("http://localhost:2000/admin/messagesre", {
+        'headers': {
+            'authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     const messages = await response.json();
     messages.forEach(message => {
         const html2 = `<div class="querie">
@@ -110,7 +114,11 @@ humburger.addEventListener("click", function () {
 // Adding SubsList
 
 (async function (e) {
-    const response = await fetch('http://localhost:2000/admin/sub');
+    const response = await fetch('http://localhost:2000/admin/subs', {
+        'headers': {
+            'authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     const subs = await response.json();
     subs.forEach(sub => {
         const html3 = `<p class="sub">${sub.subscriber}
@@ -143,8 +151,10 @@ articles.addEventListener('click', async function (event) {
         if (confirm('Are you Sure you i want to delete The Blog')) {
             const deleteButton = event.target;
             const deleteId = deleteButton.dataset.id;
-            const deleteBlog = await fetch(`http://localhost:2000/api/blog/${deleteId}`, {
-                method: "delete"
+            const deleteBlog = await fetch(`http://localhost:2000/admin/blog/delete/${deleteId}`, {
+                method: "delete", 'headers': {
+                    'authorization': `Bearer ${localStorage.getItem('token')}`
+                }
             });
             const json = await deleteBlog.json();
             alert(json.message);
