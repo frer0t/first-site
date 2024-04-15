@@ -5,23 +5,18 @@ const bar3 = document.querySelector(".bar3");
 const mobilenav = document.querySelector(".mobilenav");
 const messagesSec = document.querySelector('.messages');
 const noMessages = document.querySelector('.noMessages');
-const signOut = document.querySelector('.btn-signout');
+const signOut = document.querySelectorAll('.btn-signout');
 window.onload = function () {
   messagesSec.style.opacity = 1;
   messagesSec.style.transform = 'translateY(0)';
 };
-signOut.addEventListener('click', function () {
-  localStorage.clear();
-  window.location.reload();
+signOut.forEach(btn => {
+  btn.addEventListener('click', function () {
+    localStorage.clear();
+    window.location.reload();
+  });
 });
-const mobileLinks = mobilenav.childNodes;
 
-mobileLinks.forEach(cur => cur.addEventListener('click', function () {
-  bar1.classList.toggle("animatebar1");
-  bar2.classList.toggle("animatebar2");
-  bar3.classList.toggle("animatebar3");
-  mobilenav.classList.toggle("opendrawer");
-}));
 
 humburger.addEventListener("click", function () {
   bar1.classList.toggle("animatebar1");
@@ -32,7 +27,11 @@ humburger.addEventListener("click", function () {
 
 
 (async () => {
-  const response = await fetch('http://localhost:2000/admin/messages');
+  const response = await fetch('http://localhost:2000/admin/messages', {
+    'headers': {
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
   const messages = await response.json();
   if (messages.length > 0) {
     noMessages.style.display = 'none';
@@ -73,7 +72,11 @@ messagesSec.addEventListener('click', async function (e) {
     const deletBtn = e.target;
     const deleteId = deletBtn.dataset.id;
     if (confirm('Are You Want Delete this Message')) {
-      await fetch(`http://localhost:2000/admin/delete/message/${deleteId}`, { method: "Delete" });
+      await fetch(`http://localhost:2000/admin/message/delete/${deleteId}`, {
+        method: "Delete", 'headers': {
+          'authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
       alert("Succefully Deleted Message");
       window.location.reload();
     }

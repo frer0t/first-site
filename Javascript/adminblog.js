@@ -6,22 +6,17 @@ const mobilenav = document.querySelector(".mobilenav");
 const blogs = document.querySelector('.blogs');
 const noBlogs = document.querySelector('.noblogs');
 const deleteBlog = document.querySelector('.delete');
-const signOut = document.querySelector('.btn-signout');
+const signOut = document.querySelectorAll('.btn-signout');
 window.onload = function () {
   blogs.style.opacity = 1;
   blogs.style.transform = 'translateY(0)';
 };
-signOut.addEventListener('click', function () {
-  localStorage.clear();
-  window.location.reload();
+signOut.forEach(btn => {
+  btn.addEventListener('click', function () {
+    localStorage.clear();
+    window.location.reload();
+  });
 });
-const mobileLinks = mobilenav.childNodes;
-mobileLinks.forEach(cur => cur.addEventListener('click', function () {
-  bar1.classList.toggle("animatebar1");
-  bar2.classList.toggle("animatebar2");
-  bar3.classList.toggle("animatebar3");
-  mobilenav.classList.toggle("opendrawer");
-}));
 humburger.addEventListener("click", function () {
   bar1.classList.toggle("animatebar1");
   bar2.classList.toggle("animatebar2");
@@ -29,7 +24,11 @@ humburger.addEventListener("click", function () {
   mobilenav.classList.toggle("opendrawer");
 });
 (async () => {
-  const response = await fetch("http://localhost:2000/admin/blogs");
+  const response = await fetch("http://localhost:2000/admin/blogs", {
+    'headers': {
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
   const data = await response.json();
   if (data.length > 0) {
     noBlogs.style.display = 'none';
@@ -116,8 +115,6 @@ blogs.addEventListener('click', async function (event) {
       const deleteBlog = await fetch(`http://localhost:2000/api/blog/${deleteId}`, {
         method: "delete"
       });
-      const json = await deleteBlog.json();
-      alert(json.message);
       window.location.reload();
     }
   }

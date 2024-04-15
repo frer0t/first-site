@@ -79,9 +79,12 @@ formCreate.addEventListener('submit', async function (e) {
   body.style.overflow = 'hidden';
   try {
    const formData = new FormData(formCreate);
-   fetch("http://localhost:2000/api/blog", {
+   fetch("http://localhost:2000/admin/blog/new", {
     method: "post",
     body: formData,
+    'headers': {
+     'authorization': `Bearer ${localStorage.getItem('token')}`
+    }
    }).then(respons => {
     console.log(respons);
    });
