@@ -30,7 +30,7 @@ const removeErrorInput = function () {
  this.classList.remove('animatein');
 };
 (async function (e) {
- const response = await fetch(`http://localhost:2000/admin/blog/${JSON.parse(localStorage.getItem('blogEdit'))}`, {
+ const response = await fetch(`https://energetic-pig-slacks.cyclic.app/admin/blog/${JSON.parse(localStorage.getItem('blogEdit'))}`, {
   'headers': {
    'authorization': `Bearer ${localStorage.getItem('token')}`
   }
@@ -95,7 +95,7 @@ const updateBlog = async function (e) {
    body.style.overflow = 'hidden';
    try {
     const formData = new FormData(formCreate);
-    const response = await fetch(`http://localhost:2000/admin/blog/update/${JSON.parse(localStorage.getItem('blogEdit'))}`, {
+    const response = await fetch(`https://energetic-pig-slacks.cyclic.app/admin/blog/update/${JSON.parse(localStorage.getItem('blogEdit'))}`, {
      method: "PUT",
      body: formData, 'headers': {
       'authorization': `Bearer ${localStorage.getItem('token')}`

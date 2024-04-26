@@ -79,7 +79,7 @@ formCreate.addEventListener('submit', async function (e) {
   body.style.overflow = 'hidden';
   try {
    const formData = new FormData(formCreate);
-   fetch("http://localhost:2000/admin/blog/new", {
+   fetch("https://energetic-pig-slacks.cyclic.app/admin/blog/new", {
     method: "post",
     body: formData,
     'headers': {

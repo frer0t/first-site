@@ -24,7 +24,7 @@ humburger.addEventListener("click", function () {
   mobilenav.classList.toggle("opendrawer");
 });
 (async () => {
-  const response = await fetch("http://localhost:2000/admin/blogs", {
+  const response = await fetch("https://energetic-pig-slacks.cyclic.app/admin/blogs", {
     'headers': {
       'authorization': `Bearer ${localStorage.getItem('token')}`
     }
@@ -112,7 +112,7 @@ blogs.addEventListener('click', async function (event) {
     if (confirm('Are you Sure you i want to delete The Blog')) {
       const deleteButton = event.target;
       const deleteId = deleteButton.dataset.id;
-      const deleteBlog = await fetch(`http://localhost:2000/api/blog/${deleteId}`, {
+      const deleteBlog = await fetch(`https://energetic-pig-slacks.cyclic.app/api/blog/${deleteId}`, {
         method: "delete"
       });
       window.location.reload();

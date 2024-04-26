@@ -27,7 +27,7 @@ humburger.addEventListener("click", function () {
 
 
 (async () => {
-  const response = await fetch('http://localhost:2000/admin/messages', {
+  const response = await fetch('https://energetic-pig-slacks.cyclic.app/admin/messages', {
     'headers': {
       'authorization': `Bearer ${localStorage.getItem('token')}`
     }
@@ -72,7 +72,7 @@ messagesSec.addEventListener('click', async function (e) {
     const deletBtn = e.target;
     const deleteId = deletBtn.dataset.id;
     if (confirm('Are You Want Delete this Message')) {
-      await fetch(`http://localhost:2000/admin/message/delete/${deleteId}`, {
+      await fetch(`https://energetic-pig-slacks.cyclic.app/admin/message/delete/${deleteId}`, {
         method: "Delete", 'headers': {
           'authorization': `Bearer ${localStorage.getItem('token')}`
         }
