@@ -46,7 +46,7 @@ loginForm.addEventListener('submit', async (e) => {
    password: inputPassword.value
   };
   loader.style.display = "flex";
-  const login = await fetch("http://localhost:2000/api/user/login", {
+  const login = await fetch("https://energetic-pig-slacks.cyclic.app/api/user/login", {
    method: "post", method: "post", headers: {
     "Content-type": "application/json"
    },

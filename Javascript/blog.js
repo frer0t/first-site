@@ -29,7 +29,7 @@ const removeErrorInput = function () {
 };
 const blogId = JSON.parse(localStorage.getItem('singleblog'));
 (async () => {
-    const response = await fetch(`http://localhost:2000/api/blog/${blogId}`);
+    const response = await fetch(`https://energetic-pig-slacks.cyclic.app/api/blog/${blogId}`);
     const data = await response.json();
     body.style.overflowY = 'unset';
     loader.style.display = 'none';
@@ -168,7 +168,7 @@ const postFunctionality = async function (e) {
         textMessage.classList.remove('animatein');
         inputEmail.classList.remove('animatein');
         inputName.classList.remove('animatein');
-        await fetch(`http://localhost:2000/comment/new/${blogId}`, {
+        await fetch(`https://energetic-pig-slacks.cyclic.app/api/comment/new/${blogId}`, {
             method: "POST", headers: {
                 'Content-Type': 'application/json'
             },
@@ -203,7 +203,7 @@ svglike.addEventListener('click', async function (e) {
         localStorage.setItem('liked', JSON.stringify(false));
     }
     const likes = likescount.textContent;
-    await fetch(`http://localhost:2000/api/like/new/${blogId}`, {
+    await fetch(`https://energetic-pig-slacks.cyclic.app/api/like/new/${blogId}`, {
         method: "POST", headers: {
             'Content-Type': 'application/json'
         },
@@ -220,7 +220,7 @@ svglike.addEventListener('click', async function (e) {
 (async () => {
     let blogsData;
     try {
-        const response = await fetch('http://localhost:2000/api/blogs');
+        const response = await fetch('https://energetic-pig-slacks.cyclic.app/api/blogs');
         const data = await response.json();
         blogsData = [...data];
     } catch (error) {

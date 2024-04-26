@@ -30,7 +30,7 @@ humburger.addEventListener("click", function () {
 });
 // Adding recent Blogs
 (async function (e) {
-    const response = await fetch('http://localhost:2000/admin/blogsre', {
+    const response = await fetch('https://energetic-pig-slacks.cyclic.app/admin/blogsre', {
         'headers': {
             'authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -93,7 +93,7 @@ humburger.addEventListener("click", function () {
 // Adding recent Queries
 
 (async function (e) {
-    const response = await fetch("http://localhost:2000/admin/messagesre", {
+    const response = await fetch("https://energetic-pig-slacks.cyclic.app/admin/messagesre", {
         'headers': {
             'authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -114,7 +114,7 @@ humburger.addEventListener("click", function () {
 // Adding SubsList
 
 (async function (e) {
-    const response = await fetch('http://localhost:2000/admin/subs', {
+    const response = await fetch('https://energetic-pig-slacks.cyclic.app/admin/subs', {
         'headers': {
             'authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -151,7 +151,7 @@ articles.addEventListener('click', async function (event) {
         if (confirm('Are you Sure you i want to delete The Blog')) {
             const deleteButton = event.target;
             const deleteId = deleteButton.dataset.id;
-            const deleteBlog = await fetch(`http://localhost:2000/admin/blog/delete/${deleteId}`, {
+            const deleteBlog = await fetch(`https://energetic-pig-slacks.cyclic.app/admin/blog/delete/${deleteId}`, {
                 method: "delete", 'headers': {
                     'authorization': `Bearer ${localStorage.getItem('token')}`
                 }

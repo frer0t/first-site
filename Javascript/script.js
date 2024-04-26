@@ -101,7 +101,7 @@ btnContact.addEventListener('click', async function (e) {
 contactForm.onsubmit = async function (e) {
   e.preventDefault();
   const formData = new URLSearchParams(new FormData(contactForm));
-  const done = await fetch('http://localhost:2000/api/message/new', {
+  const done = await fetch('https://energetic-pig-slacks.cyclic.app/api/message/new', {
     method: "Post", body: formData.toString(), headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     }

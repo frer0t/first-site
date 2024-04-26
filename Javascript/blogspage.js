@@ -17,7 +17,7 @@ const removeErrorInput = function () {
 (async () => {
   let blogsData;
   try {
-    const response = await fetch('http://localhost:2000/api/blogs');
+    const response = await fetch('https://energetic-pig-slacks.cyclic.app/api/blogs');
     const data = await response.json();
     blogsData = [...data];
   } catch (error) {
@@ -90,7 +90,7 @@ subscribe.addEventListener('submit', async function (e) {
   } else {
     subscriber.disabled = true;
     subscribeBtn.disabled = true;
-    await fetch('http://localhost:2000/api/sub', {
+    await fetch('https://energetic-pig-slacks.cyclic.app/api/sub', {
       method: "post", headers: {
         'Content-Type': 'application/json'
       }, body: JSON.stringify({ subscriber: subscriber.value })
